@@ -13,6 +13,7 @@
 		1AD3989C251D41CD00922ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AD3989B251D41CD00922ED9 /* Assets.xcassets */; };
 		1AD3989F251D41CD00922ED9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AD3989E251D41CD00922ED9 /* Preview Assets.xcassets */; };
 		1AD398A2251D41CD00922ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD398A0251D41CD00922ED9 /* LaunchScreen.storyboard */; };
+		1AD398AA251D434A00922ED9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1AD398A9251D434A00922ED9 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1AD3989E251D41CD00922ED9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1AD398A1251D41CD00922ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AD398A3251D41CD00922ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AD398A9251D434A00922ED9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		1AD39889251D41C700922ED9 = {
 			isa = PBXGroup;
 			children = (
+				1AD398A9251D434A00922ED9 /* .gitignore */,
 				1AD39894251D41C700922ED9 /* SubscriptionManager */,
 				1AD39893251D41C700922ED9 /* Products */,
 			);
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AD398AA251D434A00922ED9 /* .gitignore in Resources */,
 				1AD398A2251D41CD00922ED9 /* LaunchScreen.storyboard in Resources */,
 				1AD3989F251D41CD00922ED9 /* Preview Assets.xcassets in Resources */,
 				1AD3989C251D41CD00922ED9 /* Assets.xcassets in Resources */,
