@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A5BA78C2525042500520086 /* SubscriptionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78B2525042500520086 /* SubscriptionDetail.swift */; };
+		1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9933322523DB04008BF8C4 /* Subscription.swift */; };
+		1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */; };
 		1AD39896251D41C700922ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD39895251D41C700922ED9 /* AppDelegate.swift */; };
 		1AD39898251D41C700922ED9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD39897251D41C700922ED9 /* SceneDelegate.swift */; };
 		1AD3989A251D41C700922ED9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD39899251D41C700922ED9 /* ContentView.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A5BA78B2525042500520086 /* SubscriptionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetail.swift; sourceTree = "<group>"; };
+		1A9933322523DB04008BF8C4 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRow.swift; sourceTree = "<group>"; };
 		1AD39892251D41C700922ED9 /* SubscriptionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD39895251D41C700922ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD39897251D41C700922ED9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A9933312523DAE4008BF8C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A9933322523DB04008BF8C4 /* Subscription.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1AD39889251D41C700922ED9 = {
 			isa = PBXGroup;
 			children = (
@@ -61,9 +75,12 @@
 		1AD39894251D41C700922ED9 /* SubscriptionManager */ = {
 			isa = PBXGroup;
 			children = (
+				1A9933312523DAE4008BF8C4 /* Models */,
 				1AD39895251D41C700922ED9 /* AppDelegate.swift */,
 				1AD39897251D41C700922ED9 /* SceneDelegate.swift */,
 				1AD39899251D41C700922ED9 /* ContentView.swift */,
+				1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */,
+				1A5BA78B2525042500520086 /* SubscriptionDetail.swift */,
 				1AD3989B251D41CD00922ED9 /* Assets.xcassets */,
 				1AD398A0251D41CD00922ED9 /* LaunchScreen.storyboard */,
 				1AD398A3251D41CD00922ED9 /* Info.plist */,
@@ -153,7 +170,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD39896251D41C700922ED9 /* AppDelegate.swift in Sources */,
+				1A5BA78C2525042500520086 /* SubscriptionDetail.swift in Sources */,
+				1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */,
 				1AD39898251D41C700922ED9 /* SceneDelegate.swift in Sources */,
+				1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */,
 				1AD3989A251D41C700922ED9 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
