@@ -9,8 +9,8 @@
 import Foundation
 
 enum SubscriptionType: String {
-    case prueba = "prueba"
-    case pago = "pago"
+    case trial = "trial"
+    case pay = "pay"
 }
 
 struct Subscription: Identifiable {
