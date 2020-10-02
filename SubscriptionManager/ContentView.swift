@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     //MARK: - Properties
+    @State private var showingNewSubscriptionForm: Bool = false
     var subscriptions: [Subscription] = []
     
     //MARK: - Methods
@@ -41,6 +42,16 @@ struct ContentView: View {
                 SubscriptionRow(subscription: subscription)
                 }
             .navigationBarTitle("Subscriptions")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.showingNewSubscriptionForm.toggle()
+                }) {
+                    Image(systemName: "plus")
+                        .font(.title)
+                }.sheet(isPresented: $showingNewSubscriptionForm) {
+                    NewSubscriptionForm()
+                }
+            )
         }
     }
 }

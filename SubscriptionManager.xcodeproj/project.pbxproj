@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A5BA78C2525042500520086 /* SubscriptionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78B2525042500520086 /* SubscriptionDetail.swift */; };
+		1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */; };
 		1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9933322523DB04008BF8C4 /* Subscription.swift */; };
 		1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */; };
 		1AD39896251D41C700922ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD39895251D41C700922ED9 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1A5BA78B2525042500520086 /* SubscriptionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetail.swift; sourceTree = "<group>"; };
+		1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionForm.swift; sourceTree = "<group>"; };
 		1A9933322523DB04008BF8C4 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRow.swift; sourceTree = "<group>"; };
 		1AD39892251D41C700922ED9 /* SubscriptionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				1AD39899251D41C700922ED9 /* ContentView.swift */,
 				1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */,
 				1A5BA78B2525042500520086 /* SubscriptionDetail.swift */,
+				1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */,
 				1AD3989B251D41CD00922ED9 /* Assets.xcassets */,
 				1AD398A0251D41CD00922ED9 /* LaunchScreen.storyboard */,
 				1AD398A3251D41CD00922ED9 /* Info.plist */,
@@ -171,6 +174,7 @@
 			files = (
 				1AD39896251D41C700922ED9 /* AppDelegate.swift in Sources */,
 				1A5BA78C2525042500520086 /* SubscriptionDetail.swift in Sources */,
+				1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */,
 				1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */,
 				1AD39898251D41C700922ED9 /* SceneDelegate.swift in Sources */,
 				1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */,
