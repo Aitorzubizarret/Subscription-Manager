@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SubscriptionsView: View {
     
     //MARK: - Properties
     @State private var showingNewSubscriptionForm: Bool = false
@@ -58,6 +58,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SubscriptionsView()
     }
 }
