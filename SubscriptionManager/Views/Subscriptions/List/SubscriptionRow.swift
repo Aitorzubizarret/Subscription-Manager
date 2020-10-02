@@ -22,7 +22,9 @@ struct SubscriptionRow: View {
 }
 
 struct SubscriptionRow_Previews: PreviewProvider {
+    static let subscription: Subscription = Subscription(name: "AppleTV", company: "Apple", type: SubscriptionType.trial, period: "Month", dayStart: "2020/09/01", dayEnd: "2020/09/30", price: 0, accountEmail: "email@gmail.com")
+    
     static var previews: some View {
-        SubscriptionRow(subscription: Subscription(name: "AppleTV", company: "Apple", type: SubscriptionType.trial, period: "Month", dayStart: "2020/09/01", dayEnd: "2020/09/30", price: 0, accountEmail: "email@gmail.com"))
+        SubscriptionRow(subscription: subscription)
     }
 }
