@@ -9,9 +9,14 @@
 import SwiftUI
 
 struct AppView: View {
+    
+    //MARK: - Properties
+    var subscriptionsViewModel = SubscriptionsViewModel()
+    
+    //MARK: - View
     var body: some View {
         TabView {
-            SubscriptionsView()
+            SubscriptionsView().environmentObject(self.subscriptionsViewModel)
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Subscriptions")
