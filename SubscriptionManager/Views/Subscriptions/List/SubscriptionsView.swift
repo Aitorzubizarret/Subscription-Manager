@@ -14,14 +14,17 @@ struct SubscriptionsView: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingNewSubscriptionForm: Bool = false
     
-    
     //MARK: - View
     var body: some View {
-        // NavigationView + List
+
+        // NavigationView + Scrollview
         NavigationView {
-            List(self.subscriptionsViewModel.subscriptions) { subscription in
-                SubscriptionRow(subscription: subscription)
+            ScrollView {
+                ForEach(0 ..< self.subscriptionsViewModel.subscriptions.count, id: \.self) { subscription in
+                    SubscriptionRow(subscription: self.subscriptionsViewModel.subscriptions[subscription])
                 }
+                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+            }
             .navigationBarTitle("Subscriptions")
             .navigationBarItems(trailing:
                 Button(action: {
