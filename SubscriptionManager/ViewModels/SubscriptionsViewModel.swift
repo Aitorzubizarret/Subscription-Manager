@@ -33,4 +33,13 @@ class SubscriptionsViewModel: ObservableObject {
         self.subscriptions.append(subs2)
         self.subscriptions.append(subs3)
     }
+    
+    ///
+    /// Creates a new subscription and adds it to subscriptions array.
+    ///
+    public func addNewSubscription(name: String, company: String, type: SubscriptionType, period: String, dayStart: String, dayEnd: String, price: Float, accountEmail: String) {
+        let newSubscription: Subscription = Subscription(name: name, company: company, type: type, period: period, dayStart: dayStart, dayEnd: dayEnd, price: price, accountEmail: accountEmail)
+        
+        self.subscriptions.append(newSubscription)
+    }
 }

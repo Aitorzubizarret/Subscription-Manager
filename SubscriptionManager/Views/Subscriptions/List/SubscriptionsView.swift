@@ -30,7 +30,7 @@ struct SubscriptionsView: View {
                     Image(systemName: "plus")
                         .font(.title)
                 }.sheet(isPresented: $showingNewSubscriptionForm) {
-                    NewSubscriptionForm()
+                    NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm).environmentObject(self.subscriptionsViewModel)
                 }
             )
         }
