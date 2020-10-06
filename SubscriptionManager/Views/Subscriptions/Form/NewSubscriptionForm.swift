@@ -16,7 +16,7 @@ struct NewSubscriptionForm: View {
     @State private var subscriptionCompany: String = ""
     @State private var subscriptionAccountEmail: String = ""
     @State private var isSubscriptionTypeTrial: Bool = false
-    @State private var subscriptionPrice: Float = 0
+    @State private var subscriptionPrice: String = ""
     @State private var subscriptionStartDate: Date = Date()
     @State private var subscriptionEndDate: Date = Date()
     @State private var showingAlert: Bool = false
@@ -45,8 +45,13 @@ struct NewSubscriptionForm: View {
             subscriptionType = SubscriptionType.pay
         }
         
+        // Price.
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let price = numberFormatter.number(from: self.subscriptionPrice) else { return false }
+        
         // Sends data to the ViewModel to create the new subscription.
-        self.subscriptionsViewModel.addNewSubscription(name: self.subscriptionName, company: self.subscriptionCompany, type: subscriptionType!, period: "One Year", dayStart: startDate, dayEnd: endDate, price: self.subscriptionPrice, accountEmail: self.subscriptionAccountEmail)
+        self.subscriptionsViewModel.addNewSubscription(name: self.subscriptionName, company: self.subscriptionCompany, type: subscriptionType!, period: "One Year", dayStart: startDate, dayEnd: endDate, price: Float(truncating: price), accountEmail: self.subscriptionAccountEmail)
         
         return true
     }
@@ -64,7 +69,8 @@ struct NewSubscriptionForm: View {
                     Toggle(isOn: $isSubscriptionTypeTrial) {
                         Text("Trial version")
                     }
-                    TextField("Price", value: $subscriptionPrice, formatter: NumberFormatter()).keyboardType(UIKeyboardType.decimalPad)
+                    TextField("Price", text: self.$subscriptionPrice)
+                        .keyboardType(UIKeyboardType.decimalPad)
                 }
                 Section {
                     Text("Period")
@@ -85,7 +91,7 @@ struct NewSubscriptionForm: View {
                 }) {
                     Text("Add")
                 }.alert(isPresented: self.$showingAlert, content: {
-                    Alert(title: Text("Empty fields"), message: Text("Name field is required."), dismissButton: Alert.Button.default(Text("OK")))
+                    Alert(title: Text("Empty fields"), message: Text("Name and price fields are required and price only allows numbers."), dismissButton: Alert.Button.default(Text("OK")))
                 })
             )
         }
