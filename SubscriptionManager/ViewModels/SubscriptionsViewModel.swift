@@ -22,7 +22,7 @@ class SubscriptionsViewModel: ObservableObject {
     }
     
     ///
-    /// Loads demo data to 'subscribtions'.
+    /// Loads demo data to 'subscribtions' array.
     ///
     private func loadsDemoSubscriptions() {
         let subs1: Subscription = Subscription(name: "AppleTV", company: "Apple", type: SubscriptionType.pay, period: "One Year", dayStart: "2020/01/01", dayEnd: "2020/12/31", price: 15, accountEmail: "email@gmail.com")
@@ -36,6 +36,15 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Creates a new subscription and adds it to subscriptions array.
+    ///
+    /// - Parameter name: The name (string) the subscription is going to have.
+    /// - Parameter company : The company name (string) of the service.
+    /// - Parameter type : The type () of the subscription. Pay or trial subscription.
+    /// - Parameter period : The period (string) of the subscription.
+    /// - Parameter dayStart : Date (string) subscription started.
+    /// - Parameter dayEnd : Date (string) subscription ends.
+    /// - Parameter price : Price (float) payed for the subscription.
+    /// - Parameter accountEmail : Email (string) used for the subscription.
     ///
     public func addNewSubscription(name: String, company: String, type: SubscriptionType, period: String, dayStart: String, dayEnd: String, price: Float, accountEmail: String) {
         let newSubscription: Subscription = Subscription(name: name, company: company, type: type, period: period, dayStart: dayStart, dayEnd: dayEnd, price: price, accountEmail: accountEmail)

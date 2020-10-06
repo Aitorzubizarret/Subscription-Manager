@@ -20,8 +20,8 @@ struct SubscriptionsView: View {
         // NavigationView + Scrollview
         NavigationView {
             ScrollView {
-                ForEach(0 ..< self.subscriptionsViewModel.subscriptions.count, id: \.self) { subscription in
-                    SubscriptionRow(subscription: self.subscriptionsViewModel.subscriptions[subscription])
+                ForEach(self.subscriptionsViewModel.subscriptions) { subscription in
+                    SubscriptionRow(subscription: subscription)
                 }
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
             }
