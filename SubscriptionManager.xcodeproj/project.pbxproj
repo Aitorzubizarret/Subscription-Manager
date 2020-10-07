@@ -59,6 +59,7 @@
 		1A9933312523DAE4008BF8C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1AB60910252D06D300597B85 /* SubscriptionsManager.xcdatamodeld */,
 				1A9933322523DB04008BF8C4 /* Subscription.swift */,
 			);
 			path = Models;
@@ -94,7 +95,6 @@
 				1AD398A0251D41CD00922ED9 /* LaunchScreen.storyboard */,
 				1AD398A3251D41CD00922ED9 /* Info.plist */,
 				1AD3989D251D41CD00922ED9 /* Preview Content */,
-				1AB60910252D06D300597B85 /* SubscriptionsManager.xcdatamodeld */,
 			);
 			path = SubscriptionManager;
 			sourceTree = "<group>";

@@ -46,9 +46,12 @@ struct SubscriptionRow: View {
 }
 
 struct SubscriptionRow_Previews: PreviewProvider {
-    static let subscription: Subscription = Subscription(name: "AppleTV", company: "Apple", type: SubscriptionType.trial, period: "Month", dayStart: "2020/09/01", dayEnd: "2020/09/30", price: 0, accountEmail: "email@gmail.com")
-    
     static var previews: some View {
-        SubscriptionRow(subscription: subscription)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let subscription: Subscription = Subscription(context: context)
+        subscription.name = "Test"
+        subscription.price = 9
+        
+        return SubscriptionRow(subscription: subscription)
     }
 }

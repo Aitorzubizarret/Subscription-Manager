@@ -11,7 +11,6 @@ import SwiftUI
 struct NewSubscriptionForm: View {
     
     //MARK: - Properties
-    @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var subscriptionName: String = ""
     @State private var subscriptionCompany: String = ""
     @State private var subscriptionAccountEmail: String = ""
@@ -38,12 +37,12 @@ struct NewSubscriptionForm: View {
         let endDate: String = dateFormatter.string(from: subscriptionEndDate)
         
         // Subscription Type.
-        var subscriptionType: SubscriptionType?
-        if isSubscriptionTypeTrial {
-            subscriptionType = SubscriptionType.trial
-        } else {
-            subscriptionType = SubscriptionType.pay
-        }
+//        var subscriptionType: SubscriptionType?
+//        if isSubscriptionTypeTrial {
+//            subscriptionType = SubscriptionType.trial
+//        } else {
+//            subscriptionType = SubscriptionType.pay
+//        }
         
         // Price.
         let numberFormatter = NumberFormatter()
@@ -51,7 +50,6 @@ struct NewSubscriptionForm: View {
         guard let price = numberFormatter.number(from: self.subscriptionPrice) else { return false }
         
         // Sends data to the ViewModel to create the new subscription.
-        self.subscriptionsViewModel.addNewSubscription(name: self.subscriptionName, company: self.subscriptionCompany, type: subscriptionType!, period: "One Year", dayStart: startDate, dayEnd: endDate, price: Float(truncating: price), accountEmail: self.subscriptionAccountEmail)
         
         return true
     }

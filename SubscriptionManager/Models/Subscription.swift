@@ -6,21 +6,9 @@
 //  Copyright © 2020 Aitor Zubizarreta. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
-enum SubscriptionType: String {
-    case trial = "trial"
-    case pay = "pay"
-}
-
-struct Subscription: Identifiable {
-    let id = UUID()
-    let name: String
-    let company: String
-    let type: SubscriptionType
-    let period: String
-    let dayStart: String
-    let dayEnd: String
-    let price: Float
-    let accountEmail: String
+class Subscription: NSManagedObject {
+    @NSManaged var name: String
+    @NSManaged var price: Float
 }

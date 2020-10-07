@@ -13,6 +13,7 @@ struct SubscriptionsView: View {
     //MARK: - Properties
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingNewSubscriptionForm: Bool = false
+    @FetchRequest(entity: Subscription.entity(), sortDescriptors: []) var subscriptions: FetchedResults<Subscription>
     
     //MARK: - View
     var body: some View {
@@ -20,7 +21,7 @@ struct SubscriptionsView: View {
         // NavigationView + Scrollview
         NavigationView {
             ScrollView {
-                ForEach(self.subscriptionsViewModel.subscriptions) { subscription in
+                ForEach(self.subscriptions, id:\.self) { subscription in
                     SubscriptionRow(subscription: subscription)
                 }
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
@@ -28,7 +29,7 @@ struct SubscriptionsView: View {
             .navigationBarTitle("Subscriptions")
             .navigationBarItems(trailing:
                 Button(action: {
-                    self.showingNewSubscriptionForm.toggle()
+                    self.showingNewSubscriptionForm = false
                 }) {
                     Image(systemName: "plus")
                         .font(.title)
