@@ -29,12 +29,13 @@ struct SubscriptionsView: View {
             .navigationBarTitle("Subscriptions")
             .navigationBarItems(trailing:
                 Button(action: {
-                    self.showingNewSubscriptionForm = false
+                    self.showingNewSubscriptionForm.toggle()
                 }) {
                     Image(systemName: "plus")
                         .font(.title)
                 }.sheet(isPresented: $showingNewSubscriptionForm) {
-                    NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm).environmentObject(self.subscriptionsViewModel)
+                    NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm)
+                        .environmentObject(self.subscriptionsViewModel)
                 }
             )
         }

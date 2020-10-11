@@ -11,13 +11,9 @@ import SwiftUI
 struct NewSubscriptionForm: View {
     
     //MARK: - Properties
+    @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var subscriptionName: String = ""
-    @State private var subscriptionCompany: String = ""
-    @State private var subscriptionAccountEmail: String = ""
-    @State private var isSubscriptionTypeTrial: Bool = false
     @State private var subscriptionPrice: String = ""
-    @State private var subscriptionStartDate: Date = Date()
-    @State private var subscriptionEndDate: Date = Date()
     @State private var showingAlert: Bool = false
     @Binding var isPresented: Bool
     
@@ -26,30 +22,17 @@ struct NewSubscriptionForm: View {
     /// Adds a new subscription to the subscriptions list.
     ///
     private func addNewSubscription() -> Bool {
+        // Check important properties (name and price) are not empty.
+        guard (self.subscriptionName != "")&&(self.subscriptionPrice != "") else { return false }
         
-        // Check important properties are not empty.
-        guard (self.subscriptionName != "") else { return false }
-        
-        // Start and End dates.
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        let startDate: String = dateFormatter.string(from: subscriptionStartDate)
-        let endDate: String = dateFormatter.string(from: subscriptionEndDate)
-        
-        // Subscription Type.
-//        var subscriptionType: SubscriptionType?
-//        if isSubscriptionTypeTrial {
-//            subscriptionType = SubscriptionType.trial
-//        } else {
-//            subscriptionType = SubscriptionType.pay
-//        }
-        
-        // Price.
+        // Price formatter.
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         guard let price = numberFormatter.number(from: self.subscriptionPrice) else { return false }
+        let subscriptionPrice = price.floatValue
         
-        // Sends data to the ViewModel to create the new subscription.
+        // Save the new subscription in Core Data.
+        self.subscriptionsViewModel.createNewSubscription(name: self.subscriptionName, price: subscriptionPrice)
         
         return true
     }
@@ -61,19 +44,8 @@ struct NewSubscriptionForm: View {
                 Section() {
                     TextField("Name", text: $subscriptionName)
                         .keyboardType(UIKeyboardType.alphabet)
-                        
-                    TextField("Company", text: $subscriptionCompany)
-                    TextField("AccountEmail", text: $subscriptionAccountEmail)
-                    Toggle(isOn: $isSubscriptionTypeTrial) {
-                        Text("Trial version")
-                    }
                     TextField("Price", text: self.$subscriptionPrice)
                         .keyboardType(UIKeyboardType.decimalPad)
-                }
-                Section {
-                    Text("Period")
-                    DatePicker(selection: $subscriptionStartDate, displayedComponents: DatePickerComponents.date) { Text("Start Date")}
-                    DatePicker(selection: $subscriptionEndDate, displayedComponents: DatePickerComponents.date) { Text("End Date")}
                 }
             }
             .navigationBarTitle(Text("New Subscription"), displayMode: .inline)
