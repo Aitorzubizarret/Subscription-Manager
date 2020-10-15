@@ -21,7 +21,7 @@ struct AppView: View {
                     Image(systemName: "list.bullet")
                     Text("Subscriptions")
             }
-            StatisticsView()
+            StatisticsView().environmentObject(self.subscriptionsViewModel)
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("Statistics")

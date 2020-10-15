@@ -9,13 +9,20 @@
 import SwiftUI
 
 struct StatisticsView: View {
+    
+    //MARK: - Properties
+    @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
+    
+    //MARK: - View
     var body: some View {
-        Text("Statistics")
+        Text("Statistics for \(self.subscriptionsViewModel.subscriptions.count) subscriptions.")
     }
 }
 
 struct StatisticsView_Previews: PreviewProvider {
+    static let subscriptionsViewModel = SubscriptionsViewModel()
+    
     static var previews: some View {
-        StatisticsView()
+        StatisticsView().environmentObject(subscriptionsViewModel)
     }
 }
