@@ -11,6 +11,7 @@ import SwiftUI
 struct SubscriptionRow: View {
     
     //MARK: - Properties
+    @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     var subscription: Subscription
     var backgroundColor: UIColor = UIColor.systemGray
     var textColor: Color = Color(UIColor.white)
@@ -22,7 +23,7 @@ struct SubscriptionRow: View {
     
     //MARK: - View
     var body: some View {
-        NavigationLink(destination: SubscriptionDetail(subscription: subscription)) {
+        NavigationLink(destination: SubscriptionDetail(subscription: subscription).environmentObject(self.subscriptionsViewModel)) {
             HStack {
                 Image(systemName: "tv")
                     .resizable()
@@ -46,12 +47,14 @@ struct SubscriptionRow: View {
 }
 
 struct SubscriptionRow_Previews: PreviewProvider {
+    static let subscriptionsViewModel = SubscriptionsViewModel()
+    
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let subscription: Subscription = Subscription(context: context)
         subscription.name = "Test"
         subscription.price = 9
         
-        return SubscriptionRow(subscription: subscription)
+        return SubscriptionRow(subscription: subscription).environmentObject(subscriptionsViewModel)
     }
 }

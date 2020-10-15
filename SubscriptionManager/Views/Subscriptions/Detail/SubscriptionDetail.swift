@@ -11,7 +11,7 @@ import SwiftUI
 struct SubscriptionDetail: View {
     
     //MARK: - Properties
-    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingAlert: Bool = false
     var subscription: Subscription
     
@@ -20,13 +20,7 @@ struct SubscriptionDetail: View {
     /// Deletes the subscription.
     ///
     private func deleteSubscription() {
-        self.moc.delete(self.subscription)
-        
-        do {
-            try self.moc.save()
-        } catch {
-            print("Error deleting a subscription: \(error)")
-        }
+        self.subscriptionsViewModel.deleteSubscription(subscription: self.subscription)
     }
     
     //MARK: - View

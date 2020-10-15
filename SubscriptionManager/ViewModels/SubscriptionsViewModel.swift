@@ -19,6 +19,20 @@ class SubscriptionsViewModel: ObservableObject {
     //MARK: - Methods
     init() {
         moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        self.getSubscriptions()
+    }
+    
+    ///
+    /// Gets subscriptions from CoreData and saves them in the property 'subscriptions'.
+    ///
+    private func getSubscriptions() {
+        let request = Subscription.fetchRequest()
+        
+        do {
+            self.subscriptions = try self.moc.fetch(request) as! [Subscription]
+        } catch {
+            print("getSubscriptions Error: \(error)")
+        }
     }
     
     ///
@@ -31,8 +45,24 @@ class SubscriptionsViewModel: ObservableObject {
         
         do {
             try self.moc.save()
+            self.getSubscriptions()
         } catch {
             print("Error saving new subscription: \(error)")
+        }
+    }
+    
+    ///
+    /// Deletes the received subcripcion from Core Data.
+    ///
+    public func deleteSubscription(subscription: Subscription) {
+        
+        self.moc.delete(subscription)
+        
+        do {
+            try self.moc.save()
+            self.getSubscriptions()
+        } catch {
+            print("Error deleting a subscription: \(error)")
         }
     }
 }
