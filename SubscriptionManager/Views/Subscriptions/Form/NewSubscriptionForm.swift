@@ -16,6 +16,7 @@ struct NewSubscriptionForm: View {
     @State private var subscriptionPrice: String = ""
     @State private var showingAlert: Bool = false
     @Binding var isPresented: Bool
+    private let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     
     //MARK: - Methods
     ///
@@ -40,13 +41,27 @@ struct NewSubscriptionForm: View {
     //MARK: - View
     var body: some View {
         NavigationView {
-            Form {
-                Section() {
-                    TextField("Name", text: $subscriptionName)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("Name")
+                        .font(.callout)
+                        .bold()
+                    TextField("Enter name ...", text: $subscriptionName)
+                        .padding()
+                        .background(lightGreyColor)
+                        .cornerRadius(5.0)
                         .keyboardType(UIKeyboardType.alphabet)
-                    TextField("Price", text: self.$subscriptionPrice)
+                }.padding(EdgeInsets(top: 20, leading: 15, bottom: 10, trailing: 15))
+                VStack(alignment: .leading) {
+                    Text("Price")
+                        .font(.callout)
+                        .bold()
+                    TextField("Enter price ...", text: self.$subscriptionPrice)
+                        .padding()
+                        .background(lightGreyColor)
+                        .cornerRadius(5.0)
                         .keyboardType(UIKeyboardType.decimalPad)
-                }
+                }.padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
             }
             .navigationBarTitle(Text("New Subscription"), displayMode: .inline)
             .navigationBarItems(trailing:
