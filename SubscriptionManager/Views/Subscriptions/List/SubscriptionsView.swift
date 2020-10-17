@@ -20,10 +20,15 @@ struct SubscriptionsView: View {
         // NavigationView + Scrollview
         NavigationView {
             ScrollView {
-                ForEach(self.subscriptionsViewModel.subscriptions, id:\.self) { subscription in
-                    SubscriptionRow(subscription: subscription).environmentObject(self.subscriptionsViewModel)
+                if self.subscriptionsViewModel.subscriptions.count == 0 {
+                    Text("You can add subscriptions tapping the +")
+                    .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
+                } else {
+                    ForEach(self.subscriptionsViewModel.subscriptions, id:\.self) { subscription in
+                        SubscriptionRow(subscription: subscription).environmentObject(self.subscriptionsViewModel)
+                    }
+                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 }
-                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
             }
             .navigationBarTitle("Subscriptions")
             .navigationBarItems(trailing:
