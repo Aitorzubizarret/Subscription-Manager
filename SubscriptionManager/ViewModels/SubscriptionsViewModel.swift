@@ -38,10 +38,12 @@ class SubscriptionsViewModel: ObservableObject {
     ///
     /// Creates and saves a new subscription in Core Data.
     ///
-    public func createNewSubscription(name: String, price: Float) {
+    public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date) {
         let newSubscription: Subscription = Subscription(context: self.moc)
         newSubscription.name = name
         newSubscription.price = price
+        newSubscription.cycle = cycle
+        newSubscription.nextPayment = nextPayment
         
         do {
             try self.moc.save()

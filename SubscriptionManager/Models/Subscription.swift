@@ -11,4 +11,6 @@ import CoreData
 class Subscription: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var price: Float
+    @NSManaged var cycle: String
+    @NSManaged var nextPayment: Date
 }

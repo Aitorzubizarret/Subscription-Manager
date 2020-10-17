@@ -8,11 +8,18 @@
 
 import SwiftUI
 
+private var dateFormatter: DateFormatter = {
+    let dateFormatter: DateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy/MM/dd"
+    return dateFormatter
+}()
+
 struct SubscriptionDetail: View {
     
     //MARK: - Properties
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingAlert: Bool = false
+    @State private var deleteInProcess: Bool = false
     var subscription: Subscription
     
     //MARK: - Methods
@@ -21,6 +28,7 @@ struct SubscriptionDetail: View {
     ///
     private func deleteSubscription() {
         self.subscriptionsViewModel.deleteSubscription(subscription: self.subscription)
+        self.deleteInProcess = true
     }
     
     //MARK: - View
@@ -44,7 +52,24 @@ struct SubscriptionDetail: View {
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
                 Spacer()
                 Text(String(format: "%.2f €", subscription.price))
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
+            }
+            HStack {
+                Text("Cycle :")
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
+                Spacer()
+                Text("Every \(subscription.cycle)")
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
+            }
+            HStack {
+                Text("Next Payment :")
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
+                Spacer()
+                // Avoids unknown error with dateFormatter when deleting the Subscription.
+                if !self.deleteInProcess {
+                    Text(dateFormatter.string(from: self.subscription.nextPayment))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
+                }
             }
             Spacer()
             Button(action: {
@@ -79,6 +104,8 @@ struct SubscriptionDetail_Previews: PreviewProvider {
         let subscription: Subscription = Subscription(context: context)
         subscription.name = "Test"
         subscription.price = 9
+        subscription.cycle = "Every month"
+        subscription.nextPayment = Date()
         
         return SubscriptionDetail(subscription: subscription)
     }
