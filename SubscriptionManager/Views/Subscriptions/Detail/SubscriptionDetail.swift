@@ -31,47 +31,23 @@ struct SubscriptionDetail: View {
         self.deleteInProcess = true
     }
     
-    //MARK: - View
+    //MARK: - Views
     var body: some View {
-        return VStack {
-            Image(systemName: "info.circle")
-                .resizable()
-                .frame(width: 75, height: 75, alignment: .center)
-                .scaledToFit()
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                .foregroundColor(Color.red)
-            HStack {
-                Text("Name :")
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
-                Spacer()
-                Text(subscription.name)
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
-            }
-            HStack {
-                Text("Price :")
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
-                Spacer()
-                Text(String(format: "%.2f €", subscription.price))
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
-            }
-            HStack {
-                Text("Cycle :")
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
-                Spacer()
-                Text("Every \(subscription.cycle)")
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
-            }
-            HStack {
-                Text("Next Payment :")
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
-                Spacer()
+        ScrollView {
+            SubscriptionLogoTitleField(title: subscription.name)
+            CustomDivider()
+            VStack {
+                SubscriptionDataField(title: "Price", value: String(format: "%.2f €", subscription.price))
+                Divider()
+                SubscriptionDataField(title: "Cycle", value: "Every \(subscription.cycle)")
+                Divider()
                 // Avoids unknown error with dateFormatter when deleting the Subscription.
                 if !self.deleteInProcess {
-                    Text(dateFormatter.string(from: self.subscription.nextPayment))
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 20))
+                    SubscriptionDataField(title: "Next Payment", value: dateFormatter.string(from: self.subscription.nextPayment))
                 }
             }
-            Spacer()
+            .padding(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
+            CustomDivider()
             Button(action: {
                 self.showingAlert = true
             }) {
@@ -84,17 +60,18 @@ struct SubscriptionDetail: View {
                     Spacer()
                 }
                 .padding()
-                .background(Color.red)
+                .background(Color.customRedButton)
                 .foregroundColor(Color.white)
                 .font(.headline)
                 .cornerRadius(6)
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
+                .padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             }.alert(isPresented: self.$showingAlert, content: {
                 Alert(title: Text("Delete Subscription"), message: Text("This action can’t be undone. Are you sure?") ,primaryButton: Alert.Button.destructive(Text("Delete"), action: {
                     self.deleteSubscription()
                 }), secondaryButton: Alert.Button.cancel(Text("No")))
             })
         }
+        .navigationBarTitle("\(subscription.name)", displayMode: .inline)
     }
 }
 
@@ -104,7 +81,7 @@ struct SubscriptionDetail_Previews: PreviewProvider {
         let subscription: Subscription = Subscription(context: context)
         subscription.name = "Test"
         subscription.price = 9
-        subscription.cycle = "Every month"
+        subscription.cycle = "month"
         subscription.nextPayment = Date()
         
         return SubscriptionDetail(subscription: subscription)
