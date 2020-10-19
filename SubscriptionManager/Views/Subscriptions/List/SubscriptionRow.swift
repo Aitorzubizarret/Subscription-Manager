@@ -23,7 +23,7 @@ struct SubscriptionRow: View {
     
     //MARK: - View
     var body: some View {
-        NavigationLink(destination: SubscriptionDetail(subscription: subscription).environmentObject(self.subscriptionsViewModel)) {
+        NavigationLink(destination: SubscriptionDetailView(subscription: subscription).environmentObject(self.subscriptionsViewModel)) {
             HStack {
                 Image(systemName: "tv")
                     .resizable()

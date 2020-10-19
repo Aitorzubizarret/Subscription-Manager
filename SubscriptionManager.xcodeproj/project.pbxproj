@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A2CE00B252778F90009C743 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00A252778F90009C743 /* AppView.swift */; };
 		1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00C25277A000009C743 /* StatisticsView.swift */; };
-		1A5BA78C2525042500520086 /* SubscriptionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78B2525042500520086 /* SubscriptionDetail.swift */; };
+		1A5BA78C2525042500520086 /* SubscriptionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78B2525042500520086 /* SubscriptionDetailView.swift */; };
 		1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */; };
 		1A7BF2A2253CCB53005FBAF3 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BF2A1253CCB53005FBAF3 /* Template.swift */; };
 		1A7BF2A8253CCDAE005FBAF3 /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BF2A7253CCDAE005FBAF3 /* CustomDivider.swift */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		1A2CE00A252778F90009C743 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		1A2CE00C25277A000009C743 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
-		1A5BA78B2525042500520086 /* SubscriptionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetail.swift; sourceTree = "<group>"; };
+		1A5BA78B2525042500520086 /* SubscriptionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailView.swift; sourceTree = "<group>"; };
 		1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionForm.swift; sourceTree = "<group>"; };
 		1A7BF2A1253CCB53005FBAF3 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		1A7BF2A7253CCDAE005FBAF3 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 		1ADBC3A525279E6000AD06E6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				1A5BA78B2525042500520086 /* SubscriptionDetail.swift */,
+				1A5BA78B2525042500520086 /* SubscriptionDetailView.swift */,
 				1AD6A786253E280200F02F0D /* SubscriptionLogoTitleField.swift */,
 				1A7BF2A9253CCE2A005FBAF3 /* SubscriptionDataField.swift */,
 				1A7BF2A7253CCDAE005FBAF3 /* CustomDivider.swift */,
@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD39896251D41C700922ED9 /* AppDelegate.swift in Sources */,
-				1A5BA78C2525042500520086 /* SubscriptionDetail.swift in Sources */,
+				1A5BA78C2525042500520086 /* SubscriptionDetailView.swift in Sources */,
 				1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */,
 				1AB60912252D06D300597B85 /* SubscriptionsManager.xcdatamodeld in Sources */,
 				1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */,
