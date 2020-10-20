@@ -40,6 +40,7 @@ class SubscriptionsViewModel: ObservableObject {
     ///
     public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date) {
         let newSubscription: Subscription = Subscription(context: self.moc)
+        newSubscription.id = UUID()
         newSubscription.name = name
         newSubscription.price = price
         newSubscription.cycle = cycle

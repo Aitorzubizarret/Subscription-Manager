@@ -24,7 +24,7 @@ struct SubscriptionsView: View {
                     Text("You can add subscriptions tapping the +")
                     .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
                 } else {
-                    ForEach(self.subscriptionsViewModel.subscriptions, id:\.self) { subscription in
+                    ForEach(self.subscriptionsViewModel.subscriptions, id:\Subscription.id) { subscription in
                         SubscriptionRow(subscription: subscription).environmentObject(self.subscriptionsViewModel)
                     }
                     .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))

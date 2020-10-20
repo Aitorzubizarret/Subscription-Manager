@@ -9,6 +9,7 @@
 import CoreData
 
 class Subscription: NSManagedObject {
+    @NSManaged var id: UUID
     @NSManaged var name: String
     @NSManaged var price: Float
     @NSManaged var cycle: String
