@@ -19,13 +19,12 @@ struct NewSubscriptionForm: View {
     @State private var selectionCycleUnit: Int = 2
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
     @State private var showingAlert: Bool = false
-    var cycleUnitOptions: [String] = ["day", "week", "month", "year"]
     var subscriptionCycle: String {
         var text: String = ""
         if self.selectionCycleValue != 1 {
-            text = text + "\(self.selectionCycleValue) \(self.cycleUnitOptions[self.selectionCycleUnit])s"
+            text = text + "\(self.selectionCycleValue) \(self.subscriptionsViewModel.subscriptionCycleUnitOptions[self.selectionCycleUnit])s"
         } else {
-            text = text + "\(self.cycleUnitOptions[self.selectionCycleUnit])"
+            text = text + "\(self.subscriptionsViewModel.subscriptionCycleUnitOptions[self.selectionCycleUnit])"
         }
         return text
     }
@@ -99,8 +98,8 @@ struct NewSubscriptionForm: View {
                             .frame(width: 100, height: 50)
                     }
                     Picker("", selection: self.$selectionCycleUnit) {
-                        ForEach(0 ..< self.cycleUnitOptions.count) { index in
-                            Text(self.cycleUnitOptions[index])
+                        ForEach(0 ..< self.subscriptionsViewModel.subscriptionCycleUnitOptions.count) { index in
+                            Text(self.subscriptionsViewModel.subscriptionCycleUnitOptions[index])
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
@@ -143,6 +142,6 @@ extension View {
 struct NewSubscriptionForm_Previews: PreviewProvider {
     
     static var previews: some View {
-        NewSubscriptionForm(isPresented: .constant(false))
+        NewSubscriptionForm(isPresented: .constant(false)).environmentObject(SubscriptionsViewModel())
     }
 }

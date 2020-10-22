@@ -15,6 +15,7 @@ class SubscriptionsViewModel: ObservableObject {
     //MARK: - Properties
     @Published var subscriptions: [Subscription] = []
     private var moc: NSManagedObjectContext
+    public var subscriptionCycleUnitOptions: [String] = ["day", "week", "month", "year"]
     
     //MARK: - Methods
     init() {
