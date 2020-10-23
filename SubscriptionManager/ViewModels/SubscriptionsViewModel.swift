@@ -56,6 +56,47 @@ class SubscriptionsViewModel: ObservableObject {
     }
     
     ///
+    /// Updates data in the received subscription.
+    /// - Parameter subcription :The subscription to update.
+    /// - Parameter name : A new name for the subscription.
+    /// - Parameter price : A new price for the subscription.
+    /// - Parameter cycle : A new cycle for the subscription.
+    /// - Parameter nextPayment : A new 'nextPayment' date for the subscription.
+    ///
+    public func updateSubscription(subscription: Subscription, name: String?, price: Float?, cycle: String?, nextPayment: Date?) {
+        // Check Name is not an optional.
+        if let newName: String = name {
+            subscription.name = newName
+        }
+        
+        // Check Price is not an optional.
+        if let newPrice: Float = price {
+            subscription.price = newPrice
+        }
+        
+        // Check Cycle is not an optional.
+        if let newCycle: String = cycle {
+            subscription.cycle = newCycle
+        }
+        
+        // Check Next Payment date is not an optional.
+        if let newNextPayment: Date = nextPayment {
+            subscription.nextPayment = newNextPayment
+        }
+        
+        // Updates the subscription.
+        self.moc.refresh(subscription, mergeChanges: true)
+        
+        // Saves the subscription.
+        do {
+            try self.moc.save()
+            self.getSubscriptions()
+        } catch {
+            print("Error updating a subscription: \(error)")
+        }
+    }
+    
+    ///
     /// Deletes the received subcripcion from Core Data.
     ///
     public func deleteSubscription(subscription: Subscription) {
