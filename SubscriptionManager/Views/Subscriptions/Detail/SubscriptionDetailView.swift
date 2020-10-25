@@ -21,14 +21,59 @@ struct SubscriptionDetailView: View {
     @State private var showingAlert: Bool = false
     @State private var deleteInProcess: Bool = false
     var subscription: Subscription
+    private var price: String = ""
+    private var cycle: String = ""
+    private var nextPayment: String = ""
     
     //MARK: - Methods
+    
+    init(subscription: Subscription) {
+        self.subscription = subscription
+        
+        // Price.
+        self.price = String(format: "%.2f €", subscription.price)
+        
+        // Cycle.
+        self.cycle = "Every "
+        let cycleComponents: [String] = subscription.cycle.components(separatedBy: "-")
+        if cycleComponents.count == 2 {
+            if cycleComponents[0] == "1" {
+                switch cycleComponents[1] {
+                case "d":
+                    self.cycle = self.cycle + "day" // day
+                case "w":
+                    self.cycle = self.cycle + "week" // Week
+                case "m":
+                    self.cycle = self.cycle + "month" // Month
+                case "y":
+                    self.cycle = self.cycle + "year" // Year
+                default:
+                    self.cycle = self.cycle + "¿?" // Unknow
+                }
+            } else {
+                switch cycleComponents[1] {
+                case "d":
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "days" // day
+                case "w":
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "weeks" // Week
+                case "m":
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "months" // Month
+                case "y":
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "years" // Year
+                default:
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "¿?" // Unknow
+                }
+            }
+            print("\(cycleComponents[0]) - \(cycleComponents[1])")
+        }
+    }
+    
     ///
     /// Deletes the subscription.
     ///
     private func deleteSubscription() {
-        self.subscriptionsViewModel.deleteSubscription(subscription: self.subscription)
         self.deleteInProcess = true
+        self.subscriptionsViewModel.deleteSubscription(subscription: self.subscription)
     }
     
     //MARK: - Views
@@ -37,9 +82,9 @@ struct SubscriptionDetailView: View {
             SubscriptionLogoTitleField(title: subscription.name)
             CustomDivider()
             VStack {
-                SubscriptionDataField(title: "Price", value: String(format: "%.2f €", subscription.price))
+                SubscriptionDataField(title: "Price", value: self.price)
                 Divider()
-                SubscriptionDataField(title: "Cycle", value: "Every \(subscription.cycle)")
+                SubscriptionDataField(title: "Cycle", value: self.cycle)
                 Divider()
                 // Avoids unknown error with dateFormatter when deleting the Subscription.
                 if !self.deleteInProcess {
@@ -56,14 +101,18 @@ struct SubscriptionDetailView: View {
                     Image(systemName: "trash")
                         .padding(EdgeInsets(top: -3, leading: 0, bottom: 0, trailing: 0))
                     Text("Delete Subscription")
-                        .padding(EdgeInsets(top: 3, leading: 0, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 3, leading: 10, bottom: 0, trailing: 0))
                     Spacer()
                 }
                 .padding()
                 .background(Color.customRedButton)
-                .foregroundColor(Color.white)
+                .foregroundColor(Color.customRedText)
                 .font(.headline)
                 .cornerRadius(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.customRedButton, lineWidth: 2)
+                )
                 .padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             }.alert(isPresented: self.$showingAlert, content: {
                 Alert(title: Text("Delete Subscription"), message: Text("This action can’t be undone. Are you sure?") ,primaryButton: Alert.Button.destructive(Text("Delete"), action: {
@@ -81,7 +130,7 @@ struct SubscriptionDetail_Previews: PreviewProvider {
         let subscription: Subscription = Subscription(context: context)
         subscription.name = "Test"
         subscription.price = 9
-        subscription.cycle = "month"
+        subscription.cycle = "1-m"
         subscription.nextPayment = Date()
         
         return SubscriptionDetailView(subscription: subscription)

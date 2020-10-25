@@ -34,6 +34,7 @@ struct NewSubscriptionForm: View {
     //MARK: - Methods
     ///
     /// Adds a new subscription to the subscriptions list.
+    /// - Returns: True if the important properties are not empty.
     ///
     private func addNewSubscription() -> Bool {
         // Check important properties (name and price) are not empty.
@@ -45,8 +46,25 @@ struct NewSubscriptionForm: View {
         guard let price = numberFormatter.number(from: self.textFieldSubscriptionPrice) else { return false }
         let formattedSubscriptionPrice = price.floatValue
         
+        // Cycle.
+        var cycle: String = ""
+        cycle = cycle + "\(self.selectionCycleValue)"
+        cycle = cycle + "-"
+        switch self.selectionCycleUnit {
+        case 0:
+            cycle = cycle + "d" // day
+        case 1:
+            cycle = cycle + "w" // Week
+        case 2:
+            cycle = cycle + "m" // Month
+        case 3:
+            cycle = cycle + "y" // Year
+        default:
+            cycle = cycle + "u" // Unknow
+        }
+        
         // Save the new subscription in Core Data.
-        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: self.subscriptionCycle, nextPayment: self.subscriptionNextPaymentDate)
+        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate)
         
         return true
     }
