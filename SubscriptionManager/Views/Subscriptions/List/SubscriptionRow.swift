@@ -14,12 +14,30 @@ struct SubscriptionRow: View {
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     var subscription: Subscription
-    var backgroundColor: UIColor = UIColor.systemGray
-    var textColor: Color = Color(UIColor.white)
     var price: String {
         let subscriptionPrice: Float = subscription.price
         let finalPrice: String = String(format: "%.2f €", subscriptionPrice)
         return finalPrice
+    }
+    private var textColor: Color = Color.clear
+    private var backgroundColor: Color = Color.clear
+    private var strokeColor: Color = Color.clear
+    
+    //MARK: - Methods
+    
+    init(subscription: Subscription) {
+        self.subscription = subscription
+        
+        self.configureUIElements()
+    }
+    
+    ///
+    /// Configures the colors of the UI.
+    ///
+    private mutating func configureUIElements() {
+        self.textColor = Color.white
+        self.backgroundColor = Color.customRowPistachio
+        self.strokeColor = Color.customRowPistachio
     }
     
     //MARK: - View
@@ -42,8 +60,12 @@ struct SubscriptionRow: View {
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }
             .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
-            .background(Color(self.backgroundColor))
+            .background(self.backgroundColor)
             .cornerRadius(6)
+            .overlay(
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(self.strokeColor, lineWidth: 2)
+            )
         }
     }
 }
