@@ -11,6 +11,7 @@ import SwiftUI
 struct NewSubscriptionForm: View {
     
     //MARK: - Properties
+    
     @Binding var isPresented: Bool
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var textFieldSubscriptionName: String = ""
@@ -32,6 +33,7 @@ struct NewSubscriptionForm: View {
     private let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     
     //MARK: - Methods
+    
     ///
     /// Adds a new subscription to the subscriptions list.
     /// - Returns: True if the important properties are not empty.
@@ -52,15 +54,15 @@ struct NewSubscriptionForm: View {
         cycle = cycle + "-"
         switch self.selectionCycleUnit {
         case 0:
-            cycle = cycle + "d" // day
+            cycle = cycle + "d" // Day.
         case 1:
-            cycle = cycle + "w" // Week
+            cycle = cycle + "w" // Week.
         case 2:
-            cycle = cycle + "m" // Month
+            cycle = cycle + "m" // Month.
         case 3:
-            cycle = cycle + "y" // Year
+            cycle = cycle + "y" // Year.
         default:
-            cycle = cycle + "u" // Unknow
+            cycle = cycle + "¿?" // Unknow.
         }
         
         // Save the new subscription in Core Data.
@@ -70,6 +72,7 @@ struct NewSubscriptionForm: View {
     }
     
     //MARK: - View
+    
     var body: some View {
         NavigationView {
             ScrollView {

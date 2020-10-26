@@ -11,10 +11,12 @@ import SwiftUI
 struct SubscriptionDataField: View {
     
     //MARK: - Properties
+    
     let title: String
     let value: String
     
-    //MARK: - Views
+    //MARK: - View
+    
     var body: some View {
         HStack {
             Text("\(title.uppercased()) :")

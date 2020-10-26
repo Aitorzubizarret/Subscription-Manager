@@ -11,9 +11,11 @@ import SwiftUI
 struct AppView: View {
     
     //MARK: - Properties
+    
     var subscriptionsViewModel = SubscriptionsViewModel()
     
     //MARK: - View
+    
     var body: some View {
         TabView {
             SubscriptionsView().environmentObject(self.subscriptionsViewModel)

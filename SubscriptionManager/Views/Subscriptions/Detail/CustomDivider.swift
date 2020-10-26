@@ -11,12 +11,14 @@ import SwiftUI
 struct CustomDivider: View {
     
     //MARK: - Properties
+    
     let lightColor: Color = Color.customLightGrey
     let darkColor: Color = Color.customDarkGrey
     let rectangleWidth: CGFloat = 14
     let strokeWidth: CGFloat = 1
     
-    //MARK: - Views
+    //MARK: - View
+    
     var body: some View {
         VStack {
             Rectangle()

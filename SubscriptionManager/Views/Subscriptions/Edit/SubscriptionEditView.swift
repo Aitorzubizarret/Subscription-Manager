@@ -230,9 +230,7 @@ struct SubscriptionEditView: View {
             .navigationBarTitle(Text("Edit Subscription"), displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
-                    print("Save 1")
                     self.saveChanges()
-                    print("Save 2")
                 }) {
                     Text("Save")
                 }

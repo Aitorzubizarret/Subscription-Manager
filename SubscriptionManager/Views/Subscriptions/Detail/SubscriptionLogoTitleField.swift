@@ -11,9 +11,11 @@ import SwiftUI
 struct SubscriptionLogoTitleField: View {
     
     //MARK: - Properties
+    
     var title: String
     
-    //MARK: - Views
+    //MARK: - View
+    
     var body: some View {
         HStack {
             ZStack {
@@ -33,7 +35,6 @@ struct SubscriptionLogoTitleField: View {
             Text(title)
                 .fontWeight(Font.Weight.bold)
                 .frame(alignment: .leading)
-                
             Spacer()
         }
     }

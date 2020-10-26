@@ -11,6 +11,7 @@ import SwiftUI
 struct SubscriptionRow: View {
     
     //MARK: - Properties
+    
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     var subscription: Subscription
     var backgroundColor: UIColor = UIColor.systemGray
@@ -22,6 +23,7 @@ struct SubscriptionRow: View {
     }
     
     //MARK: - View
+    
     var body: some View {
         NavigationLink(destination: SubscriptionDetailView(subscription: subscription).environmentObject(self.subscriptionsViewModel)) {
             HStack {

@@ -17,6 +17,7 @@ private var dateFormatter: DateFormatter = {
 struct SubscriptionDetailView: View {
     
     //MARK: - Properties
+    
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingAlert: Bool = false
     @State private var deleteInProcess: Bool = false
@@ -41,28 +42,28 @@ struct SubscriptionDetailView: View {
             if cycleComponents[0] == "1" {
                 switch cycleComponents[1] {
                 case "d":
-                    self.cycle = self.cycle + "day" // day
+                    self.cycle = self.cycle + "day" // Day.
                 case "w":
-                    self.cycle = self.cycle + "week" // Week
+                    self.cycle = self.cycle + "week" // Week.
                 case "m":
-                    self.cycle = self.cycle + "month" // Month
+                    self.cycle = self.cycle + "month" // Month.
                 case "y":
-                    self.cycle = self.cycle + "year" // Year
+                    self.cycle = self.cycle + "year" // Year.
                 default:
-                    self.cycle = self.cycle + "¿?" // Unknow
+                    self.cycle = self.cycle + "¿?" // Unknow.
                 }
             } else {
                 switch cycleComponents[1] {
                 case "d":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "days" // day
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "days" // Day.
                 case "w":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "weeks" // Week
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "weeks" // Week.
                 case "m":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "months" // Month
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "months" // Month.
                 case "y":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "years" // Year
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "years" // Year.
                 default:
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "¿?" // Unknow
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "¿?" // Unknow.
                 }
             }
         }
@@ -76,7 +77,8 @@ struct SubscriptionDetailView: View {
         self.subscriptionsViewModel.deleteSubscription(subscription: self.subscription)
     }
     
-    //MARK: - Views
+    //MARK: - View
+    
     var body: some View {
         ScrollView {
             SubscriptionLogoTitleField(title: subscription.name)
