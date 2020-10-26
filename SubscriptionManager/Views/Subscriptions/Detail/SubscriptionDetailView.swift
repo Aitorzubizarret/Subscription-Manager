@@ -20,6 +20,7 @@ struct SubscriptionDetailView: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingAlert: Bool = false
     @State private var deleteInProcess: Bool = false
+    @State private var showingSubscriptionEditView: Bool = false
     var subscription: Subscription
     private var price: String = ""
     private var cycle: String = ""
@@ -64,7 +65,6 @@ struct SubscriptionDetailView: View {
                     self.cycle = self.cycle + "\(cycleComponents[0]) " + "¿?" // Unknow
                 }
             }
-            print("\(cycleComponents[0]) - \(cycleComponents[1])")
         }
     }
     
@@ -93,6 +93,31 @@ struct SubscriptionDetailView: View {
             }
             .padding(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
             CustomDivider()
+            Button(action: {
+                self.showingSubscriptionEditView.toggle()
+            }) {
+                HStack {
+                    Spacer()
+                    Image(systemName: "pencil")
+                        .padding(EdgeInsets(top: -3, leading: 0, bottom: 0, trailing: 0))
+                    Text("Edit Subscription")
+                        .padding(EdgeInsets(top: 3, leading: 10, bottom: 0, trailing: 0))
+                    Spacer()
+                }
+                .padding()
+                .background(Color.customBlueButton)
+                .foregroundColor(Color.customBlueText)
+                .font(.headline)
+                .cornerRadius(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.customBlueButton, lineWidth: 2)
+                )
+                .padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+            }.sheet(isPresented: $showingSubscriptionEditView) {
+                SubscriptionEditView(isPresented: self.$showingSubscriptionEditView, subscription: self.subscription)
+                    .environmentObject(self.subscriptionsViewModel)
+            }
             Button(action: {
                 self.showingAlert = true
             }) {

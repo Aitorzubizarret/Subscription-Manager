@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A2CE00B252778F90009C743 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00A252778F90009C743 /* AppView.swift */; };
 		1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00C25277A000009C743 /* StatisticsView.swift */; };
+		1A3420AB253F7F0A000A88F7 /* SubscriptionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */; };
 		1A5BA78C2525042500520086 /* SubscriptionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78B2525042500520086 /* SubscriptionDetailView.swift */; };
 		1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */; };
 		1A7BF2A2253CCB53005FBAF3 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BF2A1253CCB53005FBAF3 /* Template.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		1A2CE00A252778F90009C743 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		1A2CE00C25277A000009C743 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionEditView.swift; sourceTree = "<group>"; };
 		1A5BA78B2525042500520086 /* SubscriptionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailView.swift; sourceTree = "<group>"; };
 		1A5BA78D25251EE700520086 /* NewSubscriptionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionForm.swift; sourceTree = "<group>"; };
 		1A7BF2A1253CCB53005FBAF3 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A3420A9253F7EC5000A88F7 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		1A9933312523DAE4008BF8C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 				1ADBC3A325279E5500AD06E6 /* List */,
 				1ADBC3A525279E6000AD06E6 /* Detail */,
 				1ADBC3A425279E5B00AD06E6 /* Form */,
+				1A3420A9253F7EC5000A88F7 /* Edit */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -263,6 +274,7 @@
 				1ADBC3A825279EFC00AD06E6 /* SubscriptionsViewModel.swift in Sources */,
 				1A2CE00B252778F90009C743 /* AppView.swift in Sources */,
 				1AD39898251D41C700922ED9 /* SceneDelegate.swift in Sources */,
+				1A3420AB253F7F0A000A88F7 /* SubscriptionEditView.swift in Sources */,
 				1A7BF2A2253CCB53005FBAF3 /* Template.swift in Sources */,
 				1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */,
 				1AD3989A251D41C700922ED9 /* SubscriptionsView.swift in Sources */,
