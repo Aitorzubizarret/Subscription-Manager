@@ -32,7 +32,7 @@ struct EditableField: View {
                 .foregroundColor(Color.customDarkText)
                 .font(Font.system(size: 14))
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 0))
-            TextField("Enter name ...", text: $textfieldValue)
+            TextField("Enter the \(self.title.lowercased()) ...", text: $textfieldValue)
                 .font(.system(size: 16, weight: .bold, design: .default))
                 .foregroundColor(Color.black)
                 .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))

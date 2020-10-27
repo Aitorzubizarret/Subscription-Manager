@@ -76,34 +76,8 @@ struct NewSubscriptionForm: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading) {
-                    Text("Name")
-                        .font(.callout)
-                        .bold()
-                    TextField("Enter name ...", text: $textFieldSubscriptionName)
-                        .padding()
-                        .background(lightGreyColor)
-                        .cornerRadius(5.0)
-                        .keyboardType(UIKeyboardType.alphabet)
-                }
-                .padding(EdgeInsets(top: 20, leading: 15, bottom: 10, trailing: 15))
-                .onTapGesture {
-                    self.hideKeyboard()
-                }
-                VStack(alignment: .leading) {
-                    Text("Price")
-                        .font(.callout)
-                        .bold()
-                    TextField("Enter price ...", text: self.$textFieldSubscriptionPrice)
-                        .padding()
-                        .background(lightGreyColor)
-                        .cornerRadius(5.0)
-                        .keyboardType(UIKeyboardType.decimalPad)
-                }
-                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-                .onTapGesture {
-                    self.hideKeyboard()
-                }
+                EditableField(title: "NAME", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
+                EditableField(title: "PRICE", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 VStack(alignment: .leading) {
                     Text("Cycle")
                         .font(.callout)
