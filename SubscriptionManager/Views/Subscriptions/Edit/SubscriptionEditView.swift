@@ -132,39 +132,8 @@ struct SubscriptionEditView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                HStack {
-                    Text("Name :")
-                        .fontWeight(Font.Weight.bold)
-                        .font(Font.system(size: 14))
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .frame(width: 60, height: 50, alignment: .leading)
-                    Spacer()
-                    TextField("Enter name ...", text: $textFieldSubscriptionName)
-                        .padding()
-                        .background(Color.customLightGrey)
-                        .foregroundColor(Color.customDarkText)
-                        .cornerRadius(5.0)
-                        .keyboardType(UIKeyboardType.alphabet)
-                }
-                .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-                .onTapGesture { self.hideKeyboard() }
-                Divider()
-                HStack {
-                    Text("Price :")
-                        .fontWeight(Font.Weight.bold)
-                        .font(Font.system(size: 14))
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .frame(width: 60, height: 50, alignment: .leading)
-                    Spacer()
-                    TextField("Enter price ...", text: $textFieldSubscriptionPrice)
-                        .padding()
-                        .background(Color.customLightGrey)
-                        .foregroundColor(Color.customDarkText)
-                        .cornerRadius(5.0)
-                        .keyboardType(UIKeyboardType.decimalPad)
-                }
-                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-                .onTapGesture { self.hideKeyboard() }
+                EditableField(title: "NAME", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
+                EditableField(title: "PRICE", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 Divider()
                 HStack {
                     Text("Cycle :")
