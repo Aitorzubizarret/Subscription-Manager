@@ -16,6 +16,7 @@
 		1A7BF2A8253CCDAE005FBAF3 /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BF2A7253CCDAE005FBAF3 /* CustomDivider.swift */; };
 		1A7BF2AA253CCE2A005FBAF3 /* SubscriptionDataField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BF2A9253CCE2A005FBAF3 /* SubscriptionDataField.swift */; };
 		1A90E3AF2548670300C95E9A /* EditableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90E3AE2548670300C95E9A /* EditableField.swift */; };
+		1A90E3B12548AED800C95E9A /* CycleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90E3B02548AED800C95E9A /* CycleField.swift */; };
 		1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9933322523DB04008BF8C4 /* Subscription.swift */; };
 		1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */; };
 		1AB60912252D06D300597B85 /* SubscriptionsManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AB60910252D06D300597B85 /* SubscriptionsManager.xcdatamodeld */; };
@@ -40,6 +41,7 @@
 		1A7BF2A7253CCDAE005FBAF3 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		1A7BF2A9253CCE2A005FBAF3 /* SubscriptionDataField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDataField.swift; sourceTree = "<group>"; };
 		1A90E3AE2548670300C95E9A /* EditableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableField.swift; sourceTree = "<group>"; };
+		1A90E3B02548AED800C95E9A /* CycleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleField.swift; sourceTree = "<group>"; };
 		1A9933322523DB04008BF8C4 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRow.swift; sourceTree = "<group>"; };
 		1AB60911252D06D300597B85 /* SubscriptionsManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubscriptionsManager.xcdatamodel; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */,
 				1A90E3AE2548670300C95E9A /* EditableField.swift */,
+				1A90E3B02548AED800C95E9A /* CycleField.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD39896251D41C700922ED9 /* AppDelegate.swift in Sources */,
+				1A90E3B12548AED800C95E9A /* CycleField.swift in Sources */,
 				1A5BA78C2525042500520086 /* SubscriptionDetailView.swift in Sources */,
 				1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */,
 				1AB60912252D06D300597B85 /* SubscriptionsManager.xcdatamodeld in Sources */,

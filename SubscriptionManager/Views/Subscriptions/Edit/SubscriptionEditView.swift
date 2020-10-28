@@ -16,8 +16,7 @@ struct SubscriptionEditView: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var textFieldSubscriptionName: String = ""
     @State private var textFieldSubscriptionPrice: String = ""
-    @State private var textCycleValue: String = "0"
-    @State private var selectionCycleUnit: Int = 2
+    @State private var textCycle: String = ""
     @State private var nextPayment: Date = Date()
     var subscription: Subscription
     
@@ -41,50 +40,10 @@ struct SubscriptionEditView: View {
         self._textFieldSubscriptionPrice = State(wrappedValue: "\(subscription.price)")
         
         // Cycle.
-        let cycleComponents: [String] = subscription.cycle.components(separatedBy: "-")
-        if cycleComponents.count == 2 {
-            self._textCycleValue = State(wrappedValue: cycleComponents[0])
-            
-            switch cycleComponents[1] {
-            case "d":
-                self._selectionCycleUnit = State(wrappedValue: 0)
-            case "w":
-                self._selectionCycleUnit = State(wrappedValue: 1)
-            case "m":
-                self._selectionCycleUnit = State(wrappedValue: 2)
-            case "y":
-                self._selectionCycleUnit = State(wrappedValue: 3)
-            default:
-                self._selectionCycleUnit = State(wrappedValue: 3)
-            }
-        }
+        self._textCycle = State(wrappedValue: subscription.cycle)
         
         // Next Payment.
         self._nextPayment = State(wrappedValue: subscription.nextPayment)
-    }
-    
-    ///
-    /// Increases the value by 1.
-    ///
-    private func increaseValue() {
-        let value: Int? = Int(self.textCycleValue)
-        if let intValue = value {
-            if intValue < 10 {
-                self.textCycleValue = "\(intValue + 1)"
-            }
-        }
-    }
-    
-    ///
-    /// Decreases the value by 1.
-    ///
-    private func decreaseValue() {
-        let value: Int? = Int(self.textCycleValue)
-        if let intValue = value {
-            if intValue > 1 {
-                self.textCycleValue = "\(intValue - 1)"
-            }
-        }
     }
     
     ///
@@ -102,20 +61,7 @@ struct SubscriptionEditView: View {
         let formattedSubscriptionPrice = price.floatValue
         
         // Cycle.
-        var subscriptionCycleUnit: String = ""
-        switch self.selectionCycleUnit {
-        case 0:
-            subscriptionCycleUnit = "d"
-        case 1:
-            subscriptionCycleUnit = "w"
-        case 2:
-            subscriptionCycleUnit = "m"
-        case 3:
-            subscriptionCycleUnit = "y"
-        default:
-            subscriptionCycleUnit = "¿?"
-        }
-        let subscriptionCycle: String = "\(self.textCycleValue)-\(subscriptionCycleUnit)"
+        let subscriptionCycle: String = self.textCycle
         
         // Next payment.
         let subscriptionNextPayment: Date = self.nextPayment
@@ -134,62 +80,7 @@ struct SubscriptionEditView: View {
             ScrollView {
                 EditableField(title: "NAME", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "PRICE", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
-                Divider()
-                HStack {
-                    Text("Cycle :")
-                        .fontWeight(Font.Weight.bold)
-                        .font(Font.system(size: 14))
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .frame(width: 60, height: 50, alignment: .leading)
-                    Spacer()
-                    Button(action: {
-                        self.decreaseValue()
-                    }) {
-                        Text("-")
-                            .fontWeight(Font.Weight.bold)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .background(Color.customLightGrey)
-                            .foregroundColor(Color.black)
-                            .cornerRadius(6)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.customLightGrey, lineWidth: 2)
-                            )
-                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
-                    }
-                    Text(self.textCycleValue)
-                        .fontWeight(Font.Weight.bold)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .frame(width: 100, height: 50, alignment: .center)
-                    Button(action: {
-                        self.increaseValue()
-                    }) {
-                        Text("+")
-                            .fontWeight(Font.Weight.bold)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .background(Color.customLightGrey)
-                            .foregroundColor(Color.black)
-                            .cornerRadius(6)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.customLightGrey, lineWidth: 2)
-                            )
-                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
-                        }
-                    }
-                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-                .onTapGesture { self.hideKeyboard() }
-                HStack {
-                    Picker("", selection: self.$selectionCycleUnit) {
-                        ForEach(0 ..< self.subscriptionsViewModel.subscriptionCycleUnitOptions.count) { index in
-                            Text(self.subscriptionsViewModel.subscriptionCycleUnitOptions[index])
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                CycleField(title: "Cycle", value: self.$textCycle)
                 Divider()
                 HStack {
                     DatePicker("Date", selection: $nextPayment, in: self.nextPayment..., displayedComponents: .date)
