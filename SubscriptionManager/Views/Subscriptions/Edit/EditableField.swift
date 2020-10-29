@@ -28,7 +28,7 @@ struct EditableField: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.title)
+            Text(self.title.uppercased())
                 .foregroundColor(Color.customDarkText)
                 .font(Font.system(size: 14))
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 0))

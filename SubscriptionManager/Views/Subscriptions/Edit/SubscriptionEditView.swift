@@ -78,8 +78,8 @@ struct SubscriptionEditView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                EditableField(title: "NAME", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
-                EditableField(title: "PRICE", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
+                EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
+                EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 CycleField(title: "Cycle", value: self.$textCycle)
                 Divider()
                 HStack {
