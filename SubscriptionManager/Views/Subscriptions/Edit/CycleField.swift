@@ -25,8 +25,11 @@ struct CycleField: View {
         }
     }
     var title: String
+    private var textWidth: CGFloat {
+        return (UIScreen.main.bounds.size.width - 12 - 88 - 24 - 4 - 12)
+    }
     private var buttonWitdh: CGFloat {
-        return (UIScreen.main.bounds.size.width / 4) - 18
+        return (UIScreen.main.bounds.size.width / 4) - 14
     }
     
     //MARK: - Methods
@@ -119,111 +122,142 @@ struct CycleField: View {
         }
     }
     
+    ///
+    /// For custom round corners.
+    ///
+    struct RoundedCorners: Shape {
+        
+        var upperLeft: CGFloat = 0.0
+        var upperRight: CGFloat = 0.0
+        var lowerLeft: CGFloat = 0.0
+        var lowerRigth: CGFloat = 0.0
+        
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            
+            let width: CGFloat = rect.size.width
+            let height : CGFloat = rect.size.height
+            
+            let upperLeft = min(min(self.upperLeft, height / 2), width / 2)
+            let upperRight = min(min(self.upperRight, height / 2), width / 2)
+            let lowerLeft = min(min(self.lowerLeft, height / 2), width / 2)
+            let lowerRigth = min(min(self.lowerRigth, height / 2), width / 2)
+            
+            path.move(to: CGPoint(x: width / 2.0, y: 0))
+            path.addLine(to: CGPoint(x: width - upperRight, y: 0))
+            path.addArc(center: CGPoint(x: width - upperRight, y: upperRight), radius: upperRight,
+                        startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 0), clockwise: false)
+
+            path.addLine(to: CGPoint(x: width, y: height - lowerRigth))
+            path.addArc(center: CGPoint(x: width - lowerRigth, y: height - lowerRigth), radius: lowerRigth,
+                        startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
+
+            path.addLine(to: CGPoint(x: lowerLeft, y: height))
+            path.addArc(center: CGPoint(x: lowerLeft, y: height - lowerLeft), radius: lowerLeft,
+                        startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 180), clockwise: false)
+
+            path.addLine(to: CGPoint(x: 0, y: upperLeft))
+            path.addArc(center: CGPoint(x: upperLeft, y: upperLeft), radius: upperLeft,
+                        startAngle: Angle(degrees: 180), endAngle: Angle(degrees: 270), clockwise: false)
+
+            return path
+        }
+    }
+    
     //MARK: - View
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.title)
-                .foregroundColor(Color.customDarkText)
+            Text(self.title.uppercased())
                 .font(Font.system(size: 14))
+                .fontWeight(Font.Weight.medium)
+                .foregroundColor(Color.customDarkText)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
-            HStack {
+            HStack(spacing: 0) {
                 Button(action: {
                     self.decreaseValue()
                 }) {
                     Text("-")
-                        .font(Font.system(size: 24))
+                        .font(Font.system(size: 22))
                         .fontWeight(Font.Weight.heavy)
-                        .foregroundColor(Color.customBlueText)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .background(Color.customBlueButton)
-                        .cornerRadius(25)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color.customBlueText, lineWidth: 2)
-                        )
+                        .foregroundColor(Color.customDarkText)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                        .frame(width: 44, height: 44, alignment: .center)
+                        .background(RoundedCorners(upperLeft: 10, upperRight: 0, lowerLeft: 10, lowerRigth: 0))
+                        .foregroundColor(Color.customGrayButton)
                 }
-                .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 0))
-                Spacer()
+                .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 3))
                 Text(self.cycleText)
-                    .fontWeight(Font.Weight.bold)
+                    .font(Font.system(size: 16))
+                    .fontWeight(Font.Weight.medium)
+                    .foregroundColor(Color.customDarkText)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                Spacer()
+                    .frame(width: self.textWidth, height: 44, alignment: .center)
+                    .background(Color.customGrayButton)
                 Button(action: {
                     self.increaseValue()
                 }) {
                     Text("+")
-                        .font(Font.system(size: 24))
+                        .font(Font.system(size: 22))
                         .fontWeight(Font.Weight.heavy)
-                        .foregroundColor(Color.customBlueText)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 15))
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .background(Color.customBlueButton)
-                        .cornerRadius(25)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color.customBlueText, lineWidth: 2)
-                        )
+                        .foregroundColor(Color.customDarkText)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                        .frame(width: 44, height: 44, alignment: .center)
+                        .background(RoundedCorners(upperLeft: 0, upperRight: 10, lowerLeft: 0, lowerRigth: 10))
+                        .foregroundColor(Color.customGrayButton)
+                        
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
+                .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 12))
             }
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
-            HStack {
+            HStack(spacing: 0) {
                 Button(action: {
                     self.unit = "d"
                 }) {
                     if self.unit == "d" {
                         Text("Day")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.white)
-                        .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .background(Color.customBlueText)
-                        .cornerRadius(6)
+                        .foregroundColor(Color.customDarkText)
+                        .frame(width: self.buttonWitdh, height: 36, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(10)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.customGrayBorderButton, lineWidth: 1)
                         )
+                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
                         Text("Day")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.customBlueText)
+                        .foregroundColor(Color.customDarkText)
                         .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .cornerRadius(6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
-                        )
                     }
                 }
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                 Button(action: {
                     self.unit = "w"
                 }) {
                     if self.unit == "w" {
                         Text("Week")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.white)
-                        .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .background(Color.customBlueText)
-                        .cornerRadius(6)
+                        .foregroundColor(Color.customDarkText)
+                        .frame(width: self.buttonWitdh, height: 36, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(10)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.customGrayBorderButton, lineWidth: 1)
                         )
+                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
                         Text("Week")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.customBlueText)
+                        .foregroundColor(Color.customDarkText)
                         .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .cornerRadius(6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
-                        )
                     }
                     
                 }
@@ -232,27 +266,23 @@ struct CycleField: View {
                 }) {
                     if self.unit == "m" {
                         Text("Month")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.white)
-                        .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .background(Color.customBlueText)
-                        .cornerRadius(6)
+                        .foregroundColor(Color.customDarkText)
+                        .frame(width: self.buttonWitdh, height: 36, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(10)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.customGrayBorderButton, lineWidth: 1)
                         )
+                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
                         Text("Month")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.customBlueText)
+                        .foregroundColor(Color.customDarkText)
                         .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .cornerRadius(6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
-                        )
                     }
                     
                 }
@@ -261,36 +291,33 @@ struct CycleField: View {
                 }) {
                     if self.unit == "y" {
                         Text("Year")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.white)
-                        .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .background(Color.customBlueText)
-                        .cornerRadius(6)
+                        .foregroundColor(Color.customDarkText)
+                        .frame(width: self.buttonWitdh, height: 36, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(10)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.customGrayBorderButton, lineWidth: 1)
                         )
+                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
                         Text("Year")
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
-                        .foregroundColor(Color.customBlueText)
+                        .foregroundColor(Color.customDarkText)
                         .frame(width: self.buttonWitdh, height: 44, alignment: .center)
-                        .cornerRadius(6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.customBlueText, lineWidth: 2)
-                        )
                     }
                 }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
             }
+            .background(Color.customGrayButton)
+            .cornerRadius(10)
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
         }
-        .background(Color.customLightGrey)
-        .cornerRadius(5.0)
+        .background(Color.white)
         .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
-        .onTapGesture { self.hideKeyboard() }
     }
 }
 
