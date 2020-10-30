@@ -16,19 +16,9 @@ struct NewSubscriptionForm: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var textFieldSubscriptionName: String = ""
     @State private var textFieldSubscriptionPrice: String = ""
-    @State private var selectionCycleValue: Int = 1
-    @State private var selectionCycleUnit: Int = 2
+    @State private var textCycle: String = "1-m"
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
     @State private var showingAlert: Bool = false
-    var subscriptionCycle: String {
-        var text: String = ""
-        if self.selectionCycleValue != 1 {
-            text = text + "\(self.selectionCycleValue) \(self.subscriptionsViewModel.subscriptionCycleUnitOptions[self.selectionCycleUnit])s"
-        } else {
-            text = text + "\(self.subscriptionsViewModel.subscriptionCycleUnitOptions[self.selectionCycleUnit])"
-        }
-        return text
-    }
     var tomorrowDate: Date = Date().addingTimeInterval(86400)
     private let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     
@@ -49,21 +39,7 @@ struct NewSubscriptionForm: View {
         let formattedSubscriptionPrice = price.floatValue
         
         // Cycle.
-        var cycle: String = ""
-        cycle = cycle + "\(self.selectionCycleValue)"
-        cycle = cycle + "-"
-        switch self.selectionCycleUnit {
-        case 0:
-            cycle = cycle + "d" // Day.
-        case 1:
-            cycle = cycle + "w" // Week.
-        case 2:
-            cycle = cycle + "m" // Month.
-        case 3:
-            cycle = cycle + "y" // Year.
-        default:
-            cycle = cycle + "¿?" // Unknow.
-        }
+        let cycle: String = self.textCycle
         
         // Save the new subscription in Core Data.
         self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate)
@@ -76,30 +52,10 @@ struct NewSubscriptionForm: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                EditableField(title: "NAME", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
-                EditableField(title: "PRICE", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
-                VStack(alignment: .leading) {
-                    Text("Cycle")
-                        .font(.callout)
-                        .bold()
-                    HStack {
-                        Text("Every \(self.subscriptionCycle)")
-                        Spacer()
-                        Text("\(self.selectionCycleValue)")
-                            .padding(EdgeInsets(top: 7, leading: 18, bottom: 7, trailing: 18))
-                            .background(lightGreyColor)
-                            .cornerRadius(5.0)
-                        Stepper("", value: $selectionCycleValue, in: 1...10)
-                            .frame(width: 100, height: 50)
-                    }
-                    Picker("", selection: self.$selectionCycleUnit) {
-                        ForEach(0 ..< self.subscriptionsViewModel.subscriptionCycleUnitOptions.count) { index in
-                            Text(self.subscriptionsViewModel.subscriptionCycleUnitOptions[index])
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
+                EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
+                CycleField(title: "Cycle", value: self.$textCycle)
+                Divider()
                 VStack(alignment: .leading) {
                     Text("Next Payment")
                         .font(.callout)
