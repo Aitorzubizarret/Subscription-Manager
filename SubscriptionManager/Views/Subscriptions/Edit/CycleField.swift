@@ -190,7 +190,7 @@ struct CycleField: View {
                 Text(self.cycleText)
                     .font(Font.system(size: 16))
                     .fontWeight(Font.Weight.medium)
-                    .foregroundColor(Color.customDarkText)
+                    .foregroundColor(Color.black)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .frame(width: self.textWidth, height: 44, alignment: .center)
                     .background(Color.customGrayButton)
@@ -317,7 +317,7 @@ struct CycleField: View {
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
         }
         .background(Color.white)
-        .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
+        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
     }
 }
 

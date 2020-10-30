@@ -27,20 +27,22 @@ struct EditableField: View {
     //MARK: - View
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(self.title.uppercased())
-                .foregroundColor(Color.customDarkText)
                 .font(Font.system(size: 14))
-                .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 0))
+                .fontWeight(Font.Weight.medium)
+                .foregroundColor(Color.customDarkText)
+                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
             TextField("Enter the \(self.title.lowercased()) ...", text: $textfieldValue)
-                .font(.system(size: 16, weight: .bold, design: .default))
+                .font(.system(size: 16, weight: .medium, design: .default))
                 .foregroundColor(Color.black)
-                .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
+                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+                .background(Color.customGrayButton)
+                .cornerRadius(10)
+                .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                 .keyboardType(self.keyboardType)
         }
-        .background(Color.customLightGrey)
-        .cornerRadius(5.0)
-        .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
+        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
         .onTapGesture { self.hideKeyboard() }
     }
 }
