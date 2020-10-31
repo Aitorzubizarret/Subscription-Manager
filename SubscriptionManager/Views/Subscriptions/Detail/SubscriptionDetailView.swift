@@ -98,24 +98,7 @@ struct SubscriptionDetailView: View {
             Button(action: {
                 self.showingSubscriptionEditView.toggle()
             }) {
-                HStack {
-                    Spacer()
-                    Image(systemName: "pencil")
-                        .padding(EdgeInsets(top: -3, leading: 0, bottom: 0, trailing: 0))
-                    Text("Edit Subscription")
-                        .padding(EdgeInsets(top: 3, leading: 10, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-                .padding()
-                .background(Color.customBlueButton)
-                .foregroundColor(Color.customBlueText)
-                .font(.headline)
-                .cornerRadius(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.customBlueButton, lineWidth: 2)
-                )
-                .padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+                BigButton(style: BigButton.Style.edit, title: "Edit Subscription")
             }.sheet(isPresented: $showingSubscriptionEditView) {
                 SubscriptionEditView(isPresented: self.$showingSubscriptionEditView, subscription: self.subscription)
                     .environmentObject(self.subscriptionsViewModel)
@@ -123,24 +106,7 @@ struct SubscriptionDetailView: View {
             Button(action: {
                 self.showingAlert = true
             }) {
-                HStack {
-                    Spacer()
-                    Image(systemName: "trash")
-                        .padding(EdgeInsets(top: -3, leading: 0, bottom: 0, trailing: 0))
-                    Text("Delete Subscription")
-                        .padding(EdgeInsets(top: 3, leading: 10, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-                .padding()
-                .background(Color.customRedButton)
-                .foregroundColor(Color.customRedText)
-                .font(.headline)
-                .cornerRadius(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.customRedButton, lineWidth: 2)
-                )
-                .padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+                BigButton(style: BigButton.Style.delete, title: "Delete Subscription")
             }.alert(isPresented: self.$showingAlert, content: {
                 Alert(title: Text("Delete Subscription"), message: Text("This action can’t be undone. Are you sure?") ,primaryButton: Alert.Button.destructive(Text("Delete"), action: {
                     self.deleteSubscription()
