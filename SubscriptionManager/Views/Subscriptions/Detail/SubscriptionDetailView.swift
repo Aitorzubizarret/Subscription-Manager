@@ -83,7 +83,7 @@ struct SubscriptionDetailView: View {
         ScrollView {
             SubscriptionLogoTitleField(title: subscription.name)
             CustomDivider()
-            VStack {
+            VStack(spacing: 6) {
                 SubscriptionDataField(title: "Price", value: self.price)
                 Divider()
                 SubscriptionDataField(title: "Cycle", value: self.cycle)
@@ -93,7 +93,7 @@ struct SubscriptionDetailView: View {
                     SubscriptionDataField(title: "Next Payment", value: dateFormatter.string(from: self.subscription.nextPayment))
                 }
             }
-            .padding(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
             CustomDivider()
             Button(action: {
                 self.showingSubscriptionEditView.toggle()
