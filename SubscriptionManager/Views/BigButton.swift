@@ -67,6 +67,16 @@ struct BigButton: View {
 
 struct BigButton_Previews: PreviewProvider {
     static var previews: some View {
-        BigButton(style: BigButton.Style.edit, title: "Edit Big Button")
+        Group {
+            BigButton(style: BigButton.Style.edit, title: "Edit Big Button")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Edit Style")
+            
+            BigButton(style: BigButton.Style.delete, title: "Delete Big Button")
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("Delete Style")
+        }
     }
 }

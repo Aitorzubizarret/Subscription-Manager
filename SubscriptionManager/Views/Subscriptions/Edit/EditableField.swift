@@ -50,5 +50,6 @@ struct EditableField: View {
 struct EditableField_Previews: PreviewProvider {
     static var previews: some View {
         EditableField(title: "Title", value: .constant("0"), keyboardType: UIKeyboardType.alphabet)
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

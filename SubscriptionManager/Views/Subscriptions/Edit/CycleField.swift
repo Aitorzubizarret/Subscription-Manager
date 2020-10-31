@@ -282,5 +282,6 @@ struct CycleField: View {
 struct CycleField_Previews: PreviewProvider {
     static var previews: some View {
         CycleField(title: "Cycle", value: .constant("2-w"))
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

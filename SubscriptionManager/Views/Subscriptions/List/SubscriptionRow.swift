@@ -80,5 +80,7 @@ struct SubscriptionRow_Previews: PreviewProvider {
         subscription.price = 9
         
         return SubscriptionRow(subscription: subscription).environmentObject(subscriptionsViewModel)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
     }
 }

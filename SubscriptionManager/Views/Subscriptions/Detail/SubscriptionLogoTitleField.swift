@@ -44,5 +44,6 @@ struct SubscriptionLogoTitleField_Previews: PreviewProvider {
     
     static var previews: some View {
         SubscriptionLogoTitleField(title: "HBO")
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

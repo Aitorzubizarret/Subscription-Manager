@@ -33,5 +33,7 @@ struct CustomDivider_Previews: PreviewProvider {
     
     static var previews: some View {
         CustomDivider()
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
     }
 }

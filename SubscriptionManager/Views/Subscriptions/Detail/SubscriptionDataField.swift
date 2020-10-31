@@ -38,6 +38,7 @@ struct SubscriptionDataField: View {
 struct SubscriptionDataField_Previews: PreviewProvider {
     
     static var previews: some View {
-        SubscriptionDataField(title: "PRICE :", value: "5 €")
+        SubscriptionDataField(title: "Price", value: "5 €")
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }
