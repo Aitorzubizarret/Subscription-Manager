@@ -81,37 +81,40 @@ struct SubscriptionDetailView: View {
     
     var body: some View {
         ScrollView {
-            SubscriptionLogoTitleField(title: subscription.name)
-            CustomDivider()
-            VStack(spacing: 6) {
-                SubscriptionDataField(title: "Price", value: self.price)
-                Divider()
-                SubscriptionDataField(title: "Cycle", value: self.cycle)
-                Divider()
-                // Avoids unknown error with dateFormatter when deleting the Subscription.
-                if !self.deleteInProcess {
-                    SubscriptionDataField(title: "Next Payment", value: dateFormatter.string(from: self.subscription.nextPayment))
+            VStack(spacing: 8) {
+                SubscriptionLogoTitleField(title: subscription.name)
+                CustomDivider()
+                VStack(spacing: 8) {
+                    SubscriptionDataField(title: "Price", value: self.price)
+                    Divider()
+                    SubscriptionDataField(title: "Cycle", value: self.cycle)
+                    Divider()
+                    // Avoids unknown error with dateFormatter when deleting the Subscription.
+                    if !self.deleteInProcess {
+                        SubscriptionDataField(title: "Next Payment", value: dateFormatter.string(from: self.subscription.nextPayment))
+                    }
                 }
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                CustomDivider()
+                Button(action: {
+                    self.showingSubscriptionEditView.toggle()
+                }) {
+                    BigButton(style: BigButton.Style.edit, title: "Edit Subscription")
+                }.sheet(isPresented: $showingSubscriptionEditView) {
+                    SubscriptionEditView(isPresented: self.$showingSubscriptionEditView, subscription: self.subscription)
+                        .environmentObject(self.subscriptionsViewModel)
+                }
+                Button(action: {
+                    self.showingAlert = true
+                }) {
+                    BigButton(style: BigButton.Style.delete, title: "Delete Subscription")
+                }.alert(isPresented: self.$showingAlert, content: {
+                    Alert(title: Text("Delete Subscription"), message: Text("This action can’t be undone. Are you sure?") ,primaryButton: Alert.Button.destructive(Text("Delete"), action: {
+                        self.deleteSubscription()
+                    }), secondaryButton: Alert.Button.cancel(Text("No")))
+                })
             }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            CustomDivider()
-            Button(action: {
-                self.showingSubscriptionEditView.toggle()
-            }) {
-                BigButton(style: BigButton.Style.edit, title: "Edit Subscription")
-            }.sheet(isPresented: $showingSubscriptionEditView) {
-                SubscriptionEditView(isPresented: self.$showingSubscriptionEditView, subscription: self.subscription)
-                    .environmentObject(self.subscriptionsViewModel)
-            }
-            Button(action: {
-                self.showingAlert = true
-            }) {
-                BigButton(style: BigButton.Style.delete, title: "Delete Subscription")
-            }.alert(isPresented: self.$showingAlert, content: {
-                Alert(title: Text("Delete Subscription"), message: Text("This action can’t be undone. Are you sure?") ,primaryButton: Alert.Button.destructive(Text("Delete"), action: {
-                    self.deleteSubscription()
-                }), secondaryButton: Alert.Button.cancel(Text("No")))
-            })
+            
         }
         .navigationBarTitle("\(subscription.name)", displayMode: .inline)
     }
