@@ -19,8 +19,6 @@ struct NewSubscriptionForm: View {
     @State private var textCycle: String = "1-m"
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
     @State private var showingAlert: Bool = false
-    var tomorrowDate: Date = Date().addingTimeInterval(86400)
-    private let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     
     //MARK: - Methods
     
@@ -55,14 +53,7 @@ struct NewSubscriptionForm: View {
                 EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 CycleField(title: "Cycle", value: self.$textCycle)
-                Divider()
-                VStack(alignment: .leading) {
-                    Text("Next Payment")
-                        .font(.callout)
-                        .bold()
-                    DatePicker("", selection: $subscriptionNextPaymentDate, in: self.tomorrowDate..., displayedComponents: .date)
-                }
-                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                CalendarField(title: "Next Payment", value: self.$subscriptionNextPaymentDate)
             }
             .navigationBarTitle(Text("New Subscription"), displayMode: .inline)
             .navigationBarItems(trailing:
