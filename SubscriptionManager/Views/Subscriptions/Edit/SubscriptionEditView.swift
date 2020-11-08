@@ -81,11 +81,7 @@ struct SubscriptionEditView: View {
                 EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 CycleField(title: "Cycle", value: self.$textCycle)
-                Divider()
-                HStack {
-                    DatePicker("Date", selection: $nextPayment, in: self.nextPayment..., displayedComponents: .date)
-                }
-                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                CalendarField(title: "Next Payment", value: self.$nextPayment)
             }
             .navigationBarTitle(Text("Edit Subscription"), displayMode: .inline)
             .navigationBarItems(trailing:
