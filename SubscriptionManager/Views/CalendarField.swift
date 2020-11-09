@@ -25,7 +25,9 @@ struct CalendarField: View {
     @State private var calendarDay: Int = 0
     @State private var calendarMonthName: String = ""
     @State private var daysPosition: [String] = []
-    private var spacing: CGFloat = 12
+    private var spacing: CGFloat {
+        return (UIScreen.main.bounds.size.width - (12 * 4) - (40 * 7)) / 6
+    }
     private var title: String
     private var textWidth: CGFloat {
         return (UIScreen.main.bounds.size.width - 12 - 88 - 24 - 4 - 12)
