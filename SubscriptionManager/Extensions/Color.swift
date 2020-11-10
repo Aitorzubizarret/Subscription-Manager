@@ -1,8 +1,8 @@
 //
-//  Template.swift
+//  Color.swift
 //  SubscriptionManager
 //
-//  Created by Aitor Zubizarreta on 18/10/2020.
+//  Created by Aitor Zubizarreta on 10/11/2020.
 //  Copyright © 2020 Aitor Zubizarreta. All rights reserved.
 //
 
