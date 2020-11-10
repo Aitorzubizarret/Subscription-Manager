@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A021735255B253F001384A9 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A021734255B253F001384A9 /* View.swift */; };
 		1A2CE00B252778F90009C743 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00A252778F90009C743 /* AppView.swift */; };
 		1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00C25277A000009C743 /* StatisticsView.swift */; };
 		1A3420AB253F7F0A000A88F7 /* SubscriptionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A021734255B253F001384A9 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1A2CE00A252778F90009C743 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		1A2CE00C25277A000009C743 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionEditView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A021733255B24E3001384A9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A021734255B253F001384A9 /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1A3420A9253F7EC5000A88F7 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 				1A9933312523DAE4008BF8C4 /* Models */,
 				1ADBC3A025279E1700AD06E6 /* Views */,
 				1ADBC3A625279ED700AD06E6 /* ViewModels */,
+				1A021733255B24E3001384A9 /* Extensions */,
 				1AD3989B251D41CD00922ED9 /* Assets.xcassets */,
 				1AD398A0251D41CD00922ED9 /* LaunchScreen.storyboard */,
 				1AD398A3251D41CD00922ED9 /* Info.plist */,
@@ -290,6 +301,7 @@
 				1AA2F1112554646400ACD229 /* CalendarField.swift in Sources */,
 				1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */,
 				1A8CFC4C254D90AA00B8DEB9 /* RoundCorners.swift in Sources */,
+				1A021735255B253F001384A9 /* View.swift in Sources */,
 				1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */,
 				1A8CFC4E254DD72600B8DEB9 /* BigButton.swift in Sources */,
 				1A90E3AF2548670300C95E9A /* EditableField.swift in Sources */,
