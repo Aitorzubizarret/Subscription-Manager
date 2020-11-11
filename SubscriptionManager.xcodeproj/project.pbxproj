@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A021735255B253F001384A9 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A021734255B253F001384A9 /* View.swift */; };
 		1A021737255B29AB001384A9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A021736255B29AB001384A9 /* Color.swift */; };
+		1A02173B255B3278001384A9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A02173A255B3278001384A9 /* Date.swift */; };
 		1A2CE00B252778F90009C743 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00A252778F90009C743 /* AppView.swift */; };
 		1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CE00C25277A000009C743 /* StatisticsView.swift */; };
 		1A3420AB253F7F0A000A88F7 /* SubscriptionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		1A021734255B253F001384A9 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1A021736255B29AB001384A9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1A02173A255B3278001384A9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1A2CE00A252778F90009C743 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		1A2CE00C25277A000009C743 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionEditView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				1A021734255B253F001384A9 /* View.swift */,
 				1A021736255B29AB001384A9 /* Color.swift */,
+				1A02173A255B3278001384A9 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				1A5BA78C2525042500520086 /* SubscriptionDetailView.swift in Sources */,
 				1AA2F11325549D7800ACD229 /* CalendarDayElement.swift in Sources */,
 				1A5BA78E25251EE700520086 /* NewSubscriptionForm.swift in Sources */,
+				1A02173B255B3278001384A9 /* Date.swift in Sources */,
 				1A021737255B29AB001384A9 /* Color.swift in Sources */,
 				1AB60912252D06D300597B85 /* SubscriptionsManager.xcdatamodeld in Sources */,
 				1AA2F1112554646400ACD229 /* CalendarField.swift in Sources */,

@@ -51,36 +51,26 @@ struct CalendarField: View {
     ///
     private mutating func setCalendarDate() {
         
-        let formatter: DateFormatter = DateFormatter()
-        
-        // Year.
-        formatter.dateFormat = "yyyy"
-        let actualYearNumber: Int? = Int(formatter.string(from: selectedDate))
-        if let yearNumber: Int = actualYearNumber {
+        // Number of the year.
+        if let yearNumber: Int = self.selectedDate.getYearNumber() {
             self._calendarYear = State(wrappedValue: yearNumber)
             self._selectedYear = State(wrappedValue: yearNumber)
         }
         
-        // Month.
-        formatter.dateFormat = "MM"
-        let actualMonthNumber: Int? = Int(formatter.string(from: self.selectedDate))
-        if let monthNumber: Int = actualMonthNumber {
+        // Number of the month.
+        if let monthNumber: Int = self.selectedDate.getMonthNumber() {
             self._calendarMonth = State(wrappedValue: monthNumber)
             self._selectedMonth = State(wrappedValue: monthNumber)
         }
         
-        // Day.
-        formatter.dateFormat = "dd"
-        let actualDayNumber: Int? = Int(formatter.string(from: self.selectedDate))
-        if let dayNumber: Int = actualDayNumber {
+        // Number of the day.
+        if let dayNumber: Int = self.selectedDate.getDayNumber() {
             self._calendarDay = State(wrappedValue: dayNumber)
             self._selectedDay = State(wrappedValue: dayNumber)
         }
         
-        // Month name.
-        formatter.dateFormat = "MMMM"
-        let actualMonthName: String = formatter.string(from: selectedDate)
-        self._calendarMonthName = State(wrappedValue: actualMonthName)
+        // Full name of the month.
+        self._calendarMonthName = State(wrappedValue: selectedDate.getMonthFullName())
         
         // Days position in calendar.
         self._daysPosition = State(wrappedValue: self.getDaysPositionInCalendar())
