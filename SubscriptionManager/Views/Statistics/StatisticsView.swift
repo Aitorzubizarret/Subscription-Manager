@@ -11,11 +11,22 @@ import SwiftUI
 struct StatisticsView: View {
     
     //MARK: - Properties
+    
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     
     //MARK: - View
+    
     var body: some View {
-        Text("Statistics for \(self.subscriptionsViewModel.subscriptions.count) subscriptions.")
+        VStack(alignment: .leading, spacing: 12) {
+            SectionTitle(title: "Statistics")
+            HStack(alignment: .center, spacing: 12) {
+                SmallSimpleBox(value: self.subscriptionsViewModel.subscriptions.count, descriptionText: self.subscriptionsViewModel.subscriptions.count > 1 ? "Subscriptions" : "Subscription")
+                Spacer()
+            }
+            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+            Spacer()
+        }
+    .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
     }
 }
 
