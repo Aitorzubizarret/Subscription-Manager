@@ -110,12 +110,9 @@ struct CalendarField: View {
         components.month = self.calendarMonth
         components.year = self.calendarYear
         
+        // Get day of the week.
         let date = Calendar.current.date(from: components) ?? Date()
-        
-        // Using the date formatter, gets the day of the week.
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        let dayName: String = formatter.string(from: date)
+        let dayName: String = date.getDayOfWeek()
         
         switch dayName {
         case "Tuesday":
@@ -204,9 +201,7 @@ struct CalendarField: View {
         let date = Calendar.current.date(from: components) ?? Date()
         
         // Get the month name.
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "MMMM"
-        let actualMonthName: String = formatter.string(from: date)
+        let actualMonthName: String = date.getMonthFullName()
         self.calendarMonthName = actualMonthName
         
         // Get the position of each day in the new month.

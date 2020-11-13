@@ -27,6 +27,22 @@ extension Date {
     }
     
     ///
+    /// Gets the name of the day of the week.
+    /// - Returns: Ex. Monday
+    ///
+    func getDayOfWeek() -> String {
+        
+        // Date formatter.
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
+        
+        // Converts from String to Int.
+        let dayOfWeek: String = formatter.string(from: self)
+        
+        return dayOfWeek
+    }
+    
+    ///
     /// Gets the number of the month from the date, if it's possible.
     /// - Returns: The number of the month (In case there is no problem formatting and converting it from a Date/String to an Int). Ex: 1, 2, 3, 10, 11, 12
     ///
@@ -71,5 +87,20 @@ extension Date {
         let monthFullName: String = formatter.string(from: self)
         
         return monthFullName
+    }
+    
+    ///
+    /// Gets the date in the format year/month/day.
+    /// - Returns: Ex. 2020/04/25
+    ///
+    func getYearMonthDay() -> String {
+        
+        // Date formatter.
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        
+        let yearMonthDay: String = formatter.string(from: self)
+        
+        return yearMonthDay
     }
 }

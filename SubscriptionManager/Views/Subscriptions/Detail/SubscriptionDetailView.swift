@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-private var dateFormatter: DateFormatter = {
-    let dateFormatter: DateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy/MM/dd"
-    return dateFormatter
-}()
-
 struct SubscriptionDetailView: View {
     
     //MARK: - Properties
@@ -91,7 +85,7 @@ struct SubscriptionDetailView: View {
                     Divider()
                     // Avoids unknown error with dateFormatter when deleting the Subscription.
                     if !self.deleteInProcess {
-                        SubscriptionDataField(title: "Next Payment", value: dateFormatter.string(from: self.subscription.nextPayment))
+                        SubscriptionDataField(title: "Next Payment", value: self.subscription.nextPayment.getYearMonthDay())
                     }
                 }
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
