@@ -152,8 +152,10 @@ struct CalendarField: View {
         }
         
         // Except february, the rest have more than 28 days.
-        for extraDay in 28...numberDaysInMonth {
-            structure.append("\(extraDay)")
+        if numberDaysInMonth > 28 {
+            for extraDay in 29...numberDaysInMonth {
+                structure.append("\(extraDay)")
+            }
         }
         
         // Fill the rest of the structure with empty spaces.
