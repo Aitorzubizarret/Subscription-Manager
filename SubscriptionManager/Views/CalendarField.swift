@@ -103,9 +103,9 @@ struct CalendarField: View {
         
         // Creates a new date with the first day of the calendar month.
         var components = DateComponents()
-        components.second = 30
-        components.minute = 30
-        components.hour = 10
+        components.second = 0
+        components.minute = 0
+        components.hour = 1
         components.day = 1
         components.month = self.calendarMonth
         components.year = self.calendarYear
@@ -193,9 +193,9 @@ struct CalendarField: View {
         
         // Create the new date.
         var components = DateComponents()
-        components.second = 30
-        components.minute = 30
-        components.hour = 10
+        components.second = 0
+        components.minute = 0
+        components.hour = 1
         components.day = 1
         components.month = self.calendarMonth
         components.year = self.calendarYear
@@ -248,9 +248,9 @@ struct CalendarField: View {
         
         // Update selected date.
         var components = DateComponents()
-        components.second = 30
-        components.minute = 30
-        components.hour = 10
+        components.second = 0
+        components.minute = 0
+        components.hour = 1
         components.day = self.selectedDay
         components.month = self.calendarMonth
         components.year = self.calendarYear

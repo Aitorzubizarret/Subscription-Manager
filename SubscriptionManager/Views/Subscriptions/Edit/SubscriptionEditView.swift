@@ -18,6 +18,9 @@ struct SubscriptionEditView: View {
     @State private var textFieldSubscriptionPrice: String = ""
     @State private var textCycle: String = ""
     @State private var nextPayment: Date = Date()
+    @State private var showingAlert: Bool = false
+    @State private var alertTitle: String = ""
+    @State private var alertMessage: String = ""
     var subscription: Subscription
     
     //MARK: - Methods
@@ -49,28 +52,56 @@ struct SubscriptionEditView: View {
     ///
     /// Saves the changes in the subscription.
     ///
-    private func saveChanges() {
+    private func saveChanges() -> Bool {
+        var saveStatus: Bool = true
+        
         // Name.
         let subscriptionName: String = self.textFieldSubscriptionName
         
         // Price formatter.
+        var formattedSubscriptionPrice: Float = 0
         self.textFieldSubscriptionPrice = self.textFieldSubscriptionPrice.replacingOccurrences(of: ".", with: ",")
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        guard let price = numberFormatter.number(from: self.textFieldSubscriptionPrice) else { return }
-        let formattedSubscriptionPrice = price.floatValue
+        
+        if let price = numberFormatter.number(from: self.textFieldSubscriptionPrice) {
+            saveStatus = true
+            formattedSubscriptionPrice = price.floatValue
+        } else {
+            saveStatus = false
+            self.alertTitle = "Wrong Price"
+            self.alertMessage = "Price can't be empty and has to be a valid number."
+        }
         
         // Cycle.
         let subscriptionCycle: String = self.textCycle
         
-        // Next payment.
+        // Next payment Date.
+        var components = DateComponents()
+        components.second = 0
+        components.minute = 0
+        components.hour = 1
+        components.day = Date().getDayNumber()
+        components.month = Date().getMonthNumber()
+        components.year = Date().getYearNumber()
+        
+        if let tomorrow = Calendar.current.date(from: components) {
+            if self.nextPayment < tomorrow {
+                saveStatus = false
+                self.alertTitle = "Wrong Date"
+                self.alertMessage = "Next Payment Date must be after today."
+            }
+        } else {
+            saveStatus = false
+            self.alertTitle = "Wrong Date"
+            self.alertMessage = "Next Payment Date must be after today."
+        }
         let subscriptionNextPayment: Date = self.nextPayment
         
         // Updates the subscription information using the view model.
         self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, cycle: subscriptionCycle, nextPayment: subscriptionNextPayment)
         
-        // Back to detail view.
-        self.isPresented.toggle()
+        return saveStatus
     }
     
     //MARK: - View
@@ -86,10 +117,17 @@ struct SubscriptionEditView: View {
             .navigationBarTitle(Text("Edit Subscription"), displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
-                    self.saveChanges()
+                    if self.saveChanges() {
+                        // Back to detail view.
+                        self.isPresented.toggle()
+                    } else {
+                        self.showingAlert = true
+                    }
                 }) {
                     Text("Save")
-                }
+                }.alert(isPresented: self.$showingAlert, content: {
+                    Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: Alert.Button.cancel(Text("OK")))
+                })
             )
         }
     }
