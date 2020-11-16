@@ -54,9 +54,15 @@ struct SubscriptionEditView: View {
     ///
     private func saveChanges() -> Bool {
         var saveStatus: Bool = true
+        self.alertTitle = "Error"
+        self.alertMessage = "Please check: "
         
         // Name.
         let subscriptionName: String = self.textFieldSubscriptionName
+        if subscriptionName == "" {
+            saveStatus = false
+            self.alertMessage = self.alertMessage + "Name is empty. "
+        }
         
         // Price formatter.
         var formattedSubscriptionPrice: Float = 0
@@ -65,12 +71,10 @@ struct SubscriptionEditView: View {
         numberFormatter.numberStyle = .decimal
         
         if let price = numberFormatter.number(from: self.textFieldSubscriptionPrice) {
-            saveStatus = true
             formattedSubscriptionPrice = price.floatValue
         } else {
             saveStatus = false
-            self.alertTitle = "Wrong Price"
-            self.alertMessage = "Price can't be empty and has to be a valid number."
+            self.alertMessage = self.alertMessage + "Price can't be empty and has to be a valid number. "
         }
         
         // Cycle.
@@ -88,18 +92,19 @@ struct SubscriptionEditView: View {
         if let tomorrow = Calendar.current.date(from: components) {
             if self.nextPayment < tomorrow {
                 saveStatus = false
-                self.alertTitle = "Wrong Date"
-                self.alertMessage = "Next Payment Date must be after today."
+                self.alertMessage = self.alertMessage + "Next Payment Date must be after today. "
             }
         } else {
             saveStatus = false
-            self.alertTitle = "Wrong Date"
-            self.alertMessage = "Next Payment Date must be after today."
+            self.alertMessage = self.alertMessage + "Next Payment Date must be after today. "
         }
+        
         let subscriptionNextPayment: Date = self.nextPayment
         
-        // Updates the subscription information using the view model.
-        self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, cycle: subscriptionCycle, nextPayment: subscriptionNextPayment)
+        if saveStatus {
+            // Updates the subscription information using the view model.
+            self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, cycle: subscriptionCycle, nextPayment: subscriptionNextPayment)
+        }
         
         return saveStatus
     }
