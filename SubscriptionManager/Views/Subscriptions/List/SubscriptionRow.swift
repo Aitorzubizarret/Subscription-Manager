@@ -35,7 +35,7 @@ struct SubscriptionRow: View {
         
         self.configureUIElements()
         
-        self.compareTodayDateAndPaymentDate()
+        self.compareTodaysDateWithPaymentDate()
     }
     
     ///
@@ -50,11 +50,11 @@ struct SubscriptionRow: View {
     ///
     /// Compares today's date and the payment date, and displays a label if the date is 10 days or less apart.
     ///
-    private mutating func compareTodayDateAndPaymentDate() {
+    private mutating func compareTodaysDateWithPaymentDate() {
         
         let paymentDate: Date = self.subscription.nextPayment
         
-        // Creates today's date. Ex. 2020/04/25 00:00:00
+        // Creates today's date with the time as 00:00:00. Ex. 2020/04/25 00:00:00
         var todayComponents: DateComponents = DateComponents()
         todayComponents.year = Date().getYearNumber()
         todayComponents.month = Date().getMonthNumber()
@@ -64,17 +64,22 @@ struct SubscriptionRow: View {
         todayComponents.second = 0
         let today: Date = Calendar.current.date(from: todayComponents) ?? Date()
         
-        // Create the date, Today plus 10 more days.
+        // Creates a new date adding 10 days to today's date.
         var dayComponent = DateComponents()
         dayComponent.day = 10
         let dateInTenDays: Date? = Calendar.current.date(byAdding: dayComponent, to: today)
         
         if let finalDate: Date = dateInTenDays {
-            if paymentDate > finalDate {
-                self.paymentDayNear = false
-            } else {
+            
+            // Checks if payment date is before final date (today's date plus 10 days), and payment date is today or after today's date.
+            if (paymentDate < finalDate) && (paymentDate >= today) {
+                // There are less than 10 days of difference between dates.
                 let component = Calendar.current.dateComponents([.day], from: today, to: paymentDate)
                 if let daysLeft: Int = component.day {
+                    // Shows the label on the row.
+                    self.paymentDayNear = true
+                    
+                    // Displays a different text on the label based on the number of days left.
                     switch daysLeft {
                     case 0 :
                         self.daysToPaymentText = "Today"
@@ -87,14 +92,11 @@ struct SubscriptionRow: View {
                     default:
                         self.daysToPaymentText = ""
                     }
-                    
                 }
-                self.paymentDayNear = true
             }
-        } else {
-            self.paymentDayNear = false
         }
     }
+    
     //MARK: - View
     
     var body: some View {
