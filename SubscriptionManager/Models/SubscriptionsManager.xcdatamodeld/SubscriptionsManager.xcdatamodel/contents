@@ -6,8 +6,9 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="nextPayment" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="price" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rowColor" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Subscription" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Subscription" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

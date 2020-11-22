@@ -43,8 +43,50 @@ struct SubscriptionRow: View {
     ///
     private mutating func configureUIElements() {
         self.textColor = Color.white
-        self.backgroundColor = Color.customRowPistachio
-        self.strokeColor = Color.customRowPistachio
+        
+        // BackgroundColor.
+        let selectedColor: String = self.subscription.rowColor
+        var subscriptionRowBackgroundColor: Color
+        var subscriptionRowStrokeColor: Color
+        
+        switch selectedColor {
+        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowBlue
+            subscriptionRowStrokeColor = Color.customRowBlue
+        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowBlueDark
+            subscriptionRowStrokeColor = Color.customRowBlueDark
+        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowGreen
+            subscriptionRowStrokeColor = Color.customRowGreen
+        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowGreenDark
+            subscriptionRowStrokeColor = Color.customRowGreenDark
+        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowPistachio
+            subscriptionRowStrokeColor = Color.customRowPistachio
+        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowYellow
+            subscriptionRowStrokeColor = Color.customRowYellow
+        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowMango
+            subscriptionRowStrokeColor = Color.customRowMango
+        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowOrange
+            subscriptionRowStrokeColor = Color.customRowOrange
+        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowOrangeDark
+            subscriptionRowStrokeColor = Color.customRowOrangeDark
+        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
+            subscriptionRowBackgroundColor = Color.customRowRed
+            subscriptionRowStrokeColor = Color.customRowRed
+        default:
+            subscriptionRowBackgroundColor = Color.customRowPistachio
+            subscriptionRowStrokeColor = Color.customRowPistachio
+        }
+        
+        self.backgroundColor = subscriptionRowBackgroundColor
+        self.strokeColor = subscriptionRowStrokeColor
     }
     
     ///

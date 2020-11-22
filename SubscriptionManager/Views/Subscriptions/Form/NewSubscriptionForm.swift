@@ -39,8 +39,11 @@ struct NewSubscriptionForm: View {
         // Cycle.
         let cycle: String = self.textCycle
         
+        // RowColor.
+        let selectedRowColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.allCases.randomElement() ?? SubscriptionsViewModel.subscriptionRowColor.pistachio
+        
         // Save the new subscription in Core Data.
-        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate)
+        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate, rowColor: selectedRowColor)
         
         return true
     }

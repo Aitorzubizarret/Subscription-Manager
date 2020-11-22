@@ -13,11 +13,25 @@ import CoreData
 class SubscriptionsViewModel: ObservableObject {
     
     //MARK: - Properties
+    
     @Published var subscriptions: [Subscription] = []
     private var moc: NSManagedObjectContext
     public var subscriptionCycleUnitOptions: [String] = ["day", "week", "month", "year"]
+    enum subscriptionRowColor: String, CaseIterable {
+        case blue = "customRowBlue"
+        case blueDark = "customRowBlueDark"
+        case green = "customRowGreen"
+        case greenDark = "customRowGreenDark"
+        case pistachio = "customRowPistachio"
+        case yellow = "customRowYellow"
+        case mango = "customRowMango"
+        case orange = "customRowOrange"
+        case orangeDark = "customRowOrangeDark"
+        case red = "customRowRed"
+    }
     
     //MARK: - Methods
+    
     init() {
         moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.getSubscriptions()
@@ -39,13 +53,14 @@ class SubscriptionsViewModel: ObservableObject {
     ///
     /// Creates and saves a new subscription in Core Data.
     ///
-    public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date) {
+    public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date, rowColor: subscriptionRowColor) {
         let newSubscription: Subscription = Subscription(context: self.moc)
         newSubscription.id = UUID()
         newSubscription.name = name
         newSubscription.price = price
         newSubscription.cycle = cycle
         newSubscription.nextPayment = nextPayment
+        newSubscription.rowColor = rowColor.rawValue
         
         do {
             try self.moc.save()
