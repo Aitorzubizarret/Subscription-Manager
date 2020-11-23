@@ -20,6 +20,7 @@ struct CalendarDayElement: View {
     private var selected: Bool
     private var backgroundColor: Color
     private var foregroundColor: Color
+    private var widthAndHeight: CGFloat = 40
     
     //MARK: - Methods
     
@@ -54,11 +55,11 @@ struct CalendarDayElement: View {
     
     var body: some View {
         Text(self.value)
-        .frame(width: 40, height: 40, alignment: .center)
-        .font(Font.system(size: 14, weight: Font.Weight.medium, design: Font.Design.monospaced))
-        .foregroundColor(self.foregroundColor)
-        .background(self.backgroundColor)
-        .cornerRadius(30)
+            .frame(width: self.widthAndHeight, height: self.widthAndHeight, alignment: .center)
+            .font(Font.system(size: 14, weight: Font.Weight.medium, design: Font.Design.monospaced))
+            .foregroundColor(self.foregroundColor)
+            .background(self.backgroundColor)
+            .cornerRadius(self.widthAndHeight / 2)
     }
 }
 
