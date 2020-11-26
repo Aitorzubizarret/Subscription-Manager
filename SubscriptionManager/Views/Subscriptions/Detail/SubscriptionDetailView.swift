@@ -76,7 +76,7 @@ struct SubscriptionDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 8) {
-                SubscriptionLogoTitleField(title: subscription.name)
+                SubscriptionLogoTitleField(title: subscription.name, category: subscription.category)
                 CustomDivider()
                 VStack(spacing: 8) {
                     SubscriptionDataField(title: "Price", value: self.price)

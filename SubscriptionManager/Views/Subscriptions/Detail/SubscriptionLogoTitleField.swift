@@ -13,6 +13,7 @@ struct SubscriptionLogoTitleField: View {
     //MARK: - Properties
     
     var title: String
+    var category: String
     
     //MARK: - View
     
@@ -32,9 +33,14 @@ struct SubscriptionLogoTitleField: View {
                     .padding(EdgeInsets(top: 20, leading: 46, bottom: 20, trailing: 25))
                     .foregroundColor(Color.black)
             }
-            Text(title)
-                .fontWeight(Font.Weight.bold)
-                .frame(alignment: .leading)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(Font.system(size: 20))
+                    .fontWeight(Font.Weight.bold)
+                Text(category)
+                    .font(Font.system(size: 14))
+                    .fontWeight(Font.Weight.light)
+            }
             Spacer()
         }
     }
@@ -43,7 +49,7 @@ struct SubscriptionLogoTitleField: View {
 struct SubscriptionLogoTitleField_Previews: PreviewProvider {
     
     static var previews: some View {
-        SubscriptionLogoTitleField(title: "HBO")
+        SubscriptionLogoTitleField(title: "HBO", category: "Video")
             .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

@@ -29,6 +29,13 @@ class SubscriptionsViewModel: ObservableObject {
         case orangeDark = "customRowOrangeDark"
         case red = "customRowRed"
     }
+    enum subscriptionCategory: String, CaseIterable {
+        case video = "video"
+        case music = "music"
+        case software = "software"
+        case gaming = "gaming"
+        case news = "news"
+    }
     
     //MARK: - Methods
     
@@ -53,7 +60,7 @@ class SubscriptionsViewModel: ObservableObject {
     ///
     /// Creates and saves a new subscription in Core Data.
     ///
-    public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date, rowColor: subscriptionRowColor) {
+    public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date, rowColor: subscriptionRowColor, category: subscriptionCategory) {
         let newSubscription: Subscription = Subscription(context: self.moc)
         newSubscription.id = UUID()
         newSubscription.name = name
@@ -61,6 +68,7 @@ class SubscriptionsViewModel: ObservableObject {
         newSubscription.cycle = cycle
         newSubscription.nextPayment = nextPayment
         newSubscription.rowColor = rowColor.rawValue
+        newSubscription.category = category.rawValue
         
         do {
             try self.moc.save()
