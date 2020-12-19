@@ -37,6 +37,8 @@
 		1AD6A787253E280200F02F0D /* SubscriptionLogoTitleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6A786253E280200F02F0D /* SubscriptionLogoTitleField.swift */; };
 		1ADBC3A825279EFC00AD06E6 /* SubscriptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBC3A725279EFC00AD06E6 /* SubscriptionsViewModel.swift */; };
 		1AF5E94D255DEBE000986ECF /* SmallSimpleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */; };
+		428093A1258E70E9003AC39D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428093A0258E70E9003AC39D /* Settings.bundle */; };
+		428093A4258E78AD003AC39D /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428093A3258E78AD003AC39D /* SettingsBundleHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		1AD6A786253E280200F02F0D /* SubscriptionLogoTitleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionLogoTitleField.swift; sourceTree = "<group>"; };
 		1ADBC3A725279EFC00AD06E6 /* SubscriptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewModel.swift; sourceTree = "<group>"; };
 		1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSimpleBox.swift; sourceTree = "<group>"; };
+		428093A0258E70E9003AC39D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		428093A3258E78AD003AC39D /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 				1AD398A0251D41CD00922ED9 /* LaunchScreen.storyboard */,
 				1AD398A3251D41CD00922ED9 /* Info.plist */,
 				1AD3989D251D41CD00922ED9 /* Preview Content */,
+				428093A0258E70E9003AC39D /* Settings.bundle */,
+				428093A3258E78AD003AC39D /* SettingsBundleHelper.swift */,
 			);
 			path = SubscriptionManager;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			files = (
 				1AD398AA251D434A00922ED9 /* .gitignore in Resources */,
 				1AD398A2251D41CD00922ED9 /* LaunchScreen.storyboard in Resources */,
+				428093A1258E70E9003AC39D /* Settings.bundle in Resources */,
 				1AD3989F251D41CD00922ED9 /* Preview Assets.xcassets in Resources */,
 				1AD3989C251D41CD00922ED9 /* Assets.xcassets in Resources */,
 			);
@@ -323,6 +330,7 @@
 				1A2CE00B252778F90009C743 /* AppView.swift in Sources */,
 				1AD39898251D41C700922ED9 /* SceneDelegate.swift in Sources */,
 				1A3420AB253F7F0A000A88F7 /* SubscriptionEditView.swift in Sources */,
+				428093A4258E78AD003AC39D /* SettingsBundleHelper.swift in Sources */,
 				1AB15296255DECB500FBF5F4 /* SectionTitle.swift in Sources */,
 				1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */,
 				1AD3989A251D41C700922ED9 /* SubscriptionsView.swift in Sources */,
