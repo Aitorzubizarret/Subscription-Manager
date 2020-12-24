@@ -18,6 +18,7 @@ struct NewSubscriptionForm: View {
     @State private var textFieldSubscriptionPrice: String = ""
     @State private var textCycle: String = "1-m"
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
+    @State private var selectedColor: String = "blue"
     @State private var showingAlert: Bool = false
     
     //MARK: - Methods
@@ -42,8 +43,11 @@ struct NewSubscriptionForm: View {
         // RowColor.
         let selectedRowColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.allCases.randomElement() ?? SubscriptionsViewModel.subscriptionRowColor.pistachio
         
+        // Category.
+        let selectedCategory: SubscriptionsViewModel.subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
+        
         // Save the new subscription in Core Data.
-        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate, rowColor: selectedRowColor, category: .music)
+        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate, rowColor: selectedRowColor, category: selectedCategory)
         
         return true
     }
@@ -56,6 +60,7 @@ struct NewSubscriptionForm: View {
                 EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 CycleField(title: "Cycle", value: self.$textCycle)
+                ColorsField(title: "Color", value: self.$selectedColor)
                 CalendarField(title: "Next Payment", value: self.$subscriptionNextPaymentDate)
             }
             .navigationBarTitle(Text("New Subscription"), displayMode: .inline)
