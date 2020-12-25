@@ -12,7 +12,7 @@ struct ColorsField: View {
     
     // MARK: - Properties
     
-    @Binding var selectedColor: String
+    @Binding var selectedColor: SubscriptionsViewModel.subscriptionRowColor
     var title: String
     private var spacing: CGFloat {
         return (UIScreen.main.bounds.size.width - (12 * 4) - (40 * 7)) / 6
@@ -21,7 +21,7 @@ struct ColorsField: View {
     
     // MARK: - Methods
     
-    init(title: String, value: Binding<String>) {
+    init(title: String, value: Binding<SubscriptionsViewModel.subscriptionRowColor>) {
         self.title = title
         self._selectedColor = value
     }
@@ -75,27 +75,27 @@ struct ColorsField: View {
         
         switch self.selectedColorPosition {
         case 0:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blue
         case 1:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blueDark
         case 2:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.green.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.green
         case 3:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.greenDark
         case 4:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.mango.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.mango
         case 5:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.orange.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.orange
         case 6:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.orangeDark
         case 7:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.pistachio
         case 8:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.red.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.red
         case 9:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.yellow
         default:
-            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blue
         }
     }
     
@@ -135,7 +135,7 @@ struct ColorsField: View {
 
 struct SelectColorField_Previews: PreviewProvider {
     static var previews: some View {
-        ColorsField(title: "Color", value: .constant("blue"))
+        ColorsField(title: "Color", value: .constant(SubscriptionsViewModel.subscriptionRowColor.blue))
             .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

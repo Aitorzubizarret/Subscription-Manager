@@ -18,7 +18,7 @@ struct NewSubscriptionForm: View {
     @State private var textFieldSubscriptionPrice: String = ""
     @State private var textCycle: String = "1-m"
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
-    @State private var selectedColor: String = "blue"
+    @State private var selectedColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.blue
     @State private var showingAlert: Bool = false
     
     //MARK: - Methods
@@ -41,7 +41,7 @@ struct NewSubscriptionForm: View {
         let cycle: String = self.textCycle
         
         // RowColor.
-        let selectedRowColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.allCases.randomElement() ?? SubscriptionsViewModel.subscriptionRowColor.pistachio
+        let selectedRowColor: SubscriptionsViewModel.subscriptionRowColor = self.selectedColor
         
         // Category.
         let selectedCategory: SubscriptionsViewModel.subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
