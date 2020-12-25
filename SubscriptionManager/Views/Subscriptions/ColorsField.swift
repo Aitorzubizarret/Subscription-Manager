@@ -17,12 +17,86 @@ struct ColorsField: View {
     private var spacing: CGFloat {
         return (UIScreen.main.bounds.size.width - (12 * 4) - (40 * 7)) / 6
     }
+    @State private var selectedColorPosition: Int = 0
     
     // MARK: - Methods
     
     init(title: String, value: Binding<String>) {
         self.title = title
         self._selectedColor = value
+    }
+    
+    ///
+    /// Returns the 'SubscriptionViewModel.subscriptionRowColor' based on the position.
+    ///
+    private func setColor(position: Int) -> SubscriptionsViewModel.subscriptionRowColor {
+        switch position {
+        case 0:
+            return .blue
+        case 1:
+            return .blueDark
+        case 2:
+            return .green
+        case 3:
+            return .greenDark
+        case 4:
+            return .mango
+        case 5:
+            return .orange
+        case 6:
+            return .orangeDark
+        case 7:
+            return .pistachio
+        case 8:
+            return .red
+        case 9:
+            return .yellow
+        default:
+            return .blue
+        }
+    }
+    
+    ///
+    /// Check with color (based on the position) is selected and returns a boolean.
+    ///
+    private func isSelected(position: Int) -> Bool {
+        if position == self.selectedColorPosition {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    ///
+    /// Updates the position of the selected color.
+    ///
+    private func updateSelectedColorPosition(position: Int) {
+        self.selectedColorPosition = position
+        
+        switch self.selectedColorPosition {
+        case 0:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
+        case 1:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue
+        case 2:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.green.rawValue
+        case 3:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue
+        case 4:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.mango.rawValue
+        case 5:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.orange.rawValue
+        case 6:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue
+        case 7:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue
+        case 8:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.red.rawValue
+        case 9:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue
+        default:
+            self.selectedColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
+        }
     }
     
     // MARK: - View
@@ -35,19 +109,23 @@ struct ColorsField: View {
                 .foregroundColor(Color.customDarkText)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
             HStack(spacing: self.spacing) {
-                ColorElement(color: .blue, selected: false)
-                ColorElement(color: .blueDark, selected: false)
-                ColorElement(color: .green, selected: false)
-                ColorElement(color: .greenDark, selected: false)
-                ColorElement(color: .mango, selected: false)
-                ColorElement(color: .orange, selected: false)
-                ColorElement(color: .orangeDark, selected: false)
+                ForEach(0..<7, id: \.self) { index in
+                    Button(action: {
+                        self.updateSelectedColorPosition(position: index)
+                    }) {
+                        ColorElement(color: self.setColor(position: index), selected: self.isSelected(position: index))
+                    }
+                }
             }
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
             HStack(spacing: self.spacing) {
-                ColorElement(color: .pistachio, selected: false)
-                ColorElement(color: .red, selected: false)
-                ColorElement(color: .yellow, selected: false)
+                ForEach(7..<10, id: \.self) { index in
+                    Button(action: {
+                        self.updateSelectedColorPosition(position: index)
+                    }) {
+                        ColorElement(color: self.setColor(position: index), selected: self.isSelected(position: index))
+                    }
+                }
             }
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
         }

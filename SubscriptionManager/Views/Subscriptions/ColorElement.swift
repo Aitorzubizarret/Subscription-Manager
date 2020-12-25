@@ -14,7 +14,8 @@ struct ColorElement: View {
     
     private var widthAndHeight: CGFloat = 40
     private var rowColor: SubscriptionsViewModel.subscriptionRowColor
-    private var selectedColor: Color
+    private var backgroundColor: Color
+    private var borderColor: Color
     private var selected: Bool
     
     // MARK: - Methods
@@ -25,25 +26,31 @@ struct ColorElement: View {
         
         switch self.rowColor {
         case .blue:
-            self.selectedColor = Color.customRowBlue
+            self.backgroundColor = Color.customRowBlue
         case .blueDark:
-            self.selectedColor = Color.customRowBlueDark
+            self.backgroundColor = Color.customRowBlueDark
         case .green:
-            self.selectedColor = Color.customRowGreen
+            self.backgroundColor = Color.customRowGreen
         case .greenDark:
-            self.selectedColor = Color.customRowGreenDark
+            self.backgroundColor = Color.customRowGreenDark
         case .mango:
-            self.selectedColor = Color.customRowMango
+            self.backgroundColor = Color.customRowMango
         case.orange:
-            self.selectedColor = Color.customRowOrange
+            self.backgroundColor = Color.customRowOrange
         case .orangeDark:
-            self.selectedColor = Color.customRowOrangeDark
+            self.backgroundColor = Color.customRowOrangeDark
         case .pistachio:
-            self.selectedColor = Color.customRowPistachio
+            self.backgroundColor = Color.customRowPistachio
         case .red:
-            self.selectedColor = Color.customRowRed
+            self.backgroundColor = Color.customRowRed
         case .yellow:
-            self.selectedColor = Color.customRowYellow
+            self.backgroundColor = Color.customRowYellow
+        }
+        
+        if self.selected {
+            self.borderColor = Color.black
+        } else {
+            self.borderColor = Color.clear
         }
     }
     
@@ -52,7 +59,11 @@ struct ColorElement: View {
     var body: some View {
         Text("")
             .frame(width: self.widthAndHeight, height: self.widthAndHeight, alignment: .center)
-            .background(self.selectedColor)
+            .background(self.backgroundColor)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(self.borderColor, lineWidth: 10)
+            )
             .cornerRadius(20)
     }
 }
