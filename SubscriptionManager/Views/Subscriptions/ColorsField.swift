@@ -17,13 +17,45 @@ struct ColorsField: View {
     private var spacing: CGFloat {
         return (UIScreen.main.bounds.size.width - (12 * 4) - (40 * 7)) / 6
     }
-    @State private var selectedColorPosition: Int = 0
+    @State private var selectedColorPosition: Int
     
     // MARK: - Methods
     
     init(title: String, value: Binding<SubscriptionsViewModel.subscriptionRowColor>) {
         self.title = title
         self._selectedColor = value
+        self._selectedColorPosition = State(wrappedValue: 0)
+        
+        self.setSelectedColorPosition()
+    }
+    
+    ///
+    /// Sets the selected color.
+    ///
+    private mutating func setSelectedColorPosition() {
+        
+        switch self.selectedColor {
+        case .blue:
+            self._selectedColorPosition = State(wrappedValue: 0)
+        case .blueDark:
+            self._selectedColorPosition = State(wrappedValue: 1)
+        case .green:
+            self._selectedColorPosition = State(wrappedValue: 2)
+        case .greenDark:
+            self._selectedColorPosition = State(wrappedValue: 3)
+        case .mango:
+            self._selectedColorPosition = State(wrappedValue: 4)
+        case .orange:
+            self._selectedColorPosition = State(wrappedValue: 5)
+        case .orangeDark:
+            self._selectedColorPosition = State(wrappedValue: 6)
+        case .pistachio:
+            self._selectedColorPosition = State(wrappedValue: 7)
+        case .red:
+            self._selectedColorPosition = State(wrappedValue: 8)
+        case .yellow:
+            self._selectedColorPosition = State(wrappedValue: 9)
+        }
     }
     
     ///

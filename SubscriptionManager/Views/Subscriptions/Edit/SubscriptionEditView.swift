@@ -17,6 +17,7 @@ struct SubscriptionEditView: View {
     @State private var textFieldSubscriptionName: String = ""
     @State private var textFieldSubscriptionPrice: String = ""
     @State private var textCycle: String = ""
+    @State private var selectedColor: SubscriptionsViewModel.subscriptionRowColor
     @State private var nextPayment: Date = Date()
     @State private var showingAlert: Bool = false
     @State private var alertTitle: String = ""
@@ -28,6 +29,7 @@ struct SubscriptionEditView: View {
     init(isPresented: Binding<Bool>, subscription: Subscription) {
         self._isPresented = isPresented
         self.subscription = subscription
+        self._selectedColor = State(wrappedValue: .blue)
         
         self.configureUIElements()
     }
@@ -44,6 +46,35 @@ struct SubscriptionEditView: View {
         
         // Cycle.
         self._textCycle = State(wrappedValue: subscription.cycle)
+        
+        // Color.
+        let rowColor: String = subscription.rowColor
+        var subscriptionRowColor: SubscriptionsViewModel.subscriptionRowColor = .blue
+        switch rowColor {
+        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
+            subscriptionRowColor = .blue
+        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
+            subscriptionRowColor = .blueDark
+        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
+            subscriptionRowColor = .green
+        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
+            subscriptionRowColor = .greenDark
+        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
+            subscriptionRowColor = .mango
+        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
+            subscriptionRowColor = .orange
+        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
+            subscriptionRowColor = .orangeDark
+        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
+            subscriptionRowColor = .pistachio
+        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
+            subscriptionRowColor = .red
+        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
+            subscriptionRowColor = .yellow
+        default:
+            subscriptionRowColor = .blue
+        }
+        self._selectedColor = State(wrappedValue: subscriptionRowColor)
         
         // Next Payment.
         self._nextPayment = State(wrappedValue: subscription.nextPayment)
@@ -80,6 +111,9 @@ struct SubscriptionEditView: View {
         // Cycle.
         let subscriptionCycle: String = self.textCycle
         
+        // RowColor.
+        let selectedRowColor: SubscriptionsViewModel.subscriptionRowColor = self.selectedColor
+        
         // Next payment Date.
         var components = DateComponents()
         components.second = 0
@@ -103,7 +137,7 @@ struct SubscriptionEditView: View {
         
         if saveStatus {
             // Updates the subscription information using the view model.
-            self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, cycle: subscriptionCycle, nextPayment: subscriptionNextPayment)
+            self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, cycle: subscriptionCycle, rowColor: selectedRowColor, nextPayment: subscriptionNextPayment)
         }
         
         return saveStatus
@@ -117,6 +151,7 @@ struct SubscriptionEditView: View {
                 EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 CycleField(title: "Cycle", value: self.$textCycle)
+                ColorsField(title: "Color", value: self.$selectedColor)
                 CalendarField(title: "Next Payment", value: self.$nextPayment)
             }
             .navigationBarTitle(Text("Edit Subscription"), displayMode: .inline)

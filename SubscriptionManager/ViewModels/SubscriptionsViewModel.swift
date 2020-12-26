@@ -80,13 +80,14 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Updates data in the received subscription.
-    /// - Parameter subcription :The subscription to update.
-    /// - Parameter name : A new name for the subscription.
-    /// - Parameter price : A new price for the subscription.
-    /// - Parameter cycle : A new cycle for the subscription.
-    /// - Parameter nextPayment : A new 'nextPayment' date for the subscription.
+    /// - Parameter subcription : The subscription to update.
+    /// - Parameter name : A  name for the subscription.
+    /// - Parameter price : A  price for the subscription.
+    /// - Parameter cycle : A  cycle for the subscription.
+    /// - Parameter rowColor: A color for the subscription.
+    /// - Parameter nextPayment : A  'nextPayment' date for the subscription.
     ///
-    public func updateSubscription(subscription: Subscription, name: String?, price: Float?, cycle: String?, nextPayment: Date?) {
+    public func updateSubscription(subscription: Subscription, name: String?, price: Float?, cycle: String?, rowColor: subscriptionRowColor?, nextPayment: Date?) {
         // Check Name is not an optional.
         if let newName: String = name {
             subscription.name = newName
@@ -100,6 +101,11 @@ class SubscriptionsViewModel: ObservableObject {
         // Check Cycle is not an optional.
         if let newCycle: String = cycle {
             subscription.cycle = newCycle
+        }
+        
+        // Check Color is not an optional
+        if let newRowColor: subscriptionRowColor = rowColor {
+            subscription.rowColor = newRowColor.rawValue
         }
         
         // Check Next Payment date is not an optional.
