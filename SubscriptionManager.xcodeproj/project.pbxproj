@@ -108,8 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				1A3420AA253F7F0A000A88F7 /* SubscriptionEditView.swift */,
-				1A90E3AE2548670300C95E9A /* EditableField.swift */,
-				1A90E3B02548AED800C95E9A /* CycleField.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -173,8 +171,6 @@
 			children = (
 				1A8CFC4B254D90AA00B8DEB9 /* RoundCorners.swift */,
 				1A8CFC4D254DD72600B8DEB9 /* BigButton.swift */,
-				1AA2F1102554646400ACD229 /* CalendarField.swift */,
-				1AA2F11225549D7800ACD229 /* CalendarDayElement.swift */,
 				1A2CE00A252778F90009C743 /* AppView.swift */,
 				1ADBC3A125279E3400AD06E6 /* Subscriptions */,
 				1ADBC3A225279E4400AD06E6 /* Statistics */,
@@ -189,8 +185,12 @@
 				1ADBC3A525279E6000AD06E6 /* Detail */,
 				1ADBC3A425279E5B00AD06E6 /* Form */,
 				1A3420A9253F7EC5000A88F7 /* Edit */,
+				1A90E3AE2548670300C95E9A /* EditableField.swift */,
+				1A90E3B02548AED800C95E9A /* CycleField.swift */,
 				42A7153725950FE80028A4F7 /* ColorElement.swift */,
 				42A7153A2595125A0028A4F7 /* ColorsField.swift */,
+				1AA2F11225549D7800ACD229 /* CalendarDayElement.swift */,
+				1AA2F1102554646400ACD229 /* CalendarField.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
