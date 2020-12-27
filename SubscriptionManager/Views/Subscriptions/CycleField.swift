@@ -126,11 +126,7 @@ struct CycleField: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.title.uppercased())
-                .font(Font.system(size: 14))
-                .fontWeight(Font.Weight.medium)
-                .foregroundColor(Color.customDarkText)
-                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
+            FieldTitle(title: self.title)
             HStack(spacing: 0) {
                 Button(action: {
                     self.decreaseValue()

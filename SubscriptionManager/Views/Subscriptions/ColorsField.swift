@@ -135,11 +135,7 @@ struct ColorsField: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(self.title.uppercased())
-                .font(Font.system(size: 14))
-                .fontWeight(Font.Weight.medium)
-                .foregroundColor(Color.customDarkText)
-                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
+            FieldTitle(title: self.title)
             HStack(spacing: self.spacing) {
                 ForEach(0..<7, id: \.self) { index in
                     Button(action: {

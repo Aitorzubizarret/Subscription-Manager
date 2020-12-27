@@ -28,11 +28,7 @@ struct EditableField: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(self.title.uppercased())
-                .font(Font.system(size: 14))
-                .fontWeight(Font.Weight.medium)
-                .foregroundColor(Color.customDarkText)
-                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
+            FieldTitle(title: self.title)
             TextField("Enter the \(self.title.lowercased()) ...", text: $textfieldValue)
                 .font(.system(size: 16, weight: .medium, design: .default))
                 .foregroundColor(Color.black)
