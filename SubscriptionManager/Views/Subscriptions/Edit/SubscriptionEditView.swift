@@ -154,6 +154,12 @@ struct SubscriptionEditView: View {
                 ColorsField(title: "Color", value: self.$selectedColor)
                 CalendarField(title: "Next Payment", value: self.$nextPayment)
             }
+            .gesture(
+                // Detects the scrollview moving and hides the keyboard.
+                DragGesture().onChanged({ _ in
+                    self.hideKeyboard()
+                })
+            )
             .navigationBarTitle(Text("Edit Subscription"), displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
