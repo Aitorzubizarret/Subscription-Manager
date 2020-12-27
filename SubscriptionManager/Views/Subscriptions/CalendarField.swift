@@ -239,23 +239,25 @@ struct CalendarField: View {
     /// Changes the selected day to the received one.
     ///
     private func updateSelectedDay(day: String) {
-        // Update selected day.
-        self.selectedDay = Int(day) ?? 0
-        
-        // Save the rest of the date.
-        self.selectedMonth = self.calendarMonth
-        self.selectedYear = self.calendarYear
-        
-        // Update selected date.
-        var components = DateComponents()
-        components.second = 0
-        components.minute = 0
-        components.hour = 1
-        components.day = self.selectedDay
-        components.month = self.calendarMonth
-        components.year = self.calendarYear
-        
-        self.selectedDate = Calendar.current.date(from: components) ?? Date()
+        if day != "" {
+            // Update selected day.
+            self.selectedDay = Int(day) ?? 0
+            
+            // Save the rest of the date.
+            self.selectedMonth = self.calendarMonth
+            self.selectedYear = self.calendarYear
+            
+            // Update selected date.
+            var components = DateComponents()
+            components.second = 0
+            components.minute = 0
+            components.hour = 1
+            components.day = self.selectedDay
+            components.month = self.calendarMonth
+            components.year = self.calendarYear
+            
+            self.selectedDate = Calendar.current.date(from: components) ?? Date()
+        }
     }
     
     //MARK: - View
