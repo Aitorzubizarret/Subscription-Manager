@@ -59,7 +59,9 @@ struct ColorsField: View {
     }
     
     ///
-    /// Returns the 'SubscriptionViewModel.subscriptionRowColor' based on the position.
+    /// Returns a 'SubscriptionViewModel.subscriptionRowColor' based on the position.
+    ///  - Parameter position : The position of the color.
+    ///  - Returns : A color as 'SubscriptionsViewModel.subscriptionRowColor'.
     ///
     private func setColor(position: Int) -> SubscriptionsViewModel.subscriptionRowColor {
         switch position {
@@ -89,7 +91,9 @@ struct ColorsField: View {
     }
     
     ///
-    /// Check with color (based on the position) is selected and returns a boolean.
+    /// Checks if color (based on the position) is selected and returns a boolean.
+    /// - Parameter position : The position of the selected color.
+    /// - Returns : True if the color is selected and false otherwise.
     ///
     private func isSelected(position: Int) -> Bool {
         if position == self.selectedColorPosition {
@@ -101,6 +105,7 @@ struct ColorsField: View {
     
     ///
     /// Updates the position of the selected color.
+    /// - Parameter position : The new selected color position.
     ///
     private func updateSelectedColorPosition(position: Int) {
         self.selectedColorPosition = position

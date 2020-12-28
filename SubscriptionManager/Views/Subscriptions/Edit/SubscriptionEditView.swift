@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SubscriptionEditView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @Binding var isPresented: Bool
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
@@ -24,7 +24,7 @@ struct SubscriptionEditView: View {
     @State private var alertMessage: String = ""
     var subscription: Subscription
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(isPresented: Binding<Bool>, subscription: Subscription) {
         self._isPresented = isPresented
@@ -82,6 +82,7 @@ struct SubscriptionEditView: View {
     
     ///
     /// Saves the changes in the subscription.
+    /// - Returns : True if the changes have been saved.
     ///
     private func saveChanges() -> Bool {
         var saveStatus: Bool = true
@@ -143,7 +144,7 @@ struct SubscriptionEditView: View {
         return saveStatus
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         NavigationView {

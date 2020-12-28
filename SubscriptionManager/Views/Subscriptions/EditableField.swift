@@ -10,13 +10,13 @@ import SwiftUI
 
 struct EditableField: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @Binding var textfieldValue: String
     var title: String
     var keyboardType: UIKeyboardType
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(title: String, value: Binding<String>, keyboardType: UIKeyboardType) {
         self.title = title
@@ -24,7 +24,7 @@ struct EditableField: View {
         self.keyboardType = keyboardType
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

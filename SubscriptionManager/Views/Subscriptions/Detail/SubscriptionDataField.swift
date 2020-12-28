@@ -10,12 +10,12 @@ import SwiftUI
 
 struct SubscriptionDataField: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     let title: String
     let value: String
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         HStack {

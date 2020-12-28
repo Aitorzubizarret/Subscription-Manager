@@ -10,11 +10,11 @@ import SwiftUI
 
 struct StatisticsView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {

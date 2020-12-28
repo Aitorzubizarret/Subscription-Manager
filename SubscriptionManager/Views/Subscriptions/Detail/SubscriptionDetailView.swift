@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SubscriptionDetailView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingAlert: Bool = false
@@ -21,7 +21,7 @@ struct SubscriptionDetailView: View {
     private var cycle: String = ""
     private var nextPayment: String = ""
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(subscription: Subscription) {
         self.subscription = subscription
@@ -71,7 +71,7 @@ struct SubscriptionDetailView: View {
         self.subscriptionsViewModel.deleteSubscription(subscription: self.subscription)
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         ScrollView {

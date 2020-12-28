@@ -10,12 +10,12 @@ import SwiftUI
 
 struct SubscriptionsView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingNewSubscriptionForm: Bool = false
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
 

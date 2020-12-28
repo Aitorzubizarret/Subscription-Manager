@@ -12,7 +12,7 @@ import CoreData
 
 class SubscriptionsViewModel: ObservableObject {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @Published var subscriptions: [Subscription] = []
     private var moc: NSManagedObjectContext
@@ -37,7 +37,7 @@ class SubscriptionsViewModel: ObservableObject {
         case news = "news"
     }
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init() {
         moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -59,6 +59,12 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Creates and saves a new subscription in Core Data.
+    /// - Parameter name : The name of the subcription.
+    /// - Parameter price : The price of the subscription.
+    /// - Parameter cycle : The payment cycle (every 2 weeks, monthly, every 3 months, ...) of the subscription.
+    /// - Parameter nextPayment : The date of the next payment.
+    /// - Parameter rowColor : The color of the subscription in the list.
+    /// - Parameter category : The category of the subscription.
     ///
     public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date, rowColor: subscriptionRowColor, category: subscriptionCategory) {
         let newSubscription: Subscription = Subscription(context: self.moc)
@@ -127,6 +133,7 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Deletes the received subcripcion from Core Data.
+    /// - Parameter subscription : The subscription to delete.
     ///
     public func deleteSubscription(subscription: Subscription) {
         

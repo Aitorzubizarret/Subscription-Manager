@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SmallSimpleBox: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var value: Int
     var descriptionText: String
@@ -18,14 +18,14 @@ struct SmallSimpleBox: View {
         return ((UIScreen.main.bounds.size.width / 3) - 8 - 8 - 12 - 12)
     }
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(value: Int, descriptionText: String) {
         self.value = value
         self.descriptionText = descriptionText.uppercased()
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         VStack {

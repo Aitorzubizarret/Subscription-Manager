@@ -10,11 +10,11 @@ import SwiftUI
 
 struct AppView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var subscriptionsViewModel = SubscriptionsViewModel()
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         TabView {

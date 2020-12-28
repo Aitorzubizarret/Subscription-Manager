@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NewSubscriptionForm: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @Binding var isPresented: Bool
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
@@ -21,7 +21,7 @@ struct NewSubscriptionForm: View {
     @State private var selectedColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.blue
     @State private var showingAlert: Bool = false
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     ///
     /// Adds a new subscription to the subscriptions list.
@@ -52,7 +52,7 @@ struct NewSubscriptionForm: View {
         return true
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         NavigationView {

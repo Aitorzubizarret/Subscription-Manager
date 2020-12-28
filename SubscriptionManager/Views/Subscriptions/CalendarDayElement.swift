@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CalendarDayElement: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     enum NumberOrText {
         case letter
@@ -22,7 +22,7 @@ struct CalendarDayElement: View {
     private var foregroundColor: Color
     private var widthAndHeight: CGFloat = 40
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(type: NumberOrText, value: String, selected: Bool) {
         
@@ -51,7 +51,7 @@ struct CalendarDayElement: View {
         }
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         Text(self.value)

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BigButton: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     enum Style {
         case edit
@@ -22,7 +22,7 @@ struct BigButton: View {
     private var frontColor: Color
     private var strokeColor: Color
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(style: Style, title: String) {
         switch style {
@@ -41,7 +41,7 @@ struct BigButton: View {
         }
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         HStack {

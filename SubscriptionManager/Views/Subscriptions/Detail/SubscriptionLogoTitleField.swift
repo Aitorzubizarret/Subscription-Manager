@@ -10,12 +10,12 @@ import SwiftUI
 
 struct SubscriptionLogoTitleField: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var title: String
     var category: String
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         HStack {

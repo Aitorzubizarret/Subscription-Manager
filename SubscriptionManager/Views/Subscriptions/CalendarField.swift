@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CalendarField: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @Binding var selectedDate: Date
     @State private var selectedYear: Int
@@ -34,7 +34,7 @@ struct CalendarField: View {
     }
     private var daysNames: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(title: String, value: Binding<Date>) {
         self.title = title
@@ -78,6 +78,7 @@ struct CalendarField: View {
     
     ///
     /// Gets how many days a month has and returns it as a number.
+    /// - Returns : A number representing the amount of days of the month.
     ///
     private func getDaysInMonth() -> Int {
         // Create a date with components.
@@ -92,6 +93,7 @@ struct CalendarField: View {
     
     ///
     /// Calculates the position of each day in the calendar and returns it.
+    /// - Returns : An array of strings representing the position of each day.
     ///
     private func getDaysPositionInCalendar() -> [String] {
         
@@ -168,6 +170,8 @@ struct CalendarField: View {
     
     ///
     /// Checks if the day is the selected day to highlight it on the calendar.
+    /// - Parameter dayNumber : The number of the day.
+    /// - Returns : True if the number of the day received is the selected day.
     ///
     private func isSelectedDay(dayNumber: String) -> Bool {
         
@@ -237,6 +241,7 @@ struct CalendarField: View {
     
     ///
     /// Changes the selected day to the received one.
+    /// - Parameter day : An string that represents a day number selected by the user.
     ///
     private func updateSelectedDay(day: String) {
         if day != "" {

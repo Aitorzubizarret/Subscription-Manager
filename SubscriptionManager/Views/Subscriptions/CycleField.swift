@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CycleField: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @Binding var textfieldValue: String
     @State private var cycleText: String = ""
@@ -32,7 +32,7 @@ struct CycleField: View {
         return (UIScreen.main.bounds.size.width / 4) - 14
     }
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(title: String, value: Binding<String>) {
         self.title = title
@@ -78,6 +78,7 @@ struct CycleField: View {
     
     ///
     /// Compares the unit and sends back a string.
+    /// - Returns : Returns the unit as a string. Ex. d = day, w = week. m = month, ...
     ///
     private func checkUnit() -> String {
         var str: String = ""
@@ -122,7 +123,7 @@ struct CycleField: View {
         }
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         VStack(alignment: .leading) {

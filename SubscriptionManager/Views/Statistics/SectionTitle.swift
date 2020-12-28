@@ -10,17 +10,17 @@ import SwiftUI
 
 struct SectionTitle: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var title: String
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(title: String) {
         self.title = title.uppercased()
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         Text(self.title)

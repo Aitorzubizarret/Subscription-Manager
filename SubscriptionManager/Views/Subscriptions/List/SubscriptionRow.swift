@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SubscriptionRow: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     var subscription: Subscription
@@ -28,7 +28,7 @@ struct SubscriptionRow: View {
         return (UIScreen.main.bounds.size.width - 15 - 15) // SubscriptionView, leading and trailing padding.
     }
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     init(subscription: Subscription) {
         self.subscription = subscription
@@ -139,7 +139,7 @@ struct SubscriptionRow: View {
         }
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         NavigationLink(destination: SubscriptionDetailView(subscription: subscription).environmentObject(self.subscriptionsViewModel)) {
