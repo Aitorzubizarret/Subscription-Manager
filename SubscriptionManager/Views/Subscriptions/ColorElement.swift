@@ -48,7 +48,7 @@ struct ColorElement: View {
         }
         
         if self.selected {
-            self.borderColor = Color.black
+            self.borderColor = Color.black.opacity(0.3)
         } else {
             self.borderColor = Color.clear
         }
