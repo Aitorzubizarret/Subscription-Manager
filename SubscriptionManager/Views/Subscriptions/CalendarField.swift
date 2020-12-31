@@ -274,9 +274,8 @@ struct CalendarField: View {
                 Button(action: {
                     self.goToPreviousMonth()
                 }) {
-                    Text("<")
-                        .font(Font.system(size: 22))
-                        .fontWeight(Font.Weight.heavy)
+                    Image(systemName: "chevron.left")
+                        .font(Font.system(size: 18))
                         .foregroundColor(Color.customDarkText)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                         .frame(width: 44, height: 44, alignment: .center)
@@ -294,9 +293,8 @@ struct CalendarField: View {
                 Button(action: {
                     self.goToNextMonth()
                 }) {
-                    Text(">")
-                        .font(Font.system(size: 22))
-                        .fontWeight(Font.Weight.heavy)
+                    Image(systemName: "chevron.right")
+                        .font(Font.system(size: 18))
                         .foregroundColor(Color.customDarkText)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                         .frame(width: 44, height: 44, alignment: .center)
