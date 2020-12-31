@@ -40,6 +40,7 @@
 		423265AE2599025D0017FE34 /* FieldTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423265AD2599025D0017FE34 /* FieldTitle.swift */; };
 		428093A1258E70E9003AC39D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428093A0258E70E9003AC39D /* Settings.bundle */; };
 		428093A4258E78AD003AC39D /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428093A3258E78AD003AC39D /* SettingsBundleHelper.swift */; };
+		42A51007259E668B00EB3544 /* CategoryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A51006259E668B00EB3544 /* CategoryField.swift */; };
 		42A7153825950FE80028A4F7 /* ColorElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153725950FE80028A4F7 /* ColorElement.swift */; };
 		42A7153B2595125A0028A4F7 /* ColorsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153A2595125A0028A4F7 /* ColorsField.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		423265AD2599025D0017FE34 /* FieldTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTitle.swift; sourceTree = "<group>"; };
 		428093A0258E70E9003AC39D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		428093A3258E78AD003AC39D /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
+		42A51006259E668B00EB3544 /* CategoryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryField.swift; sourceTree = "<group>"; };
 		42A7153725950FE80028A4F7 /* ColorElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorElement.swift; sourceTree = "<group>"; };
 		42A7153A2595125A0028A4F7 /* ColorsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +196,7 @@
 				42A7153A2595125A0028A4F7 /* ColorsField.swift */,
 				1AA2F11225549D7800ACD229 /* CalendarDayElement.swift */,
 				1AA2F1102554646400ACD229 /* CalendarField.swift */,
+				42A51006259E668B00EB3544 /* CategoryField.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				428093A4258E78AD003AC39D /* SettingsBundleHelper.swift in Sources */,
 				1AB15296255DECB500FBF5F4 /* SectionTitle.swift in Sources */,
 				1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */,
+				42A51007259E668B00EB3544 /* CategoryField.swift in Sources */,
 				1AD3989A251D41C700922ED9 /* SubscriptionsView.swift in Sources */,
 				1A7BF2A8253CCDAE005FBAF3 /* CustomDivider.swift in Sources */,
 			);

@@ -59,6 +59,7 @@ struct NewSubscriptionForm: View {
             ScrollView {
                 EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
+                CategoryField(title: "Category")
                 CycleField(title: "Cycle", value: self.$textCycle)
                 ColorsField(title: "Color", value: self.$selectedColor)
                 CalendarField(title: "Next Payment", value: self.$subscriptionNextPaymentDate)
