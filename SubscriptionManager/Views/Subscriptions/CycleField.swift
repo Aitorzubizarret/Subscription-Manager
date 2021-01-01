@@ -132,9 +132,8 @@ struct CycleField: View {
                 Button(action: {
                     self.decreaseValue()
                 }) {
-                    Text("-")
-                        .font(Font.system(size: 22))
-                        .fontWeight(Font.Weight.heavy)
+                    Image(systemName: "minus")
+                        .font(Font.system(size: 18))
                         .foregroundColor(Color.customDarkText)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                         .frame(width: 44, height: 44, alignment: .center)
@@ -152,15 +151,13 @@ struct CycleField: View {
                 Button(action: {
                     self.increaseValue()
                 }) {
-                    Text("+")
-                        .font(Font.system(size: 22))
-                        .fontWeight(Font.Weight.heavy)
+                    Image(systemName: "plus")
+                        .font(Font.system(size: 18))
                         .foregroundColor(Color.customDarkText)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                         .frame(width: 44, height: 44, alignment: .center)
                         .background(RoundedCorners(upperLeft: 0, upperRight: 10, lowerLeft: 0, lowerRigth: 10))
                         .foregroundColor(Color.customGrayButton)
-                        
                 }
                 .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 12))
             }
