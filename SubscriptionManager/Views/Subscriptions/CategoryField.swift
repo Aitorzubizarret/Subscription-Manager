@@ -28,9 +28,7 @@ struct CategoryField: View {
     var body: some View {
         VStack(alignment: .leading) {
             FieldTitle(title: self.title)
-            Button(action: {
-                
-            }) {
+            NavigationLink(destination: CategoriesView()) {
                 HStack(spacing: 0) {
                     Text("    Select Category ...")
                         .foregroundColor(Color.customDarkText)
