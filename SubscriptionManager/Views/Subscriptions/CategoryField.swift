@@ -12,6 +12,8 @@ struct CategoryField: View {
     
     // MARK: - Properties
     
+    @Binding var selectedCategory: SubscriptionsViewModel.subscriptionCategory
+    @State private var text: String
     private var title: String
     private var buttonWitdh: CGFloat {
         return (UIScreen.main.bounds.size.width - 44) - 14 - 24
@@ -19,8 +21,10 @@ struct CategoryField: View {
     
     // MARK: - Methods
     
-    init(title: String) {
+    init(title: String, value: Binding<SubscriptionsViewModel.subscriptionCategory>) {
         self.title = title
+        self._selectedCategory = value
+        self._text = State(wrappedValue: "")
     }
     
     // MARK: - View
@@ -28,9 +32,9 @@ struct CategoryField: View {
     var body: some View {
         VStack(alignment: .leading) {
             FieldTitle(title: self.title)
-            NavigationLink(destination: CategoriesView()) {
+            NavigationLink(destination: CategoriesView(value: self.$selectedCategory)) {
                 HStack(spacing: 0) {
-                    Text("    Select Category ...")
+                    Text("    \(self.selectedCategory.rawValue.capitalized)")
                         .foregroundColor(Color.customDarkText)
                         .frame(width: buttonWitdh, height: 44, alignment: .leading)
                         .background(RoundedCorners(upperLeft: 10, upperRight: 0, lowerLeft: 10, lowerRigth: 0))
@@ -52,7 +56,14 @@ struct CategoryField: View {
 
 struct CategoryField_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryField(title: "Category")
-            .previewLayout(PreviewLayout.sizeThatFits)
+        Group {
+            CategoryField(title: "Category", value: .constant(SubscriptionsViewModel.subscriptionCategory.video))
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .previewDisplayName("Category Not Selected")
+            
+            CategoryField(title: "Category", value: .constant(SubscriptionsViewModel.subscriptionCategory.video))
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .previewDisplayName("Category Selected")
+        }
     }
 }

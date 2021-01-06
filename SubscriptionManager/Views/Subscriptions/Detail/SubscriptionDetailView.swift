@@ -124,6 +124,7 @@ struct SubscriptionDetail_Previews: PreviewProvider {
         subscription.price = 9
         subscription.cycle = "1-m"
         subscription.nextPayment = Date()
+        subscription.category = "Video"
         
         return SubscriptionDetailView(subscription: subscription)
     }

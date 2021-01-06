@@ -12,14 +12,68 @@ struct CategoriesView: View {
     
     // MARK: - Properties
     
+    @Binding var selectedCategory: SubscriptionsViewModel.subscriptionCategory
+    @State private var selectedCategoryIndex: Int
+    private var categoryList: [String]
+    
     // MARK: - Methods
+    
+    init(value: Binding<SubscriptionsViewModel.subscriptionCategory>) {
+        self._selectedCategory = value
+        self._selectedCategoryIndex = State(wrappedValue: -1)
+        self.categoryList = []
+        for category in SubscriptionsViewModel.subscriptionCategory.allCases {
+            self.categoryList.append(category.rawValue)
+        }
+    }
+    
+    ///
+    /// Checks if category is selected and returns a boolean.
+    /// - Parameter index : The index 
+    /// - Returns : True if the category is selected and false otherwise.
+    ///
+    private func isSelected(index: Int) -> Bool {
+        if self.selectedCategory.rawValue == self.categoryList[index] {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    ///
+    /// Updates the index of the selected category.
+    /// - Parameter newIndex : The new index of the selected category.
+    ///
+    private func updateCategory(newIndex: Int) {
+        self.selectedCategoryIndex = newIndex
+        
+        switch self.selectedCategoryIndex {
+        case 0:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
+        case 1:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.music
+        case 2:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.software
+        case 3:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.gaming
+        case 4:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.news
+        default:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
+        }
+    }
     
     // MARK: - View
     
     var body: some View {
         ScrollView {
-            ForEach(1..<7, id: \.self) { index in
-                CategoryElement(text: "Category \(index)")
+            ForEach(0..<self.categoryList.count, id: \.self) { index in
+                Button(action: {
+                    self.selectedCategoryIndex = index
+                    self.updateCategory(newIndex: index)
+                }) {
+                    CategoryElement(text: self.categoryList[index], selected: self.isSelected(index: index))
+                }
             }
         }
         .navigationBarTitle("Categories")
@@ -29,6 +83,6 @@ struct CategoriesView: View {
 struct CategoriesView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CategoriesView()
+        CategoriesView(value: .constant(SubscriptionsViewModel.subscriptionCategory(rawValue: "video")!))
     }
 }
