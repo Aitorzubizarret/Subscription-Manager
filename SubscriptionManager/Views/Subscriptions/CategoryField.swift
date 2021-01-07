@@ -13,7 +13,6 @@ struct CategoryField: View {
     // MARK: - Properties
     
     @Binding var selectedCategory: SubscriptionsViewModel.subscriptionCategory
-    @State private var text: String
     private var title: String
     private var buttonWitdh: CGFloat {
         return (UIScreen.main.bounds.size.width - 44) - 14 - 24
@@ -24,7 +23,6 @@ struct CategoryField: View {
     init(title: String, value: Binding<SubscriptionsViewModel.subscriptionCategory>) {
         self.title = title
         self._selectedCategory = value
-        self._text = State(wrappedValue: "")
     }
     
     // MARK: - View
@@ -34,11 +32,19 @@ struct CategoryField: View {
             FieldTitle(title: self.title)
             NavigationLink(destination: CategoriesView(value: self.$selectedCategory)) {
                 HStack(spacing: 0) {
-                    Text("    \(self.selectedCategory.rawValue.capitalized)")
-                        .foregroundColor(Color.customDarkText)
-                        .frame(width: buttonWitdh, height: 44, alignment: .leading)
-                        .background(RoundedCorners(upperLeft: 10, upperRight: 0, lowerLeft: 10, lowerRigth: 0))
-                        .foregroundColor(Color.customGrayButton)
+                    if self.selectedCategory.rawValue == "none" {
+                        Text("    Select a category ...")
+                            .foregroundColor(Color.customDarkText)
+                            .frame(width: buttonWitdh, height: 44, alignment: .leading)
+                            .background(RoundedCorners(upperLeft: 10, upperRight: 0, lowerLeft: 10, lowerRigth: 0))
+                            .foregroundColor(Color.customGrayButton)
+                    } else {
+                        Text("    \(self.selectedCategory.rawValue.capitalized)")
+                            .foregroundColor(Color.customDarkText)
+                            .frame(width: buttonWitdh, height: 44, alignment: .leading)
+                            .background(RoundedCorners(upperLeft: 10, upperRight: 0, lowerLeft: 10, lowerRigth: 0))
+                            .foregroundColor(Color.customGrayButton)
+                    }
                     Image(systemName: "chevron.right")
                         .font(Font.system(size: 22))
                         .foregroundColor(Color.customDarkText)
@@ -57,7 +63,7 @@ struct CategoryField: View {
 struct CategoryField_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CategoryField(title: "Category", value: .constant(SubscriptionsViewModel.subscriptionCategory.video))
+            CategoryField(title: "Category", value: .constant(SubscriptionsViewModel.subscriptionCategory.none))
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .previewDisplayName("Category Not Selected")
             

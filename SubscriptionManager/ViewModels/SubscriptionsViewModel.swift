@@ -30,6 +30,7 @@ class SubscriptionsViewModel: ObservableObject {
         case red = "customRowRed"
     }
     enum subscriptionCategory: String, CaseIterable {
+        case none = "none"
         case video = "video"
         case music = "music"
         case software = "software"

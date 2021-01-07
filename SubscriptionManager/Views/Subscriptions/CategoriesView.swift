@@ -48,15 +48,15 @@ struct CategoriesView: View {
         self.selectedCategoryIndex = newIndex
         
         switch self.selectedCategoryIndex {
-        case 0:
-            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
         case 1:
-            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.music
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
         case 2:
-            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.software
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.music
         case 3:
-            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.gaming
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.software
         case 4:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.gaming
+        case 5:
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.news
         default:
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
@@ -67,7 +67,7 @@ struct CategoriesView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(0..<self.categoryList.count, id: \.self) { index in
+            ForEach(1..<self.categoryList.count, id: \.self) { index in
                 Button(action: {
                     self.selectedCategoryIndex = index
                     self.updateCategory(newIndex: index)

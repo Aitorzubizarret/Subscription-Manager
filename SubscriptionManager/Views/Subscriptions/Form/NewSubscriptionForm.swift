@@ -16,7 +16,7 @@ struct NewSubscriptionForm: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var textFieldSubscriptionName: String = ""
     @State private var textFieldSubscriptionPrice: String = ""
-    @State private var selectedCategory: SubscriptionsViewModel.subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
+    @State private var selectedCategory: SubscriptionsViewModel.subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.none
     @State private var textCycle: String = "1-m"
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
     @State private var selectedColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.blue
@@ -29,8 +29,8 @@ struct NewSubscriptionForm: View {
     /// - Returns: True if the important properties are not empty.
     ///
     private func addNewSubscription() -> Bool {
-        // Check important properties (name and price) are not empty.
-        guard (self.textFieldSubscriptionName != "")&&(self.textFieldSubscriptionPrice != "") else { return false }
+        // Check important properties (name and price) are not empty, and the category is not "none".
+        guard (self.textFieldSubscriptionName != "")&&(self.textFieldSubscriptionPrice != "")&&(self.selectedCategory != SubscriptionsViewModel.subscriptionCategory.none) else { return false }
         
         // Price formatter.
         let numberFormatter = NumberFormatter()
@@ -84,7 +84,7 @@ struct NewSubscriptionForm: View {
                 }) {
                     Text("Add")
                 }.alert(isPresented: self.$showingAlert, content: {
-                    Alert(title: Text("Empty fields"), message: Text("Name and price fields are required and price only allows numbers."), dismissButton: Alert.Button.default(Text("OK")))
+                    Alert(title: Text("Empty fields"), message: Text("Name and price fields are required and price only allows numbers. Remember to choose a category for your subscription too."), dismissButton: Alert.Button.default(Text("OK")))
                 })
             )
         }
