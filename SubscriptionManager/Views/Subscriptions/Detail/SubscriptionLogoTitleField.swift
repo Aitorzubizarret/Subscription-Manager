@@ -37,7 +37,7 @@ struct SubscriptionLogoTitleField: View {
                 Text(title)
                     .font(Font.system(size: 20))
                     .fontWeight(Font.Weight.bold)
-                Text(category)
+                Text(category.capitalized)
                     .font(Font.system(size: 14))
                     .fontWeight(Font.Weight.light)
             }
