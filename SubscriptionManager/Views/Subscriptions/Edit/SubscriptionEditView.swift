@@ -16,6 +16,7 @@ struct SubscriptionEditView: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var textFieldSubscriptionName: String = ""
     @State private var textFieldSubscriptionPrice: String = ""
+    @State private var selectedCategory: SubscriptionsViewModel.subscriptionCategory
     @State private var textCycle: String = ""
     @State private var selectedColor: SubscriptionsViewModel.subscriptionRowColor
     @State private var nextPayment: Date = Date()
@@ -30,6 +31,7 @@ struct SubscriptionEditView: View {
         self._isPresented = isPresented
         self.subscription = subscription
         self._selectedColor = State(wrappedValue: .blue)
+        self._selectedCategory = State(wrappedValue: .none)
         
         self.configureUIElements()
     }
@@ -43,6 +45,25 @@ struct SubscriptionEditView: View {
         
         // Price.
         self._textFieldSubscriptionPrice = State(wrappedValue: "\(subscription.price)")
+        
+        // Category.
+        let categoryString: String = subscription.category
+        var subscriptionCategory: SubscriptionsViewModel.subscriptionCategory = .none
+        switch categoryString {
+        case SubscriptionsViewModel.subscriptionCategory.video.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
+        case SubscriptionsViewModel.subscriptionCategory.music.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.music
+        case SubscriptionsViewModel.subscriptionCategory.software.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.software
+        case SubscriptionsViewModel.subscriptionCategory.gaming.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.gaming
+        case SubscriptionsViewModel.subscriptionCategory.news.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.news
+        default:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
+        }
+        self._selectedCategory = State(wrappedValue: subscriptionCategory)
         
         // Cycle.
         self._textCycle = State(wrappedValue: subscription.cycle)
@@ -109,6 +130,9 @@ struct SubscriptionEditView: View {
             self.alertMessage = self.alertMessage + "Price can't be empty and has to be a valid number. "
         }
         
+        // Category.
+        let subscriptionCategory: SubscriptionsViewModel.subscriptionCategory = self.selectedCategory
+        
         // Cycle.
         let subscriptionCycle: String = self.textCycle
         
@@ -138,7 +162,7 @@ struct SubscriptionEditView: View {
         
         if saveStatus {
             // Updates the subscription information using the view model.
-            self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, cycle: subscriptionCycle, rowColor: selectedRowColor, nextPayment: subscriptionNextPayment)
+            self.subscriptionsViewModel.updateSubscription(subscription: self.subscription, name: subscriptionName, price: formattedSubscriptionPrice, category: subscriptionCategory, cycle: subscriptionCycle, rowColor: selectedRowColor, nextPayment: subscriptionNextPayment)
         }
         
         return saveStatus
@@ -151,6 +175,7 @@ struct SubscriptionEditView: View {
             ScrollView {
                 EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
+                CategoryField(title: "Category", value: self.$selectedCategory)
                 CycleField(title: "Cycle", value: self.$textCycle)
                 ColorsField(title: "Color", value: self.$selectedColor)
                 CalendarField(title: "Next Payment", value: self.$nextPayment)
@@ -189,6 +214,7 @@ struct SubscriptionEditView_Previews: PreviewProvider {
         subscription.price = 9
         subscription.cycle = "month"
         subscription.nextPayment = Date()
+        subscription.category = "video"
         
         return SubscriptionEditView(isPresented: .constant(false), subscription: subscription).environmentObject(SubscriptionsViewModel())
     }

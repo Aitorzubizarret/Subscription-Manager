@@ -48,7 +48,7 @@ struct NewSubscriptionForm: View {
         let selectedCategory: SubscriptionsViewModel.subscriptionCategory = self.selectedCategory
         
         // Save the new subscription in Core Data.
-        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, cycle: cycle, nextPayment: self.subscriptionNextPaymentDate, rowColor: selectedRowColor, category: selectedCategory)
+        self.subscriptionsViewModel.createNewSubscription(name: self.textFieldSubscriptionName, price: formattedSubscriptionPrice, category: selectedCategory, cycle: cycle, rowColor: selectedRowColor, nextPayment: self.subscriptionNextPaymentDate)
         
         return true
     }

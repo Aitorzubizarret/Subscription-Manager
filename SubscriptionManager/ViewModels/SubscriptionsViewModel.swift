@@ -62,20 +62,20 @@ class SubscriptionsViewModel: ObservableObject {
     /// Creates and saves a new subscription in Core Data.
     /// - Parameter name : The name of the subcription.
     /// - Parameter price : The price of the subscription.
-    /// - Parameter cycle : The payment cycle (every 2 weeks, monthly, every 3 months, ...) of the subscription.
-    /// - Parameter nextPayment : The date of the next payment.
-    /// - Parameter rowColor : The color of the subscription in the list.
     /// - Parameter category : The category of the subscription.
+    /// - Parameter cycle : The payment cycle (every 2 weeks, monthly, every 3 months, ...) of the subscription.
+    /// - Parameter rowColor : The color of the subscription in the list.
+    /// - Parameter nextPayment : The date of the next payment.
     ///
-    public func createNewSubscription(name: String, price: Float, cycle: String, nextPayment: Date, rowColor: subscriptionRowColor, category: subscriptionCategory) {
+    public func createNewSubscription(name: String, price: Float, category: subscriptionCategory, cycle: String, rowColor: subscriptionRowColor, nextPayment: Date) {
         let newSubscription: Subscription = Subscription(context: self.moc)
         newSubscription.id = UUID()
         newSubscription.name = name
         newSubscription.price = price
-        newSubscription.cycle = cycle
-        newSubscription.nextPayment = nextPayment
-        newSubscription.rowColor = rowColor.rawValue
         newSubscription.category = category.rawValue
+        newSubscription.cycle = cycle
+        newSubscription.rowColor = rowColor.rawValue
+        newSubscription.nextPayment = nextPayment
         
         do {
             try self.moc.save()
@@ -94,7 +94,7 @@ class SubscriptionsViewModel: ObservableObject {
     /// - Parameter rowColor: A color for the subscription.
     /// - Parameter nextPayment : A  'nextPayment' date for the subscription.
     ///
-    public func updateSubscription(subscription: Subscription, name: String?, price: Float?, cycle: String?, rowColor: subscriptionRowColor?, nextPayment: Date?) {
+    public func updateSubscription(subscription: Subscription, name: String?, price: Float?, category: subscriptionCategory?, cycle: String?, rowColor: subscriptionRowColor?, nextPayment: Date?) {
         // Check Name is not an optional.
         if let newName: String = name {
             subscription.name = newName
@@ -103,6 +103,11 @@ class SubscriptionsViewModel: ObservableObject {
         // Check Price is not an optional.
         if let newPrice: Float = price {
             subscription.price = newPrice
+        }
+        
+        // Check Category is not an optional.
+        if let newCategory: SubscriptionsViewModel.subscriptionCategory = category {
+            subscription.category = newCategory.rawValue
         }
         
         // Check Cycle is not an optional.
