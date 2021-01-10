@@ -16,7 +16,7 @@ This is a project (iOS App) to track and manage all subscriptions.
 - [] Creation Date property.
 - [] Cancelled Date property.
 - [x] Next Payment Date property.
-- [] Category property.
+- [x] Category property.
 - [] 'Shared Subscription' property.
 - [x] Save Subscriptions locally (Core Data).
 - [] Back Up Data in CloudKit (iCloud).
