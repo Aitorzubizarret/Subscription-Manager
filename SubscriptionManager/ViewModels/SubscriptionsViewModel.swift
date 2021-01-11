@@ -36,6 +36,11 @@ class SubscriptionsViewModel: ObservableObject {
         case software = "software"
         case gaming = "gaming"
         case news = "news"
+        case ecommerce = "ecommerce"
+        case phone = "phone"
+        case internet = "internet"
+        case rent = "rent"
+        case gym = "gym"
     }
     
     // MARK: - Methods
