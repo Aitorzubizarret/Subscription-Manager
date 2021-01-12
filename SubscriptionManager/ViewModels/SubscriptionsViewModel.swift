@@ -77,6 +77,7 @@ class SubscriptionsViewModel: ObservableObject {
         newSubscription.id = UUID()
         newSubscription.name = name
         newSubscription.price = price
+        newSubscription.payed = 0.0
         newSubscription.category = category.rawValue
         newSubscription.cycle = cycle
         newSubscription.rowColor = rowColor.rawValue

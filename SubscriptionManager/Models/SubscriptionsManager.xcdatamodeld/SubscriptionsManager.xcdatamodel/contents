@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E2269" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H505" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Subscription" representedClassName=".Subscription" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="cycle" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="nextPayment" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="payed" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="price" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="rowColor" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Subscription" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Subscription" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

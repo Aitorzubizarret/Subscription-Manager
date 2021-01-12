@@ -88,7 +88,7 @@ struct SubscriptionDetailView: View {
                         SubscriptionDataField(title: "Next Payment", value: self.subscription.nextPayment.getYearMonthDay())
                     }
                     Divider()
-                    SubscriptionDataField(title: "Total", value: "1350 €")
+                    SubscriptionDataField(title: "Total", value: "\(subscription.payed) €")
                 }
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 CustomDivider()

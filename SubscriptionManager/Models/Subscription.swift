@@ -12,6 +12,7 @@ class Subscription: NSManagedObject {
     @NSManaged var id: UUID
     @NSManaged var name: String
     @NSManaged var price: Float
+    @NSManaged var payed: Float
     @NSManaged var cycle: String
     @NSManaged var nextPayment: Date
     @NSManaged var rowColor: String
