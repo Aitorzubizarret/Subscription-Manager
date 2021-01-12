@@ -58,6 +58,16 @@ struct CategoriesView: View {
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.gaming
         case 5:
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.news
+        case 6:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.ecommerce
+        case 7:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.phone
+        case 8:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.internet
+        case 9:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.rent
+        case 10:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.gym
         default:
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
         }

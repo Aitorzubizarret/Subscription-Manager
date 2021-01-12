@@ -60,6 +60,16 @@ struct SubscriptionEditView: View {
             subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.gaming
         case SubscriptionsViewModel.subscriptionCategory.news.rawValue:
             subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.news
+        case SubscriptionsViewModel.subscriptionCategory.ecommerce.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.ecommerce
+        case SubscriptionsViewModel.subscriptionCategory.phone.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.phone
+        case SubscriptionsViewModel.subscriptionCategory.internet.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.internet
+        case SubscriptionsViewModel.subscriptionCategory.rent.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.rent
+        case SubscriptionsViewModel.subscriptionCategory.gym.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.gym
         default:
             subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
         }
