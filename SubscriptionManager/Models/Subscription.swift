@@ -15,6 +15,7 @@ class Subscription: NSManagedObject {
     @NSManaged var payed: Float
     @NSManaged var cycle: String
     @NSManaged var nextPayment: Date
+    @NSManaged var created: Date
     @NSManaged var rowColor: String
     @NSManaged var category: String
 }

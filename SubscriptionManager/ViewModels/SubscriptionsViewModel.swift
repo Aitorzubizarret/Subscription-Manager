@@ -82,6 +82,7 @@ class SubscriptionsViewModel: ObservableObject {
         newSubscription.cycle = cycle
         newSubscription.rowColor = rowColor.rawValue
         newSubscription.nextPayment = nextPayment
+        newSubscription.created = Date()
         
         do {
             try self.moc.save()
