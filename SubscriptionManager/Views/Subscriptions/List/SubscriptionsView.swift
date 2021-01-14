@@ -14,6 +14,7 @@ struct SubscriptionsView: View {
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingNewSubscriptionForm: Bool = false
+    @State private var showingConfigPanel: Bool = false
     
     // MARK: - View
     
@@ -33,16 +34,24 @@ struct SubscriptionsView: View {
                 }
             }
             .navigationBarTitle("Subscriptions")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading:
                 Button(action: {
-                    self.showingNewSubscriptionForm.toggle()
+                    self.showingConfigPanel.toggle()
                 }) {
-                    Image(systemName: "plus")
+                    Image(systemName: "gearshape.fill")
                         .font(.title)
-                }.sheet(isPresented: $showingNewSubscriptionForm) {
-                    NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm)
-                        .environmentObject(self.subscriptionsViewModel)
-                }
+                },
+                trailing:
+                    Button(action: {
+                        self.showingNewSubscriptionForm.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                            .font(.title)
+                    }.sheet(isPresented: $showingNewSubscriptionForm) {
+                        NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm)
+                            .environmentObject(self.subscriptionsViewModel)
+                    }
+                                
             )
         }
     }
