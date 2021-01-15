@@ -30,7 +30,7 @@ struct SubscriptionsView: View {
                     ForEach(self.subscriptionsViewModel.subscriptions, id:\Subscription.id) { subscription in
                         SubscriptionRow(subscription: subscription).environmentObject(self.subscriptionsViewModel)
                     }
-                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
                 }
             }
             .navigationBarTitle("Subscriptions")
