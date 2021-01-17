@@ -19,6 +19,7 @@ struct SubscriptionDetailView: View {
     var subscription: Subscription
     private var price: String = ""
     private var cycle: String = ""
+    private var backgroundColor: Color = Color.red
     private var nextPayment: String = ""
     
     // MARK: - Methods
@@ -61,6 +62,33 @@ struct SubscriptionDetailView: View {
                 }
             }
         }
+        
+        // Color.
+        let color = subscription.rowColor
+        switch color {
+        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
+            self.backgroundColor = Color.customRowBlue
+        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
+            self.backgroundColor = Color.customRowBlueDark
+        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
+            self.backgroundColor = Color.customRowGreen
+        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
+            self.backgroundColor = Color.customRowGreenDark
+        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
+            self.backgroundColor = Color.customRowPistachio
+        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
+            self.backgroundColor = Color.customRowYellow
+        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
+            self.backgroundColor = Color.customRowMango
+        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
+            self.backgroundColor = Color.customRowOrange
+        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
+            self.backgroundColor = Color.customRowOrangeDark
+        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
+            self.backgroundColor = Color.customRowRed
+        default:
+            self.backgroundColor = Color.customRowBlue
+        }
     }
     
     ///
@@ -75,25 +103,28 @@ struct SubscriptionDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 8) {
-                SubscriptionLogoTitleField(title: subscription.name, category: subscription.category)
-                CustomDivider()
-                VStack(spacing: 8) {
-                    SubscriptionDataField(title: "Price", value: self.price)
-                    Divider()
-                    SubscriptionDataField(title: "Cycle", value: self.cycle)
-                    Divider()
-                    // Avoids unknown error with dateFormatter when deleting the Subscription.
-                    if !self.deleteInProcess {
-                        SubscriptionDataField(title: "Next Payment", value: self.subscription.nextPayment.getYearMonthDay())
+            VStack(spacing: 0) {
+                VStack(spacing: 0) {
+                    SubscriptionLogoTitleField(title: subscription.name, category: subscription.category, backgroundColor: self.backgroundColor)
+                    VStack(spacing: 8) {
+                        SubscriptionDataField(title: "Price", value: self.price, backgroundColor: self.backgroundColor)
+                        SubscriptionDataField(title: "Cycle", value: self.cycle, backgroundColor: self.backgroundColor)
+                        // Avoids unknown error with dateFormatter when deleting the Subscription.
+                        if !self.deleteInProcess {
+                            SubscriptionDataField(title: "Next Payment", value: self.subscription.nextPayment.getYearMonthDay(), backgroundColor: self.backgroundColor)
+                        }
+                        SubscriptionDataField(title: "Total", value: "\(subscription.payed) €", backgroundColor: self.backgroundColor)
+                        SubscriptionDataField(title: "Created", value: "\(subscription.created.getYearMonthDay())", backgroundColor: self.backgroundColor)
                     }
-                    Divider()
-                    SubscriptionDataField(title: "Total", value: "\(subscription.payed) €")
-                    Divider()
-                    SubscriptionDataField(title: "Created", value: "\(subscription.created.getYearMonthDay())")
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    .background(self.backgroundColor)
                 }
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                CustomDivider()
+                .cornerRadius(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.white, lineWidth: 2)
+                )
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 Button(action: {
                     self.showingSubscriptionEditView.toggle()
                 }) {
@@ -102,6 +133,7 @@ struct SubscriptionDetailView: View {
                     SubscriptionEditView(isPresented: self.$showingSubscriptionEditView, subscription: self.subscription)
                         .environmentObject(self.subscriptionsViewModel)
                 }
+                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
                 Button(action: {
                     self.showingAlert = true
                 }) {
@@ -111,6 +143,7 @@ struct SubscriptionDetailView: View {
                         self.deleteSubscription()
                     }), secondaryButton: Alert.Button.cancel(Text("No")))
                 })
+                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
             }
             
         }
