@@ -13,7 +13,6 @@ struct ColorElement: View {
     // MARK: - Properties
     
     private var widthAndHeight: CGFloat = 40
-    private var rowColor: SubscriptionsViewModel.subscriptionRowColor
     private var backgroundColor: Color
     private var borderColor: Color
     private var selected: Bool
@@ -21,34 +20,11 @@ struct ColorElement: View {
     // MARK: - Methods
     
     init(color: SubscriptionsViewModel.subscriptionRowColor, selected: Bool) {
-        self.rowColor = color
+        self.backgroundColor = color.convertFromStringToColor()
         self.selected = selected
         
-        switch self.rowColor {
-        case .blue:
-            self.backgroundColor = Color.customRowBlue
-        case .blueDark:
-            self.backgroundColor = Color.customRowBlueDark
-        case .green:
-            self.backgroundColor = Color.customRowGreen
-        case .greenDark:
-            self.backgroundColor = Color.customRowGreenDark
-        case .mango:
-            self.backgroundColor = Color.customRowMango
-        case.orange:
-            self.backgroundColor = Color.customRowOrange
-        case .orangeDark:
-            self.backgroundColor = Color.customRowOrangeDark
-        case .pistachio:
-            self.backgroundColor = Color.customRowPistachio
-        case .red:
-            self.backgroundColor = Color.customRowRed
-        case .yellow:
-            self.backgroundColor = Color.customRowYellow
-        }
-        
         if self.selected {
-            self.borderColor = Color.black.opacity(0.3)
+            self.borderColor = color.convertFromStringToColor().opacity(0.3)
         } else {
             self.borderColor = Color.clear
         }
