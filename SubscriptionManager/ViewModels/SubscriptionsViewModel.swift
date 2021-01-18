@@ -28,6 +28,37 @@ class SubscriptionsViewModel: ObservableObject {
         case orange = "customRowOrange"
         case orangeDark = "customRowOrangeDark"
         case red = "customRowRed"
+        
+        ///
+        /// Converts the String value to Color value.
+        ///
+        func convertFromStringToColor() -> Color {
+            var color: Color
+            
+            switch self {
+            case .blue:
+                color = Color.customRowBlue
+            case .blueDark:
+                color = Color.customRowBlueDark
+            case .green:
+                color = Color.customRowGreen
+            case .greenDark:
+                color = Color.customRowGreenDark
+            case .pistachio:
+                color = Color.customRowPistachio
+            case .yellow:
+                color = Color.customRowYellow
+            case .mango:
+                color = Color.customRowMango
+            case .orange:
+                color = Color.customRowOrange
+            case .orangeDark:
+                color = Color.customRowOrangeDark
+            case .red:
+                color = Color.customRowRed
+            }
+            return color
+        }
     }
     enum subscriptionCategory: String, CaseIterable {
         case none = "none"
@@ -158,5 +189,39 @@ class SubscriptionsViewModel: ObservableObject {
         } catch {
             print("Error deleting a subscription: \(error)")
         }
+    }
+    
+    ///
+    ///
+    ///
+    public func convertStringToColor(stringColor: String) -> Color? {
+        var color: Color?
+        
+        switch stringColor {
+        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
+            color = Color.customRowBlue
+        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
+            color = Color.customRowBlueDark
+        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
+            color = Color.customRowGreen
+        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
+            color = Color.customRowGreenDark
+        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
+            color = Color.customRowPistachio
+        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
+            color = Color.customRowYellow
+        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
+            color = Color.customRowMango
+        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
+            color = Color.customRowOrange
+        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
+            color = Color.customRowOrangeDark
+        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
+            color = Color.customRowRed
+        default:
+            print("Error convertStringToColor : '\(stringColor)' Color not defined.")
+        }
+        
+        return color
     }
 }
