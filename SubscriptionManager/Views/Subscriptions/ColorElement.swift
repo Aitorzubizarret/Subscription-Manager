@@ -24,7 +24,7 @@ struct ColorElement: View {
         self.selected = selected
         
         if self.selected {
-            self.borderColor = color.convertFromStringToColor().opacity(0.3)
+            self.borderColor = Color.black.opacity(0.3)
         } else {
             self.borderColor = Color.clear
         }
