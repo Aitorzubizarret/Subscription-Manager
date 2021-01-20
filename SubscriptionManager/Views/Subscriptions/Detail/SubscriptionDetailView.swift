@@ -64,31 +64,9 @@ struct SubscriptionDetailView: View {
         }
         
         // Color.
-        let color = subscription.rowColor
-        switch color {
-        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
-            self.backgroundColor = Color.customRowBlue
-        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
-            self.backgroundColor = Color.customRowBlueDark
-        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
-            self.backgroundColor = Color.customRowGreen
-        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
-            self.backgroundColor = Color.customRowGreenDark
-        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
-            self.backgroundColor = Color.customRowPistachio
-        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
-            self.backgroundColor = Color.customRowYellow
-        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
-            self.backgroundColor = Color.customRowMango
-        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
-            self.backgroundColor = Color.customRowOrange
-        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
-            self.backgroundColor = Color.customRowOrangeDark
-        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
-            self.backgroundColor = Color.customRowRed
-        default:
-            self.backgroundColor = Color.customRowBlue
-        }
+        let rowColor = subscription.rowColor
+        let stringColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor(rawValue: rowColor) ?? .blue
+        self.backgroundColor = stringColor.convertFromStringToColor()
     }
     
     ///
@@ -158,6 +136,7 @@ struct SubscriptionDetail_Previews: PreviewProvider {
         subscription.name = "Test"
         subscription.price = 9
         subscription.cycle = "1-m"
+        subscription.rowColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
         subscription.nextPayment = Date()
         subscription.created = Date()
         subscription.category = "video"
