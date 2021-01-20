@@ -80,32 +80,9 @@ struct SubscriptionEditView: View {
         
         // Color.
         let rowColor: String = subscription.rowColor
-        var subscriptionRowColor: SubscriptionsViewModel.subscriptionRowColor = .blue
-        switch rowColor {
-        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
-            subscriptionRowColor = .blue
-        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
-            subscriptionRowColor = .blueDark
-        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
-            subscriptionRowColor = .green
-        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
-            subscriptionRowColor = .greenDark
-        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
-            subscriptionRowColor = .mango
-        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
-            subscriptionRowColor = .orange
-        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
-            subscriptionRowColor = .orangeDark
-        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
-            subscriptionRowColor = .pistachio
-        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
-            subscriptionRowColor = .red
-        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
-            subscriptionRowColor = .yellow
-        default:
-            subscriptionRowColor = .blue
-        }
-        self._selectedColor = State(wrappedValue: subscriptionRowColor)
+        
+        let stringColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor(rawValue: rowColor) ?? .blue
+        self._selectedColor = State(wrappedValue: stringColor)
         
         // Next Payment.
         self._nextPayment = State(wrappedValue: subscription.nextPayment)
@@ -223,6 +200,7 @@ struct SubscriptionEditView_Previews: PreviewProvider {
         subscription.name = "Test"
         subscription.price = 9
         subscription.cycle = "month"
+        subscription.rowColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
         subscription.nextPayment = Date()
         subscription.category = "video"
         
