@@ -46,44 +46,10 @@ struct SubscriptionRow: View {
         
         // BackgroundColor.
         let selectedColor: String = self.subscription.rowColor
-        var subscriptionRowBackgroundColor: Color
-        var subscriptionRowStrokeColor: Color
+        let selectedBackgroundColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor(rawValue: selectedColor) ?? .blue
         
-        switch selectedColor {
-        case SubscriptionsViewModel.subscriptionRowColor.blue.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowBlue
-            subscriptionRowStrokeColor = Color.customRowBlue
-        case SubscriptionsViewModel.subscriptionRowColor.blueDark.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowBlueDark
-            subscriptionRowStrokeColor = Color.customRowBlueDark
-        case SubscriptionsViewModel.subscriptionRowColor.green.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowGreen
-            subscriptionRowStrokeColor = Color.customRowGreen
-        case SubscriptionsViewModel.subscriptionRowColor.greenDark.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowGreenDark
-            subscriptionRowStrokeColor = Color.customRowGreenDark
-        case SubscriptionsViewModel.subscriptionRowColor.pistachio.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowPistachio
-            subscriptionRowStrokeColor = Color.customRowPistachio
-        case SubscriptionsViewModel.subscriptionRowColor.yellow.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowYellow
-            subscriptionRowStrokeColor = Color.customRowYellow
-        case SubscriptionsViewModel.subscriptionRowColor.mango.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowMango
-            subscriptionRowStrokeColor = Color.customRowMango
-        case SubscriptionsViewModel.subscriptionRowColor.orange.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowOrange
-            subscriptionRowStrokeColor = Color.customRowOrange
-        case SubscriptionsViewModel.subscriptionRowColor.orangeDark.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowOrangeDark
-            subscriptionRowStrokeColor = Color.customRowOrangeDark
-        case SubscriptionsViewModel.subscriptionRowColor.red.rawValue:
-            subscriptionRowBackgroundColor = Color.customRowRed
-            subscriptionRowStrokeColor = Color.customRowRed
-        default:
-            subscriptionRowBackgroundColor = Color.customRowPistachio
-            subscriptionRowStrokeColor = Color.customRowPistachio
-        }
+        let subscriptionRowBackgroundColor: Color = selectedBackgroundColor.convertFromStringToColor()
+        let subscriptionRowStrokeColor: Color = subscriptionRowBackgroundColor
         
         self.backgroundColor = subscriptionRowBackgroundColor
         self.strokeColor = subscriptionRowStrokeColor
@@ -192,16 +158,21 @@ struct SubscriptionRow_Previews: PreviewProvider {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
+        // DateComponent.
+        var dayComponent = DateComponents()
+        
         // First Subscription.
+        dayComponent.day = 2 // 2 Days
+        
         let subscription1: Subscription = Subscription(context: context)
         subscription1.id = UUID()
         subscription1.name = "Test 1"
         subscription1.price = 9
         subscription1.cycle = "1y"
-        subscription1.nextPayment = Date()
+        subscription1.rowColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
+        subscription1.nextPayment = Calendar.current.date(byAdding: dayComponent, to: Date())!
         
-        // Second Subscription with a DateComponent.
-        var dayComponent = DateComponents()
+        // Second Subscription.
         dayComponent.day = 16 // 2 Weeks
         
         let subscription2: Subscription = Subscription(context: context)
@@ -209,6 +180,7 @@ struct SubscriptionRow_Previews: PreviewProvider {
         subscription2.name = "Test 2"
         subscription2.price = 9
         subscription2.cycle = "2m"
+        subscription1.rowColor = SubscriptionsViewModel.subscriptionRowColor.blue.rawValue
         subscription2.nextPayment = Calendar.current.date(byAdding: dayComponent, to: Date())!
         
         return Group {
