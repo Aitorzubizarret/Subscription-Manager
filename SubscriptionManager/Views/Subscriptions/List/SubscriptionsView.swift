@@ -39,14 +39,14 @@ struct SubscriptionsView: View {
                     self.showingConfigPanel.toggle()
                 }) {
                     Image(systemName: "gearshape.fill")
-                        .font(.title)
+                        .font(Font.system(size: 20, weight: Font.Weight.bold, design: Font.Design.default))
                 },
                 trailing:
                     Button(action: {
                         self.showingNewSubscriptionForm.toggle()
                     }) {
                         Image(systemName: "plus")
-                            .font(.title)
+                            .font(Font.system(size: 20, weight: Font.Weight.bold, design: Font.Design.default))
                     }.sheet(isPresented: $showingNewSubscriptionForm) {
                         NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm)
                             .environmentObject(self.subscriptionsViewModel)
