@@ -72,6 +72,40 @@ class SubscriptionsViewModel: ObservableObject {
         case internet = "internet"
         case rent = "rent"
         case gym = "gym"
+        case education = "education"
+        
+        func getSFSymbolImageString() -> String {
+            var imageString = ""
+            
+            switch self {
+            case .none:
+                imageString = "info.circle" // MARK: Fix: Change image.
+            case .video:
+                imageString = "tv"
+            case .music:
+                imageString = "music.note"
+            case .software:
+                imageString = "desktopcomputer"
+            case .gaming:
+                imageString = "gamecontroller"
+            case .news:
+                imageString = "newspaper"
+            case .ecommerce:
+                imageString = "cart"
+            case .phone:
+                imageString = "phone"
+            case .internet:
+                imageString = "info.circle" // MARK: Fix: Change image.
+            case .rent:
+                imageString = "house"
+            case .gym:
+                imageString = "info.circle" // MARK: Fix: Change image.
+            case .education:
+                imageString = "book"
+            }
+            
+            return imageString
+        }
     }
     
     // MARK: - Methods

@@ -68,6 +68,8 @@ struct CategoriesView: View {
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.rent
         case 10:
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.gym
+        case 11:
+            self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.education
         default:
             self.selectedCategory = SubscriptionsViewModel.subscriptionCategory.video
         }

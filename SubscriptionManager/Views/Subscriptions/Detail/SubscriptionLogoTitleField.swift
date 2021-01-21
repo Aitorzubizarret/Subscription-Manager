@@ -15,14 +15,23 @@ struct SubscriptionLogoTitleField: View {
     var title: String
     var category: String
     var backgroundColor: Color
+    var SFSymbolImageString: String = ""
     
     // MARK: - View
+    init(title: String, category: String, backgroundColor: Color) {
+        self.title = title
+        self.category = category
+        self.backgroundColor = backgroundColor
+        
+        let symbol: SubscriptionsViewModel.subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.init(rawValue: self.category) ?? SubscriptionsViewModel.subscriptionCategory.none
+        self.SFSymbolImageString = symbol.getSFSymbolImageString()
+    }
     
     var body: some View {
         HStack {
             Spacer()
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
-                Image(systemName: "info.circle")
+                Image(systemName: self.SFSymbolImageString)
                     .resizable()
                     .frame(width: 45, height: 45, alignment: .center)
                     .scaledToFit()

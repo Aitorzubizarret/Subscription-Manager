@@ -70,6 +70,8 @@ struct SubscriptionEditView: View {
             subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.rent
         case SubscriptionsViewModel.subscriptionCategory.gym.rawValue:
             subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.gym
+        case SubscriptionsViewModel.subscriptionCategory.education.rawValue:
+            subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.education
         default:
             subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.video
         }
