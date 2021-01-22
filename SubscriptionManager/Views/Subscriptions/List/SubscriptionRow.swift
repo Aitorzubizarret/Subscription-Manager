@@ -27,6 +27,7 @@ struct SubscriptionRow: View {
     private var widthValue: CGFloat {
         return (UIScreen.main.bounds.size.width - 15 - 15) // SubscriptionView, leading and trailing padding.
     }
+    var SFSymbolImageString: String = ""
     
     // MARK: - Methods
     
@@ -53,6 +54,10 @@ struct SubscriptionRow: View {
         
         self.backgroundColor = subscriptionRowBackgroundColor
         self.strokeColor = subscriptionRowStrokeColor
+        
+        // Icon - Logo - Image.
+        let symbol: SubscriptionsViewModel.subscriptionCategory = SubscriptionsViewModel.subscriptionCategory.init(rawValue: self.subscription.category) ?? SubscriptionsViewModel.subscriptionCategory.none
+        self.SFSymbolImageString = symbol.getSFSymbolImageString()
     }
     
     ///
@@ -110,10 +115,10 @@ struct SubscriptionRow: View {
     var body: some View {
         NavigationLink(destination: SubscriptionDetailView(subscription: subscription).environmentObject(self.subscriptionsViewModel)) {
             HStack {
-                Image(systemName: "tv")
+                Image(systemName: self.SFSymbolImageString)
                     .resizable()
-                    .frame(width: 25, height: 25, alignment: .center)
                     .scaledToFit()
+                    .frame(width: 25, height: 25, alignment: .center)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                     .foregroundColor(self.textColor)
                 Text(subscription.name)

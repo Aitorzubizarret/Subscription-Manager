@@ -33,8 +33,8 @@ struct SubscriptionLogoTitleField: View {
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                 Image(systemName: self.SFSymbolImageString)
                     .resizable()
-                    .frame(width: 45, height: 45, alignment: .center)
                     .scaledToFit()
+                    .frame(width: 45, height: 45, alignment: .center)
                     .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
                     .foregroundColor(Color.white)
                 Text(title)

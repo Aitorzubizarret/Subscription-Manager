@@ -79,9 +79,9 @@ class SubscriptionsViewModel: ObservableObject {
             
             switch self {
             case .none:
-                imageString = "info.circle" // MARK: Fix: Change image.
+                imageString = "questionmark"
             case .video:
-                imageString = "tv"
+                imageString = "play.tv"
             case .music:
                 imageString = "music.note"
             case .software:
@@ -95,11 +95,11 @@ class SubscriptionsViewModel: ObservableObject {
             case .phone:
                 imageString = "phone"
             case .internet:
-                imageString = "info.circle" // MARK: Fix: Change image.
+                imageString = "globe"
             case .rent:
                 imageString = "house"
             case .gym:
-                imageString = "info.circle" // MARK: Fix: Change image.
+                imageString = "figure.walk" // flame
             case .education:
                 imageString = "book"
             }
