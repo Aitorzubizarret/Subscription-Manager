@@ -29,6 +29,7 @@ struct AppView: View {
                     Text("Statistics")
             }
         }
+        .accentColor(.black)
     }
 }
 
