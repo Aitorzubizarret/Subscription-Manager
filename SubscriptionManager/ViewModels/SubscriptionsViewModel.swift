@@ -122,10 +122,28 @@ class SubscriptionsViewModel: ObservableObject {
         let request = Subscription.fetchRequest()
         
         do {
-            self.subscriptions = try self.moc.fetch(request) as! [Subscription]
+            var fetchedSubscriptions: [Subscription] = []
+            fetchedSubscriptions = try self.moc.fetch(request) as! [Subscription]
+            
+            // Check the payment date of subscriptions and update it if the date is old.
+            for subscription in fetchedSubscriptions {
+                if subscription.nextPayment < Date() {
+                    self.updateOldPaymentDate(subscription: subscription)
+                }
+            }
+            
+            self.subscriptions = fetchedSubscriptions
         } catch {
             print("getSubscriptions Error: \(error)")
         }
+    }
+    
+    ///
+    /// Updates the old payment date from a Subscription.
+    ///
+    private func updateOldPaymentDate(subscription: Subscription) {
+        
+        // Create a new payment date.
     }
     
     ///
