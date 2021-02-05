@@ -103,4 +103,23 @@ extension Date {
         
         return yearMonthDay
     }
+    
+    ///
+    /// Compares two dates, but only the year, month and day, not the time.
+    /// - Returns: True if the first date is older than the second, otherwise false.
+    ///
+    func isOlderThan(date: Date) -> Bool {
+        var response: Bool = true
+        
+        let date1: Date = self
+        let date2: Date = date
+        
+        if ((date1.getYearNumber() ?? 1) >= (date2.getYearNumber() ?? 1)) &&
+           ((date1.getMonthNumber() ?? 1) >= (date2.getMonthNumber() ?? 1)) &&
+           ((date1.getDayNumber() ?? 1) >= (date2.getDayNumber() ?? 1)) {
+            response = false
+        }
+        
+        return response
+    }
 }
