@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H505" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H1009" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Payment" representedClassName=".Payment" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="subscription_category" optional="YES" attributeType="String"/>
+        <attribute name="subscription_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="subscription_name" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Subscription" representedClassName=".Subscription" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -13,5 +21,6 @@
     </entity>
     <elements>
         <element name="Subscription" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Payment" positionX="-63" positionY="54" width="128" height="133"/>
     </elements>
 </model>

@@ -45,6 +45,7 @@
 		42A51007259E668B00EB3544 /* CategoryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A51006259E668B00EB3544 /* CategoryField.swift */; };
 		42A7153825950FE80028A4F7 /* ColorElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153725950FE80028A4F7 /* ColorElement.swift */; };
 		42A7153B2595125A0028A4F7 /* ColorsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153A2595125A0028A4F7 /* ColorsField.swift */; };
+		42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC7ACA25CF1EE800F0B71B /* Payment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		42A51006259E668B00EB3544 /* CategoryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryField.swift; sourceTree = "<group>"; };
 		42A7153725950FE80028A4F7 /* ColorElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorElement.swift; sourceTree = "<group>"; };
 		42A7153A2595125A0028A4F7 /* ColorsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsField.swift; sourceTree = "<group>"; };
+		42DC7ACA25CF1EE800F0B71B /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			children = (
 				1AB60910252D06D300597B85 /* SubscriptionsManager.xcdatamodeld */,
 				1A9933322523DB04008BF8C4 /* Subscription.swift */,
+				42DC7ACA25CF1EE800F0B71B /* Payment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				1A021735255B253F001384A9 /* View.swift in Sources */,
 				4265F08125A104B3002797C9 /* CategoriesView.swift in Sources */,
 				1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */,
+				42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */,
 				1A8CFC4E254DD72600B8DEB9 /* BigButton.swift in Sources */,
 				4265F08425A107AD002797C9 /* CategoryElement.swift in Sources */,
 				1A90E3AF2548670300C95E9A /* EditableField.swift in Sources */,
