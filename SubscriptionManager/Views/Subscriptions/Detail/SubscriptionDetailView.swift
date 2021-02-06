@@ -92,7 +92,10 @@ struct SubscriptionDetailView: View {
                             SubscriptionDataField(title: "Next Payment", value: self.subscription.nextPayment.getYearMonthDay(), backgroundColor: self.backgroundColor)
                         }
                         SubscriptionDataField(title: "Total", value: "\(subscription.payed) €", backgroundColor: self.backgroundColor)
-                        SubscriptionDataField(title: "Created", value: "\(subscription.created.getYearMonthDay())", backgroundColor: self.backgroundColor)
+                        // Avoids unknown error with dateFormatter when deleting the Subscription.
+                        if !self.deleteInProcess {
+                            SubscriptionDataField(title: "Created", value: "\(subscription.created.getYearMonthDay())", backgroundColor: self.backgroundColor)
+                        }
                     }
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .background(self.backgroundColor)
