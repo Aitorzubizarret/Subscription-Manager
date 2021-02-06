@@ -15,6 +15,7 @@ class SubscriptionsViewModel: ObservableObject {
     // MARK: - Properties
     
     @Published var subscriptions: [Subscription] = []
+    @Published var payments: [Payment] = []
     private var moc: NSManagedObjectContext
     public var subscriptionCycleUnitOptions: [String] = ["day", "week", "month", "year"]
     enum subscriptionRowColor: String, CaseIterable {
@@ -113,6 +114,7 @@ class SubscriptionsViewModel: ObservableObject {
     init() {
         moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.getSubscriptions()
+        self.getPayments()
     }
     
     ///
@@ -136,6 +138,22 @@ class SubscriptionsViewModel: ObservableObject {
             self.subscriptions = fetchedSubscriptions
         } catch {
             print("getSubscriptions Error: \(error)")
+        }
+    }
+    
+    ///
+    /// Gets payments from Core Data and saves them in the property 'payments'.
+    ///
+    private func getPayments() {
+        let request = Payment.fetchRequest()
+        
+        do {
+            var fechedPayments: [Payment] = []
+            fechedPayments = try self.moc.fetch(request) as! [Payment]
+            
+            self.payments = fechedPayments
+        } catch {
+            print("Error : getPayments \(error)")
         }
     }
     
@@ -171,6 +189,9 @@ class SubscriptionsViewModel: ObservableObject {
                     
                     // Add the amount payed to the total.
                     subscription.payed = subscription.payed + subscription.price
+                    
+                    // Create a new Payment object.
+                    self.createNewPayment(subscription_id: subscription.id, subscription_name: subscription.name, subscription_category: subscription.category, amount: subscription.price, date: newNextPaymentDate)
                 } while newNextPaymentDate.isOlderThan(date: Date())
             case "w":
                 repeat {
@@ -188,6 +209,9 @@ class SubscriptionsViewModel: ObservableObject {
                     
                     // Add the amount payed to the total.
                     subscription.payed = subscription.payed + subscription.price
+                    
+                    // Create a new Payment object.
+                    self.createNewPayment(subscription_id: subscription.id, subscription_name: subscription.name, subscription_category: subscription.category, amount: subscription.price, date: newNextPaymentDate)
                 } while newNextPaymentDate.isOlderThan(date: Date())
             case "m":
                 repeat {
@@ -201,6 +225,9 @@ class SubscriptionsViewModel: ObservableObject {
                     
                     // Add the amount payed to the total.
                     subscription.payed = subscription.payed + subscription.price
+                    
+                    // Create a new Payment object.
+                    self.createNewPayment(subscription_id: subscription.id, subscription_name: subscription.name, subscription_category: subscription.category, amount: subscription.price, date: newNextPaymentDate)
                 } while newNextPaymentDate.isOlderThan(date: Date())
             case "y":
                 repeat {
@@ -214,6 +241,9 @@ class SubscriptionsViewModel: ObservableObject {
                     
                     // Add the amount payed to the total.
                     subscription.payed = subscription.payed + subscription.price
+                    
+                    // Create a new Payment object.
+                    self.createNewPayment(subscription_id: subscription.id, subscription_name: subscription.name, subscription_category: subscription.category, amount: subscription.price, date: newNextPaymentDate)
                 } while newNextPaymentDate.isOlderThan(date: Date())
             default:
                 print("Error updating the old nextPayment date to a subscription.")
@@ -244,6 +274,7 @@ class SubscriptionsViewModel: ObservableObject {
     /// - Parameter nextPayment : The date of the next payment.
     ///
     public func createNewSubscription(name: String, price: Float, category: subscriptionCategory, cycle: String, rowColor: subscriptionRowColor, nextPayment: Date) {
+        // Create the new Subscription object.
         let newSubscription: Subscription = Subscription(context: self.moc)
         newSubscription.id = UUID()
         newSubscription.name = name
@@ -255,11 +286,37 @@ class SubscriptionsViewModel: ObservableObject {
         newSubscription.nextPayment = nextPayment
         newSubscription.created = Date()
         
+        // Create the payment
+        self.createNewPayment(subscription_id: newSubscription.id, subscription_name: newSubscription.name, subscription_category: newSubscription.category, amount: newSubscription.price, date: newSubscription.nextPayment)
+        
+        // Save it in Core Data and update the subscriptions property.
         do {
             try self.moc.save()
             self.getSubscriptions()
         } catch {
-            print("Error saving new subscription: \(error)")
+            print("Error creating and saving a new Subscription object (createNewSubscription): \(error)")
+        }
+    }
+    
+    ///
+    /// Creates and saves a new payment in Core Data.
+    ///
+    private func createNewPayment(subscription_id: UUID, subscription_name: String, subscription_category: String, amount: Float, date: Date) {
+        // Create the new Payment object.
+        let newPayment: Payment = Payment(context: self.moc)
+        newPayment.id = UUID()
+        newPayment.subscription_id = subscription_id
+        newPayment.subscription_name = subscription_name
+        newPayment.subscription_category = subscription_category
+        newPayment.amount = amount
+        newPayment.date = date
+        
+        // Save it in Core Data and update the payments property.
+        do {
+            try self.moc.save()
+            self.getPayments()
+        } catch {
+            print("Error creating and saving a new Payment object (createNewPayment) : \(error)")
         }
     }
     
