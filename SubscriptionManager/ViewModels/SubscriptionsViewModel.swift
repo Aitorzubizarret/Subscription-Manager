@@ -117,6 +117,7 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Gets subscriptions from CoreData and saves them in the property 'subscriptions'.
+    /// It also checks the nextPaymentDate, and updates it in case the date is earlier than today. (Outdated).
     ///
     private func getSubscriptions() {
         let request = Subscription.fetchRequest()
@@ -125,9 +126,9 @@ class SubscriptionsViewModel: ObservableObject {
             var fetchedSubscriptions: [Subscription] = []
             fetchedSubscriptions = try self.moc.fetch(request) as! [Subscription]
             
-            // Check the payment date of subscriptions and update it if the date is old.
+            // Check the nextPayment date of subscriptions and updates them if the date is old. (Outdated).
             for subscription in fetchedSubscriptions {
-                if subscription.nextPayment < Date() {
+                if subscription.nextPayment.isOlderThan(date: Date()) {
                     self.updateOldPaymentDate(subscription: subscription)
                 }
             }
@@ -140,10 +141,97 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Updates the old payment date from a Subscription.
+    /// - Parameter subscription : The subscription that has an old (outdated) nextPaymentDate.
     ///
     private func updateOldPaymentDate(subscription: Subscription) {
-        
-        // Create a new payment date.
+        // Get payment cycle.
+        let paymentCycle: String = subscription.cycle
+        let cycleComponents: [String] = paymentCycle.components(separatedBy: "-")
+                
+        // Update nextPayment date.
+        if cycleComponents.count == 2 {
+            
+            // Get the old nextPayment date.
+            var oldNextPaymentDate: Date = subscription.nextPayment
+            
+            // Create the new nextPayment date.
+            var newNextPaymentDate: Date = Date()
+            
+            // Calculate the new nextPayment date.
+            switch cycleComponents[1] {
+            case "d":
+                repeat {
+                    // Add a date component to add x days.
+                    var dateComponent = DateComponents()
+                    dateComponent.day = Int(cycleComponents[0]) ?? 1
+                    
+                    // Create the newNextPaymentDate and update the oldNextPaymentDate.
+                    newNextPaymentDate = Calendar.current.date(byAdding: dateComponent, to: oldNextPaymentDate) ?? Date()
+                    oldNextPaymentDate = newNextPaymentDate
+                    
+                    // Add the amount payed to the total.
+                    subscription.payed = subscription.payed + subscription.price
+                } while newNextPaymentDate.isOlderThan(date: Date())
+            case "w":
+                repeat {
+                    // Add a date component to add x weeks.
+                    var dateComponent = DateComponents()
+                    if let weeks: Int = Int(cycleComponents[0]) {
+                        dateComponent.day = weeks * 7
+                    } else {
+                        dateComponent.day = 1
+                    }
+                    
+                    // Create the newNextPaymentDate and update the oldNextPaymentDate.
+                    newNextPaymentDate = Calendar.current.date(byAdding: dateComponent, to: oldNextPaymentDate) ?? Date()
+                    oldNextPaymentDate = newNextPaymentDate
+                    
+                    // Add the amount payed to the total.
+                    subscription.payed = subscription.payed + subscription.price
+                } while newNextPaymentDate.isOlderThan(date: Date())
+            case "m":
+                repeat {
+                    // Add a date component to add x months.
+                    var dateComponent = DateComponents()
+                    dateComponent.month = Int(cycleComponents[0]) ?? 1
+                    
+                    // Create the newNextPaymentDate and update the oldNextPaymentDate.
+                    newNextPaymentDate = Calendar.current.date(byAdding: dateComponent, to: oldNextPaymentDate) ?? Date()
+                    oldNextPaymentDate = newNextPaymentDate
+                    
+                    // Add the amount payed to the total.
+                    subscription.payed = subscription.payed + subscription.price
+                } while newNextPaymentDate.isOlderThan(date: Date())
+            case "y":
+                repeat {
+                    // Add a date component to add x years.
+                    var dateComponent = DateComponents()
+                    dateComponent.year = Int(cycleComponents[0]) ?? 1
+                    
+                    // Create the newNextPaymentDate and update the oldNextPaymentDate.
+                    newNextPaymentDate = Calendar.current.date(byAdding: dateComponent, to: oldNextPaymentDate) ?? Date()
+                    oldNextPaymentDate = newNextPaymentDate
+                    
+                    // Add the amount payed to the total.
+                    subscription.payed = subscription.payed + subscription.price
+                } while newNextPaymentDate.isOlderThan(date: Date())
+            default:
+                print("Error updating the old nextPayment date to a subscription.")
+            }
+            
+            // Update the new nexPayment date.
+            subscription.nextPayment = newNextPaymentDate
+            
+            // Updates the subscription.
+            self.moc.refresh(subscription, mergeChanges: true)
+            
+            // Saves the subscription.
+            do {
+                try self.moc.save()
+            } catch {
+                print("Error updating a subscription: \(error)")
+            }
+        }
     }
     
     ///
