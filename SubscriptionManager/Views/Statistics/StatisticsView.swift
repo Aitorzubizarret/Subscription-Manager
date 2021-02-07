@@ -20,6 +20,7 @@ struct StatisticsView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
+                    // Statistics.
                     SectionTitle(title: "Statistics")
                     VStack {
                         HStack(alignment: .center, spacing: 12) {
@@ -28,15 +29,16 @@ struct StatisticsView: View {
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-                    SectionTitle(title: "Next Payments")
-                    VStack(alignment: .leading, spacing: 12) {
-                        if self.subscriptionsViewModel.payments.count != 0 {
+                    // Next Payments.
+                    if self.subscriptionsViewModel.payments.count > 0 {
+                        SectionTitle(title: "Next Payments")
+                        VStack(alignment: .leading, spacing: 12) {
                             ForEach(self.subscriptionsViewModel.payments, id:\Payment.id) { payment in
                                 PendingPaymentRow(payment: payment)
                             }
                         }
+                        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                     }
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
