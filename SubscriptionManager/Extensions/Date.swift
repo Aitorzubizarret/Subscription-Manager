@@ -114,9 +114,14 @@ extension Date {
         let date1: Date = self
         let date2: Date = date
         
-        if ((date1.getYearNumber() ?? 1) >= (date2.getYearNumber() ?? 1)) &&
-           ((date1.getMonthNumber() ?? 1) >= (date2.getMonthNumber() ?? 1)) &&
-           ((date1.getDayNumber() ?? 1) >= (date2.getDayNumber() ?? 1)) {
+        if (date1.getYearNumber() ?? 1) > (date2.getYearNumber() ?? 1) {
+            // Year is bigger.
+            response = false
+        } else if (date1.getYearNumber() ?? 1) == (date2.getYearNumber() ?? 1) && (date1.getMonthNumber() ?? 1) > (date2.getMonthNumber() ?? 1) {
+            // Month is bigger.
+            response = false
+        } else if (date1.getYearNumber() ?? 1) == (date2.getYearNumber() ?? 1) && (date1.getMonthNumber() ?? 1) == (date2.getMonthNumber() ?? 1) && (date1.getDayNumber() ?? 1) > (date2.getDayNumber() ?? 1) {
+            // Day is bigger.
             response = false
         }
         
