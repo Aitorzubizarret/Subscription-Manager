@@ -322,7 +322,7 @@ class SubscriptionsViewModel: ObservableObject {
     
     ///
     /// Updates data in the received subscription.
-    /// - Parameter subcription : The subscription to update.
+    /// - Parameter subscription : The subscription to update.
     /// - Parameter name : A  name for the subscription.
     /// - Parameter price : A  price for the subscription.
     /// - Parameter cycle : A  cycle for the subscription.
@@ -389,7 +389,9 @@ class SubscriptionsViewModel: ObservableObject {
     }
     
     ///
-    ///
+    /// Converts a string into Color if it's one of the SubscriptionRowColors.
+    /// - Parameter : A string
+    /// - Returns : Optional Color
     ///
     public func convertStringToColor(stringColor: String) -> Color? {
         var color: Color?

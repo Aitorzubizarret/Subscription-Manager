@@ -241,7 +241,7 @@ struct CalendarField: View {
     
     ///
     /// Changes the selected day to the received one.
-    /// - Parameter day : An string that represents a day number selected by the user.
+    /// - Parameter day : A string that represents a day number selected by the user.
     ///
     private func updateSelectedDay(day: String) {
         if day != "" {
@@ -265,7 +265,7 @@ struct CalendarField: View {
         }
     }
     
-    //MARK: - View
+    // MARK: - View
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
