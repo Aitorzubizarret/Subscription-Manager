@@ -24,8 +24,8 @@ struct SubscriptionsView: View {
         NavigationView {
             ScrollView {
                 if self.subscriptionsViewModel.subscriptions.count == 0 {
-                    Text("You can add subscriptions tapping the +")
-                    .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
+                    EmptySubscriptionList()
+                    .padding(EdgeInsets(top: 120, leading: 0, bottom: 0, trailing: 0))
                 } else {
                     ForEach(self.subscriptionsViewModel.subscriptions, id:\Subscription.id) { subscription in
                         SubscriptionRow(subscription: subscription).environmentObject(self.subscriptionsViewModel)

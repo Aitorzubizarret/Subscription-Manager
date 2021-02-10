@@ -46,6 +46,7 @@
 		42A51007259E668B00EB3544 /* CategoryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A51006259E668B00EB3544 /* CategoryField.swift */; };
 		42A7153825950FE80028A4F7 /* ColorElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153725950FE80028A4F7 /* ColorElement.swift */; };
 		42A7153B2595125A0028A4F7 /* ColorsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153A2595125A0028A4F7 /* ColorsField.swift */; };
+		42D6AB0525D4809800ACCFBC /* EmptySubscriptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */; };
 		42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC7ACA25CF1EE800F0B71B /* Payment.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		42A51006259E668B00EB3544 /* CategoryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryField.swift; sourceTree = "<group>"; };
 		42A7153725950FE80028A4F7 /* ColorElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorElement.swift; sourceTree = "<group>"; };
 		42A7153A2595125A0028A4F7 /* ColorsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsField.swift; sourceTree = "<group>"; };
+		42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySubscriptionList.swift; sourceTree = "<group>"; };
 		42DC7ACA25CF1EE800F0B71B /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +230,7 @@
 			children = (
 				1AD39899251D41C700922ED9 /* SubscriptionsView.swift */,
 				1A9933342523DD0A008BF8C4 /* SubscriptionRow.swift */,
+				42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				1AD39898251D41C700922ED9 /* SceneDelegate.swift in Sources */,
 				1A3420AB253F7F0A000A88F7 /* SubscriptionEditView.swift in Sources */,
 				428093A4258E78AD003AC39D /* SettingsBundleHelper.swift in Sources */,
+				42D6AB0525D4809800ACCFBC /* EmptySubscriptionList.swift in Sources */,
 				1AB15296255DECB500FBF5F4 /* SectionTitle.swift in Sources */,
 				1A9933332523DB04008BF8C4 /* Subscription.swift in Sources */,
 				42A51007259E668B00EB3544 /* CategoryField.swift in Sources */,
