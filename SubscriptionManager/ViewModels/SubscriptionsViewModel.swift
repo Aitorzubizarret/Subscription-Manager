@@ -370,6 +370,34 @@ class SubscriptionsViewModel: ObservableObject {
         } catch {
             print("Error updating a subscription: \(error)")
         }
+        
+        // Updates all payments of the subscription.
+        self.updatePayments(subscription: subscription)
+    }
+    
+    ///
+    /// Updates all the Payments from the received subscription.
+    /// - Parameter subscription : The subscription
+    ///
+    private func updatePayments(subscription: Subscription) {
+        // Search Payments with the same "subscription_id" to update their data (name & category).
+        for payment in self.payments {
+            if payment.subscription_id == subscription.id {
+                payment.subscription_name = subscription.name
+                payment.subscription_category = subscription.category
+                
+                // Update Payment.
+                self.moc.refresh(payment, mergeChanges: true)
+            }
+        }
+        
+        // Save it in Core Data and update Payments from SubscriptionViewModel.
+        do {
+            try self.moc.save()
+            self.getPayments()
+        } catch {
+            print("Error updating the payments of one subscription: \(error)")
+        }
     }
     
     ///
