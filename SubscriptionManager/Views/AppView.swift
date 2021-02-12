@@ -13,6 +13,16 @@ struct AppView: View {
     // MARK: - Properties
     
     var subscriptionsViewModel = SubscriptionsViewModel()
+    var subscriptionTabTitle: String = ""
+    var statisticsTabTitle: String = ""
+    
+    // MARK: - Methods
+    
+    init() {
+        // Get the TabBar title strings from localizable.
+        self.subscriptionTabTitle = NSLocalizedString("Subscriptions", comment: "")
+        self.statisticsTabTitle = NSLocalizedString("Statistics", comment: "")
+    }
     
     // MARK: - View
     
@@ -21,12 +31,12 @@ struct AppView: View {
             SubscriptionsView().environmentObject(self.subscriptionsViewModel)
                 .tabItem {
                     Image(systemName: "list.bullet")
-                    Text("Subscriptions")
+                    Text(self.subscriptionTabTitle)
             }
             StatisticsView().environmentObject(self.subscriptionsViewModel)
                 .tabItem {
                     Image(systemName: "chart.pie")
-                    Text("Statistics")
+                    Text(self.statisticsTabTitle)
             }
         }
         .accentColor(.black)
