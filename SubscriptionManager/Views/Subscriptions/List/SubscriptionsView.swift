@@ -15,6 +15,21 @@ struct SubscriptionsView: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @State private var showingNewSubscriptionForm: Bool = false
     @State private var showingConfigPanel: Bool = false
+    private var navBarTitle: String = ""
+    
+    // MARK: - Methods
+    
+    init() {
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get the NavBar title string from localizable.
+        self.navBarTitle = NSLocalizedString("Subscriptions", comment: "")
+    }
     
     // MARK: - View
     
@@ -33,14 +48,18 @@ struct SubscriptionsView: View {
                     .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
                 }
             }
-            .navigationBarTitle("Subscriptions")
-            .navigationBarItems(leading:
-                Button(action: {
-                    self.showingConfigPanel.toggle()
-                }) {
-                    Image(systemName: "gearshape.fill")
-                        .font(Font.system(size: 20, weight: Font.Weight.bold, design: Font.Design.default))
-                },
+            .navigationBarTitle(self.navBarTitle)
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        self.showingConfigPanel.toggle()
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                            .font(Font.system(size: 20, weight: Font.Weight.bold, design: Font.Design.default))
+                    }.sheet(isPresented: $showingConfigPanel) {
+                        ConfigurationView(isPresented: self.$showingConfigPanel)
+                    }
+                ,
                 trailing:
                     Button(action: {
                         self.showingNewSubscriptionForm.toggle()

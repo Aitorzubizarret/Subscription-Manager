@@ -48,6 +48,7 @@
 		42A7153B2595125A0028A4F7 /* ColorsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153A2595125A0028A4F7 /* ColorsField.swift */; };
 		42CEB2E925D73B6300D222BA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42CEB2EB25D73B6300D222BA /* Localizable.strings */; };
 		42D6AB0525D4809800ACCFBC /* EmptySubscriptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */; };
+		42D74F0625D87B0B0070AA60 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D74F0525D87B0B0070AA60 /* ConfigurationView.swift */; };
 		42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC7ACA25CF1EE800F0B71B /* Payment.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		42CEB2ED25D73CB200D222BA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42CEB2EF25D73CDD00D222BA /* eu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eu; path = eu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySubscriptionList.swift; sourceTree = "<group>"; };
+		42D74F0525D87B0B0070AA60 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		42DC7ACA25CF1EE800F0B71B /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +196,7 @@
 				1A2CE00A252778F90009C743 /* AppView.swift */,
 				1ADBC3A125279E3400AD06E6 /* Subscriptions */,
 				1ADBC3A225279E4400AD06E6 /* Statistics */,
+				42D74F0425D87ADD0070AA60 /* Configuration */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +268,14 @@
 				1ADBC3A725279EFC00AD06E6 /* SubscriptionsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		42D74F0425D87ADD0070AA60 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				42D74F0525D87B0B0070AA60 /* ConfigurationView.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +365,7 @@
 				42A7153825950FE80028A4F7 /* ColorElement.swift in Sources */,
 				1A021737255B29AB001384A9 /* Color.swift in Sources */,
 				1AB60912252D06D300597B85 /* SubscriptionsManager.xcdatamodeld in Sources */,
+				42D74F0625D87B0B0070AA60 /* ConfigurationView.swift in Sources */,
 				1AF5E94D255DEBE000986ECF /* SmallSimpleBox.swift in Sources */,
 				1AA2F1112554646400ACD229 /* CalendarField.swift in Sources */,
 				1A9933352523DD0A008BF8C4 /* SubscriptionRow.swift in Sources */,
