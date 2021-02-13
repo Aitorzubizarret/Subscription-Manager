@@ -57,7 +57,7 @@ struct SubscriptionsView: View {
                         Image(systemName: "gearshape.fill")
                             .font(Font.system(size: 20, weight: Font.Weight.bold, design: Font.Design.default))
                     }.sheet(isPresented: $showingConfigPanel) {
-                        ConfigurationView(isPresented: self.$showingConfigPanel)
+                        SettingsView(isPresented: self.$showingConfigPanel)
                     }
                 ,
                 trailing:

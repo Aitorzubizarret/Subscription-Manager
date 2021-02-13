@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ConfigurationView: View {
+struct SettingsView: View {
     
     // MARK: - Properties
     
@@ -17,12 +17,12 @@ struct ConfigurationView: View {
     // MARK: - View
     
     var body: some View {
-        Text("Configuration View")
+        Text("Settings View")
     }
 }
 
-struct ConfigurationView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigurationView(isPresented: .constant(false))
+        SettingsView(isPresented: .constant(false))
     }
 }
