@@ -17,7 +17,10 @@ struct SettingsView: View {
     // MARK: - View
     
     var body: some View {
-        Text("Settings View")
+        NavigationView {
+            Text("Settings View")
+                .navigationBarTitle("Settings", displayMode: .inline)
+        }
     }
 }
 
