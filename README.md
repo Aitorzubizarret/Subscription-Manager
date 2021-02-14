@@ -11,16 +11,17 @@ This is a project (iOS App) to track and manage all subscriptions.
 - [x] Price property.
 - [x] Payment Cycle property.
 - [x] Color property.
-- [] Logo / Icon property
-- [] Status (Active or cancelled) property.
-- [] Creation Date property.
-- [] Cancelled Date property.
+- [ ] Logo / Icon property
+- [ ] Status (Active or cancelled) property.
+- [x] Creation Date property.
+- [ ] Cancelled Date property.
 - [x] Next Payment Date property.
 - [x] Category property.
-- [] 'Shared Subscription' property.
+- [ ] 'Shared Subscription' property.
 - [x] Save Subscriptions locally (Core Data).
-- [] Back Up Data in CloudKit (iCloud).
-- [] Face ID & Touch ID Security options.
-- [] Local Notifications for when payments date are near.
-- [] Dark mode.
-- [] Total payed.
+- [ ] Back Up Data in CloudKit (iCloud).
+- [ ] Face ID & Touch ID Security options.
+- [ ] Local Notifications for when payments date are near.
+- [ ] Dark mode.
+- [x] Total payed.
+- [ ] Multilanguage
