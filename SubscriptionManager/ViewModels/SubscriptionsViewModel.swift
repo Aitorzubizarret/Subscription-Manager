@@ -417,6 +417,14 @@ class SubscriptionsViewModel: ObservableObject {
     }
     
     ///
+    /// Deletes all data from Core Data.
+    ///
+    public func deleteAllData() {
+        // Delete all Core Data.
+        print("Gone")
+    }
+    
+    ///
     /// Converts a string into Color if it's one of the SubscriptionRowColors.
     /// - Parameter : A string
     /// - Returns : Optional Color

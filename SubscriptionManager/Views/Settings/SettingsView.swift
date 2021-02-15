@@ -12,20 +12,64 @@ struct SettingsView: View {
     
     // MARK: - Properties
     
+    @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @Binding var isPresented: Bool
+    @State private var showingAlert: Bool = false
+    private var settingsText: String = ""
+    private var descriptionText: String = ""
+    
+    // MARK: - Methods
+    
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get the NavBar title string from localizable.
+        self.settingsText = NSLocalizedString("Settings", comment: "")
+        self.descriptionText = NSLocalizedString("settingsView", comment: "")
+    }
+    
+    ///
+    /// Delete all data.
+    ///
+    private func deleteAllData() {
+        // Deletes everything from Core Data.
+        self.subscriptionsViewModel.deleteAllData()
+    }
     
     // MARK: - View
     
     var body: some View {
         NavigationView {
-            Text("Settings View")
-                .navigationBarTitle("Settings", displayMode: .inline)
+            VStack{
+                Text(self.descriptionText)
+                    .navigationBarTitle("Settings", displayMode: .inline)
+                // Delete all data from the App.
+                Button(action: {
+                    self.showingAlert = true
+                }) {
+                    BigButton(style: .delete, title: "Delete All Subscriptions?")
+                }.alert(isPresented: self.$showingAlert, content: {
+                    Alert(title: Text("Delete All Subscriptions"),
+                          message: Text("This action can’t be undone. Are you sure?"),
+                          primaryButton: Alert.Button.destructive(Text("Delete"),
+                          action: {
+                            self.deleteAllData()
+                          }),
+                          secondaryButton: Alert.Button.cancel(Text("No")))
+                })
+            }
         }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(isPresented: .constant(false))
+        SettingsView(isPresented: .constant(true))
     }
 }

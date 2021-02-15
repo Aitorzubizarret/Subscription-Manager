@@ -57,7 +57,7 @@ struct SubscriptionsView: View {
                         Image(systemName: "gearshape.fill")
                             .font(Font.system(size: 20, weight: Font.Weight.bold, design: Font.Design.default))
                     }.sheet(isPresented: $showingConfigPanel) {
-                        SettingsView(isPresented: self.$showingConfigPanel)
+                        SettingsView(isPresented: self.$showingConfigPanel).environmentObject(self.subscriptionsViewModel)
                     }
                 ,
                 trailing:
@@ -70,7 +70,6 @@ struct SubscriptionsView: View {
                         NewSubscriptionForm(isPresented: self.$showingNewSubscriptionForm)
                             .environmentObject(self.subscriptionsViewModel)
                     }
-                                
             )
         }
     }
