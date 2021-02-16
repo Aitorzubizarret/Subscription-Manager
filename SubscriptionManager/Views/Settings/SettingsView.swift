@@ -46,10 +46,15 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                Text(self.descriptionText)
-                    .navigationBarTitle("Settings", displayMode: .inline)
+            VStack(alignment: .leading, spacing: 12) {
                 // Delete all data from the App.
+                SectionTitle(title: "Delete everything")
+                Text("This button let you delete all the data created by this App and stored locally on your phone.")
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                Text("- All Subscriptions")
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                Text("- All Payments data")
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                 Button(action: {
                     self.showingAlert = true
                 }) {
@@ -63,6 +68,7 @@ struct SettingsView: View {
                           }),
                           secondaryButton: Alert.Button.cancel(Text("No")))
                 })
+                .navigationBarTitle("Settings", displayMode: .inline)
             }
         }
     }
