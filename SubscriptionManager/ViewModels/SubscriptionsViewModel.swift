@@ -420,8 +420,25 @@ class SubscriptionsViewModel: ObservableObject {
     /// Deletes all data from Core Data.
     ///
     public func deleteAllData() {
-        // Delete all Core Data.
-        print("Gone")
+        // Removes all Subscriptions from Core Data.
+        for subscription in self.subscriptions {
+            self.moc.delete(subscription)
+        }
+        
+        // Removes all Payments from Core Data.
+        for payment in self.payments {
+            self.moc.delete(payment)
+        }
+        
+        // Commits the changes in Core Data to delete everything, and update the Subscriptions and Payments arrays.
+        do {
+            try self.moc.save()
+            self.getSubscriptions()
+            self.getPayments()
+        } catch {
+            print("Error deleting all data from Core Data. \(error)")
+        }
+        
     }
     
     ///
