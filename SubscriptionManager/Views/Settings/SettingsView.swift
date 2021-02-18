@@ -49,12 +49,9 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 12) {
                 // Delete all data from the App.
                 SectionTitle(title: "Delete everything")
-                Text("This button let you delete all the data created by this App and stored locally on your phone.")
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-                Text("- All Subscriptions")
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-                Text("- All Payments data")
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                SectionDescription(text: "This button let you delete all the data created by this App and stored locally on your phone.")
+                SectionDescription(text: "- All Subscriptions")
+                SectionDescription(text: "- All Payments data")
                 Button(action: {
                     self.showingAlert = true
                 }) {
@@ -68,6 +65,7 @@ struct SettingsView: View {
                           }),
                           secondaryButton: Alert.Button.cancel(Text("No")))
                 })
+                Spacer()
                 .navigationBarTitle("Settings", displayMode: .inline)
             }
         }
