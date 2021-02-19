@@ -12,28 +12,30 @@ struct SectionDescription: View {
     
     // MARK: - Properties
     
-    var text: String
+    var texts: [String]
     
     // MARK: - Methods
     
-    init(text: String) {
-        self.text = text
+    init(texts: [String]) {
+        self.texts = texts
     }
     
     // MARK: - View
     
     var body: some View {
-        Text(self.text)
-            .font(Font.system(size: 18))
-            .fontWeight(Font.Weight.light)
-            .foregroundColor(Color.customDarkText)
-            .padding(EdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18))
+        ForEach(self.texts, id:\.self) { text in
+            Text(text)
+                .font(Font.system(size: 18))
+                .fontWeight(Font.Weight.light)
+                .foregroundColor(Color.customDarkText)
+                .padding(EdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18))
+        }
     }
 }
 
 struct SectionDescription_Previews: PreviewProvider {
     static var previews: some View {
-        SectionDescription(text: "A long text with loads of words just to say, Hi Planet!")
+        SectionDescription(texts: ["First text", "Second text", "Third text"])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

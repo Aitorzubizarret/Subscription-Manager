@@ -49,9 +49,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 12) {
                 // Delete all data from the App.
                 SectionTitle(title: "Delete everything")
-                SectionDescription(text: "This button let you delete all the data created by this App and stored locally on your phone.")
-                SectionDescription(text: "- All Subscriptions")
-                SectionDescription(text: "- All Payments data")
+                SectionDescription(texts: ["This button let you delete all the data created by this App and stored locally on your phone.", "- All Subscriptions", "- All Payments data"])
                 Button(action: {
                     self.showingAlert = true
                 }) {
