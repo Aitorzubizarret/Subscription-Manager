@@ -39,6 +39,7 @@
 		1AF5E94D255DEBE000986ECF /* SmallSimpleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */; };
 		420D380125D02BF700AEFF5C /* PendingPaymentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D380025D02BF700AEFF5C /* PendingPaymentRow.swift */; };
 		423265AE2599025D0017FE34 /* FieldTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423265AD2599025D0017FE34 /* FieldTitle.swift */; };
+		4258D8BF25DF25B5007988F0 /* SectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4258D8BE25DF25B5007988F0 /* SectionDescription.swift */; };
 		4265F08125A104B3002797C9 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4265F08025A104B3002797C9 /* CategoriesView.swift */; };
 		4265F08425A107AD002797C9 /* CategoryElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4265F08325A107AD002797C9 /* CategoryElement.swift */; };
 		428093A1258E70E9003AC39D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428093A0258E70E9003AC39D /* Settings.bundle */; };
@@ -88,6 +89,7 @@
 		1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSimpleBox.swift; sourceTree = "<group>"; };
 		420D380025D02BF700AEFF5C /* PendingPaymentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingPaymentRow.swift; sourceTree = "<group>"; };
 		423265AD2599025D0017FE34 /* FieldTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTitle.swift; sourceTree = "<group>"; };
+		4258D8BE25DF25B5007988F0 /* SectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDescription.swift; sourceTree = "<group>"; };
 		4265F08025A104B3002797C9 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		4265F08325A107AD002797C9 /* CategoryElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryElement.swift; sourceTree = "<group>"; };
 		428093A0258E70E9003AC39D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				1A8CFC4B254D90AA00B8DEB9 /* RoundCorners.swift */,
 				1A8CFC4D254DD72600B8DEB9 /* BigButton.swift */,
 				1A2CE00A252778F90009C743 /* AppView.swift */,
+				4258D8BE25DF25B5007988F0 /* SectionDescription.swift */,
 				1ADBC3A125279E3400AD06E6 /* Subscriptions */,
 				1ADBC3A225279E4400AD06E6 /* Statistics */,
 				42D74F0425D87ADD0070AA60 /* Settings */,
@@ -374,6 +377,7 @@
 				1A021735255B253F001384A9 /* View.swift in Sources */,
 				4265F08125A104B3002797C9 /* CategoriesView.swift in Sources */,
 				1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */,
+				4258D8BF25DF25B5007988F0 /* SectionDescription.swift in Sources */,
 				42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */,
 				1A8CFC4E254DD72600B8DEB9 /* BigButton.swift in Sources */,
 				4265F08425A107AD002797C9 /* CategoryElement.swift in Sources */,
