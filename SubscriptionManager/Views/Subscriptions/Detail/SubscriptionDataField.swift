@@ -14,13 +14,24 @@ struct SubscriptionDataField: View {
     
     let title: String
     let value: String
-    var backgroundColor: Color
+    let backgroundColor: Color
+    var composedTitle: String
+    
+    // MARK: - Methods
+    
+    init(title: String, value: String, backgroundColor: Color) {
+        self.title = title
+        self.value = value
+        self.backgroundColor = backgroundColor
+        
+        self.composedTitle = "\(title.uppercased()) :"
+    }
     
     // MARK: - View
     
     var body: some View {
         HStack {
-            Text("\(title.uppercased()) :")
+            Text(self.composedTitle)
                 .fontWeight(Font.Weight.medium)
                 .font(Font.system(size: 14))
                 .foregroundColor(Color.white)
