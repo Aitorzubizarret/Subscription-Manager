@@ -9,3 +9,86 @@
 // Tabs
 "Subscriptions" = "Harpidetzak";
 "Statistics" = "Estatistikak";
+
+// Subscriptions List View
+"emptySubscriptionListTitle" = "Harpidetzarik gabe";
+"emptySubscriptionListMessage" = "Harpidetzak gehi ditzakezu + sakatuz";
+
+// Subscription Row View
+"today" = "Gaur";
+"tomorrow" = "Bihar";
+"in %d days" = "%d egun barru";
+"inOneWeek" = "Aste bat barru";
+
+// Subscription Detail View
+"price" = "Prezioa";
+"cycle" = "Zikloa";
+"nextPayment" = "Hurrengo ordainketa";
+"total" = "Guztira";
+"created" = "Sortuta";
+"editSubscription" = "Harpidetza Editatu";
+"deleteSubscription" = "Harpidetza Ezabatu";
+"deleteSubscriptionMessageDescription" = "Ekintza hau ezin da desegin. Zihur al zaude?";
+"delete" = "Ezabatu";
+
+// New Subscription View
+"name" = "Izena";
+"category" = "Kategoria";
+"color" = "Kolorea";
+"newSubscription" = "Harpidetza Berria";
+"add" = "Gorde";
+"emptyFields" = "Eremu hutsak";
+"emptyFieldsMessageDescription" = "Izena eta Prezio eremuak derrigorrezkoak dira, eta azken hau zenbakiak soilik onartzen ditu. Gogoratu kategoria bat aukeratzen ere.";
+
+// Subscription Edit View
+"save" = "Gorde";
+
+// EditableField View
+"enter the %s" = "Sartu %s";
+
+// CycleField View
+"day" = "Egun";
+"days" = "Egun";
+"week" = "Aste";
+"weeks" = "Aste";
+"month" = "Hilabete";
+"months" = "Hilabete";
+"year" = "Urte";
+"years" = "Urte";
+"every %@" = "%@(e)ro";
+"every %d %@" = "%d %@(e)ro";
+
+// CalendarField View
+"monday" = "Al";
+"tuesday" = "As";
+"wednesday" = "Az";
+"thursday" = "Og";
+"friday" = "Or";
+"saturday" = "Lr";
+"sunday" = "Ig";
+
+// CategoryField View
+"SelectACategory" = "Aukeratu kategoria bat";
+
+// CategoriesView
+"categories" = "Kategoriak";
+
+// Statistics View
+"Subscription" = "Harpidetza";
+"nextPayment" = "Hurrengo ordainketak";
+
+// Settings View
+"Settings" = "Ezarpenak";
+"settingsView" = "Ezarpenen pantaila";
+"sectionDeleteTitle" = "Ezabatu dena";
+"sectionDeleteDescription1" = "Aplikaziorekin sortutako, eta mugikorrean gordetako, informazio guztia ezabatzeko aukera ematen dizu botoi hau.";
+"sectionDeleteDescription2" = "- Harpidetza guztiak";
+"sectionDeleteDescription3" = "- Ordainketa guztien informazioa";
+"sectionDeleteButtonTitle" = "Ezabatu dena";
+"sctionDeleteAlertTitle" = "Ezabatu dena";
+"sectionDeleteAlertMessage" = "Ekintza hau ezin da desegin. Zihur al zaude?";
+"sectionDeleteAlertPrimaryButton" = "Ezabatu";
+
+// Buttons
+"no" = "Ez";
+"ok" = "Ados";

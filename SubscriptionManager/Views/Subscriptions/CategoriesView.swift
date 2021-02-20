@@ -15,6 +15,7 @@ struct CategoriesView: View {
     @Binding var selectedCategory: SubscriptionsViewModel.subscriptionCategory
     @State private var selectedCategoryIndex: Int
     private var categoryList: [String]
+    private var navBarTitle: String = ""
     
     // MARK: - Methods
     
@@ -25,6 +26,17 @@ struct CategoriesView: View {
         for category in SubscriptionsViewModel.subscriptionCategory.allCases {
             self.categoryList.append(category.rawValue)
         }
+        
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.navBarTitle = NSLocalizedString("categories", comment: "")
+        
     }
     
     ///
@@ -88,7 +100,7 @@ struct CategoriesView: View {
                 }
             }
         }
-        .navigationBarTitle("Categories")
+        .navigationBarTitle(self.navBarTitle)
     }
 }
 

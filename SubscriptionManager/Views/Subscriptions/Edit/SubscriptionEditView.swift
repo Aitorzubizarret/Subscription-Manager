@@ -24,6 +24,14 @@ struct SubscriptionEditView: View {
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
     var subscription: Subscription
+    private var navBarTitle: String = ""
+    private var nameText: String = ""
+    private var priceText: String = ""
+    private var categoryText: String = ""
+    private var cycleText: String = ""
+    private var colorText: String = ""
+    private var nextPaymentText: String = ""
+    private var saveText: String = ""
     
     // MARK: - Methods
     
@@ -33,7 +41,23 @@ struct SubscriptionEditView: View {
         self._selectedColor = State(wrappedValue: .blue)
         self._selectedCategory = State(wrappedValue: .none)
         
+        self.localizeText()
         self.configureUIElements()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.navBarTitle = NSLocalizedString("editSubscription", comment: "")
+        self.nameText = NSLocalizedString("name", comment: "")
+        self.priceText = NSLocalizedString("price", comment: "")
+        self.categoryText = NSLocalizedString("category", comment: "")
+        self.cycleText = NSLocalizedString("cycle", comment: "")
+        self.colorText = NSLocalizedString("color", comment: "")
+        self.nextPaymentText = NSLocalizedString("nextPayment", comment: "")
+        self.saveText = NSLocalizedString("save", comment: "")
     }
     
     ///
@@ -162,12 +186,12 @@ struct SubscriptionEditView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
-                EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
-                CategoryField(title: "Category", value: self.$selectedCategory)
-                CycleField(title: "Cycle", value: self.$textCycle)
-                ColorsField(title: "Color", value: self.$selectedColor)
-                CalendarField(title: "Next Payment", value: self.$nextPayment)
+                EditableField(title: self.nameText, value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
+                EditableField(title: self.priceText, value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
+                CategoryField(title: self.categoryText, value: self.$selectedCategory)
+                CycleField(title: self.cycleText, value: self.$textCycle)
+                ColorsField(title: self.colorText, value: self.$selectedColor)
+                CalendarField(title: self.nextPaymentText, value: self.$nextPayment)
             }
             .gesture(
                 // Detects the scrollview moving and hides the keyboard.
@@ -175,7 +199,7 @@ struct SubscriptionEditView: View {
                     self.hideKeyboard()
                 })
             )
-            .navigationBarTitle(Text("Edit Subscription"), displayMode: .inline)
+            .navigationBarTitle(Text(self.navBarTitle), displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
                     if self.saveChanges() {
@@ -185,7 +209,7 @@ struct SubscriptionEditView: View {
                         self.showingAlert = true
                     }
                 }) {
-                    Text("Save")
+                    Text(self.saveText)
                 }.alert(isPresented: self.$showingAlert, content: {
                     Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: Alert.Button.cancel(Text("OK")))
                 })

@@ -13,12 +13,19 @@ struct AppView: View {
     // MARK: - Properties
     
     var subscriptionsViewModel = SubscriptionsViewModel()
-    var subscriptionTabTitle: String = ""
-    var statisticsTabTitle: String = ""
+    private var subscriptionTabTitle: String = ""
+    private var statisticsTabTitle: String = ""
     
     // MARK: - Methods
     
     init() {
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
         // Get the TabBar title strings from localizable.
         self.subscriptionTabTitle = NSLocalizedString("Subscriptions", comment: "")
         self.statisticsTabTitle = NSLocalizedString("Statistics", comment: "")

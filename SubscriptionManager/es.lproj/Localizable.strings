@@ -9,3 +9,86 @@
 // Tabs
 "Subscriptions" = "Subscripciones";
 "Statistics" = "Estadísticas";
+
+// Subscriptions List View
+"emptySubscriptionListTitle" = "Sin subscripciones";
+"emptySubscriptionListMessage" = "Puedes añadir subscripciones pulsando +";
+
+// Subscription Row View
+"today" = "Hoy";
+"tomorrow" = "Mañana";
+"in %d days" = "En %d días";
+"inOneWeek" = "En 1 semana";
+
+// Subscription Detail View
+"price" = "Precio";
+"cycle" = "Ciclo";
+"nextPayment" = "Siguiente pago";
+"total" = "Total";
+"created" = "Creada";
+"editSubscription" = "Editar Subscripción";
+"deleteSubscription" = "Eliminar Subscripción";
+"deleteSubscriptionMessageDescription" = "Esta acción no se puede deshacer. ¿Está seguro?";
+"delete" = "Eliminar";
+
+// New Subscription View
+"name" = "Nombre";
+"category" = "Categoría";
+"color" = "Color";
+"newSubscription" = "Nueva Subscripción";
+"add" = "Añadir";
+"emptyFields" = "Campos vacios";
+"emptyFieldsMessageDescription" = "Los campos nombre y precio son obligatorios, y precio solo admite números. Recuerde también elegir una categoría para la subscripción.";
+
+// Subscription Edit View
+"save" = "Guardar";
+
+// EditableField View
+"enter the %s" = "Introduce el %s";
+
+// CycleField View
+"day" = "Día";
+"days" = "Días";
+"week" = "Semana";
+"weeks" = "Semanas";
+"month" = "Mes";
+"months" = "Meses";
+"year" = "Año";
+"years" = "Años";
+"every %@" = "Cada %@";
+"every %d %@" = "Cada %d %@";
+
+// CalendarField View
+"monday" = "Lun";
+"tuesday" = "Mar";
+"wednesday" = "Mie";
+"thursday" = "Jue";
+"friday" = "Vie";
+"saturday" = "Sab";
+"sunday" = "Dom";
+
+// CategoryField View
+"SelectACategory" = "Selecciona una categoría";
+
+// CategoriesView
+"categories" = "Categorías";
+
+// Statistics View
+"Subscription" = "Subscripción";
+"nextPayment" = "Siguientes pagos";
+
+// Settings View
+"Settings" = "Ajustes";
+"settingsView" = "Pantalla de ajustes";
+"sectionDeleteTitle" = "Eliminar todo";
+"sectionDeleteDescription1" = "Este botón te permite eliminar toda la información creada por esta app y guardada localmente en este dispositivo.";
+"sectionDeleteDescription2" = "- Todas las subscripciones";
+"sectionDeleteDescription3" = "- Toda la información de pagos";
+"sectionDeleteButtonTitle" = "Eliminar todo";
+"sctionDeleteAlertTitle" = "Eliminar todo";
+"sectionDeleteAlertMessage" = "Esta acción no se puede deshacer. ¿Está seguro?";
+"sectionDeleteAlertPrimaryButton" = "Eliminar";
+
+// Buttons
+"no" = "No";
+"ok" = "De acuerdo";

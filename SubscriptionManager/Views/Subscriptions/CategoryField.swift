@@ -17,12 +17,22 @@ struct CategoryField: View {
     private var buttonWitdh: CGFloat {
         return (UIScreen.main.bounds.size.width - 44) - 14 - 24
     }
+    private var placeholderText: String = ""
     
     // MARK: - Methods
     
     init(title: String, value: Binding<SubscriptionsViewModel.subscriptionCategory>) {
         self.title = title
         self._selectedCategory = value
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.placeholderText = "    " + NSLocalizedString("SelectACategory", comment: "") + " ..."
     }
     
     // MARK: - View
@@ -33,7 +43,7 @@ struct CategoryField: View {
             NavigationLink(destination: CategoriesView(value: self.$selectedCategory)) {
                 HStack(spacing: 0) {
                     if self.selectedCategory.rawValue == "none" {
-                        Text("    Select a category ...")
+                        Text(self.placeholderText)
                             .foregroundColor(Color.customDarkText)
                             .frame(width: buttonWitdh, height: 44, alignment: .leading)
                             .background(RoundedCorners(upperLeft: 10, upperRight: 0, lowerLeft: 10, lowerRigth: 0))

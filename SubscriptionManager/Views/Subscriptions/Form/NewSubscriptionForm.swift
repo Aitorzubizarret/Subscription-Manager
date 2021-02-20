@@ -21,8 +21,43 @@ struct NewSubscriptionForm: View {
     @State private var subscriptionNextPaymentDate: Date = Date().addingTimeInterval(86400)
     @State private var selectedColor: SubscriptionsViewModel.subscriptionRowColor = SubscriptionsViewModel.subscriptionRowColor.blue
     @State private var showingAlert: Bool = false
+    private var nameText: String = ""
+    private var priceText: String = ""
+    private var categoryText: String = ""
+    private var cycleText: String = ""
+    private var colorText: String = ""
+    private var nextPaymentText: String = ""
+    private var newSubscriptionText: String = ""
+    private var addText: String = ""
+    private var emptyFieldsText: String = ""
+    private var emptyFieldsMessageDescription: String = ""
+    private var okText: String = ""
     
     // MARK: - Methods
+    
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+        
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.nameText = NSLocalizedString("name", comment: "")
+        self.priceText = NSLocalizedString("price", comment: "")
+        self.categoryText = NSLocalizedString("category", comment: "")
+        self.cycleText = NSLocalizedString("cycle", comment: "")
+        self.colorText = NSLocalizedString("color", comment: "")
+        self.nextPaymentText = NSLocalizedString("nextPayment", comment: "")
+        self.newSubscriptionText = NSLocalizedString("newSubscription", comment: "")
+        self.addText = NSLocalizedString("add", comment: "")
+        self.emptyFieldsText = NSLocalizedString("emptyFields", comment: "")
+        self.emptyFieldsMessageDescription = NSLocalizedString("emptyFieldsMessageDescription", comment: "")
+        self.okText = NSLocalizedString("ok", comment: "")
+    }
     
     ///
     /// Adds a new subscription to the subscriptions list.
@@ -58,12 +93,12 @@ struct NewSubscriptionForm: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                EditableField(title: "Name", value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
-                EditableField(title: "Price", value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
-                CategoryField(title: "Category", value: self.$selectedCategory)
-                CycleField(title: "Cycle", value: self.$textCycle)
-                ColorsField(title: "Color", value: self.$selectedColor)
-                CalendarField(title: "Next Payment", value: self.$subscriptionNextPaymentDate)
+                EditableField(title: self.nameText, value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
+                EditableField(title: self.priceText, value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
+                CategoryField(title: self.categoryText, value: self.$selectedCategory)
+                CycleField(title: self.cycleText, value: self.$textCycle)
+                ColorsField(title: self.colorText, value: self.$selectedColor)
+                CalendarField(title: self.nextPaymentText, value: self.$subscriptionNextPaymentDate)
             }
             .gesture(
                 // Detects the scrollview moving and hides the keyboard.
@@ -71,7 +106,7 @@ struct NewSubscriptionForm: View {
                     self.hideKeyboard()
                 })
             )
-            .navigationBarTitle(Text("New Subscription"), displayMode: .inline)
+            .navigationBarTitle(Text(self.newSubscriptionText), displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
                     if self.addNewSubscription() {
@@ -82,9 +117,11 @@ struct NewSubscriptionForm: View {
                         self.showingAlert = true
                     }
                 }) {
-                    Text("Add")
+                    Text(self.addText)
                 }.alert(isPresented: self.$showingAlert, content: {
-                    Alert(title: Text("Empty fields"), message: Text("Name and price fields are required and price only allows numbers. Remember to choose a category for your subscription too."), dismissButton: Alert.Button.default(Text("OK")))
+                    Alert(title: Text(self.emptyFieldsText),
+                          message: Text(self.emptyFieldsMessageDescription),
+                          dismissButton: Alert.Button.default(Text(self.okText)))
                 })
             )
         }

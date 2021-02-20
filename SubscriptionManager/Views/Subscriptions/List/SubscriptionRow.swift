@@ -27,7 +27,11 @@ struct SubscriptionRow: View {
     private var widthValue: CGFloat {
         return (UIScreen.main.bounds.size.width - 15 - 15) // SubscriptionView, leading and trailing padding.
     }
-    var SFSymbolImageString: String = ""
+    private var SFSymbolImageString: String = ""
+    private var todayText: String = ""
+    private var tomorrowText: String = ""
+    private var inXdays: String = ""
+    private var inOneWeekText: String = ""
     
     // MARK: - Methods
     
@@ -35,8 +39,19 @@ struct SubscriptionRow: View {
         self.subscription = subscription
         
         self.configureUIElements()
+        self.localizeText()
         
         self.compareTodaysDateWithPaymentDate()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.todayText = NSLocalizedString("today", comment: "")
+        self.tomorrowText = NSLocalizedString("tomorrow", comment: "")
+        self.inOneWeekText = NSLocalizedString("inOneWeek", comment: "")
     }
     
     ///
@@ -95,13 +110,14 @@ struct SubscriptionRow: View {
                     // Displays a different text on the label based on the number of days left.
                     switch daysLeft {
                     case 0 :
-                        self.daysToPaymentText = "Today"
+                        self.daysToPaymentText = self.todayText
                     case 1:
-                        self.daysToPaymentText = "Tomorrow"
+                        self.daysToPaymentText = self.tomorrowText
                     case 2, 3, 4, 5, 6, 8, 9, 10 :
-                        self.daysToPaymentText = "In \(daysLeft) days"
+                        // FIXME: Do this in another way.
+                        self.daysToPaymentText = String(format: NSLocalizedString("in %d days", comment: ""), daysLeft)
                     case 7:
-                        self.daysToPaymentText = "In 1 week"
+                        self.daysToPaymentText = self.inOneWeekText
                     default:
                         self.daysToPaymentText = ""
                     }

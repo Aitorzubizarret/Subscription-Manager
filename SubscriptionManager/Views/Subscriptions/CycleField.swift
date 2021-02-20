@@ -31,6 +31,10 @@ struct CycleField: View {
     private var buttonWitdh: CGFloat {
         return (UIScreen.main.bounds.size.width / 4) - 14
     }
+    private var dayText: String = ""
+    private var weekText: String = ""
+    private var monthText: String = ""
+    private var yearText: String = ""
     
     // MARK: - Methods
     
@@ -38,6 +42,7 @@ struct CycleField: View {
         self.title = title
         self._textfieldValue = value
         
+        self.localizeText()
         self.configureUIElements()
     }
     
@@ -54,11 +59,22 @@ struct CycleField: View {
             // CycleText.
             let str: String = checkUnit()
             if self.value == "1" {
-                self._cycleText = State(wrappedValue: "Every \(str)")
+                self._cycleText = State(wrappedValue: String(format: NSLocalizedString("every %@", comment: ""), str))
             } else {
-                self._cycleText = State(wrappedValue: "Every \(self.value) \(str)s")
+                self._cycleText = State(wrappedValue: String(format: NSLocalizedString("every %@ %@", comment: ""), self.value, str))
             }
         }
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.dayText = NSLocalizedString("day", comment: "")
+        self.weekText = NSLocalizedString("week", comment: "")
+        self.monthText = NSLocalizedString("month", comment: "")
+        self.yearText = NSLocalizedString("year", comment: "")
     }
     
     ///
@@ -68,9 +84,9 @@ struct CycleField: View {
         let str: String = checkUnit()
         
         if self.value == "1" {
-            self.cycleText = "Every \(str)"
+            self.cycleText = String(format: NSLocalizedString("every %@", comment: ""), str)
         } else {
-            self.cycleText = "Every \(value) \(str)s"
+            self.cycleText = String(format: NSLocalizedString("every %@ %@", comment: ""), self.value, str)
         }
         
         self.textfieldValue = "\(self.value)-\(self.unit)"
@@ -85,13 +101,13 @@ struct CycleField: View {
         
         switch self.unit {
         case "d":
-            str = "day"
+            str = self.dayText.lowercased()
         case "w":
-            str = "week"
+            str = self.weekText.lowercased()
         case "m":
-            str = "month"
+            str = self.monthText.lowercased()
         case "y":
-            str = "year"
+            str = self.yearText.lowercased()
         default:
             str = "¿?"
         }
@@ -167,7 +183,7 @@ struct CycleField: View {
                     self.unit = "d"
                 }) {
                     if self.unit == "d" {
-                        Text("Day")
+                        Text(self.dayText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -180,7 +196,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text("Day")
+                        Text(self.dayText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -192,7 +208,7 @@ struct CycleField: View {
                     self.unit = "w"
                 }) {
                     if self.unit == "w" {
-                        Text("Week")
+                        Text(self.weekText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -205,7 +221,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text("Week")
+                        Text(self.weekText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -217,7 +233,7 @@ struct CycleField: View {
                     self.unit = "m"
                 }) {
                     if self.unit == "m" {
-                        Text("Month")
+                        Text(self.monthText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -230,7 +246,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text("Month")
+                        Text(self.monthText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -242,7 +258,7 @@ struct CycleField: View {
                     self.unit = "y"
                 }) {
                     if self.unit == "y" {
-                        Text("Year")
+                        Text(self.yearText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -255,7 +271,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text("Year")
+                        Text(self.yearText)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)

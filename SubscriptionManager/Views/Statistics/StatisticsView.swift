@@ -13,6 +13,27 @@ struct StatisticsView: View {
     // MARK: - Properties
     
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
+    private var navBarTitle: String = ""
+    private var subscriptionsText: String = ""
+    private var subscriptionText: String = ""
+    private var nextPaymentsText: String = ""
+    
+    // MARK: - Methods
+    
+    init() {
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.navBarTitle = NSLocalizedString("Statistics", comment: "")
+        self.subscriptionsText = NSLocalizedString("Subscriptions", comment: "")
+        self.subscriptionText = NSLocalizedString("Subscription", comment: "")
+        self.nextPaymentsText = NSLocalizedString("nextPayment", comment: "")
+    }
     
     // MARK: - View
     
@@ -21,10 +42,11 @@ struct StatisticsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
                     // Statistics.
-                    SectionTitle(title: "Statistics")
+                    SectionTitle(title: self.navBarTitle)
                     VStack {
                         HStack(alignment: .center, spacing: 12) {
-                            SmallSimpleBox(value: self.subscriptionsViewModel.subscriptions.count, descriptionText: self.subscriptionsViewModel.subscriptions.count > 1 ? "Subscriptions" : "Subscription")
+                            // FIXME: There is a problem with Basque language.
+                            SmallSimpleBox(value: self.subscriptionsViewModel.subscriptions.count, descriptionText: self.subscriptionsViewModel.subscriptions.count > 1 ? self.subscriptionsText : self.subscriptionText)
                             Spacer()
                         }
                     }
@@ -42,9 +64,8 @@ struct StatisticsView: View {
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
-                .navigationBarTitle("", displayMode: .inline)
-                .navigationBarHidden(true)
             }
+            .navigationBarHidden(true)
         }
     }
 }

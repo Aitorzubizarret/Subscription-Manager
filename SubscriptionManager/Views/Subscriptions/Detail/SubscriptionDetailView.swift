@@ -21,11 +21,24 @@ struct SubscriptionDetailView: View {
     private var cycle: String = ""
     private var backgroundColor: Color = Color.red
     private var nextPayment: String = ""
+    private var priceText: String = ""
+    private var cycleText: String = ""
+    private var nextPaymentText: String = ""
+    private var totalText: String = ""
+    private var createdText: String = ""
+    private var editSubscriptionText: String = ""
+    private var deleteSubscriptionText: String = ""
+    private var deleteSubscriptionMessageDescriptionText: String = ""
+    private var deleteText: String = ""
+    private var noText: String = ""
+    
     
     // MARK: - Methods
     
     init(subscription: Subscription) {
         self.subscription = subscription
+        
+        self.localizeText()
         
         // Price.
         self.price = String(format: "%.2f €", subscription.price)
@@ -70,6 +83,23 @@ struct SubscriptionDetailView: View {
     }
     
     ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.priceText = NSLocalizedString("price", comment: "").uppercased()
+        self.cycleText = NSLocalizedString("cycle", comment: "").uppercased()
+        self.nextPaymentText = NSLocalizedString("nextPayment", comment: "").uppercased()
+        self.totalText = NSLocalizedString("total", comment: "").uppercased()
+        self.createdText = NSLocalizedString("created", comment: "").uppercased()
+        self.editSubscriptionText = NSLocalizedString("editSubscription", comment: "")
+        self.deleteSubscriptionText = NSLocalizedString("deleteSubscription", comment: "")
+        self.deleteSubscriptionMessageDescriptionText = NSLocalizedString("deleteSubscriptionMessageDescription", comment: "")
+        self.deleteText = NSLocalizedString("delete", comment: "")
+        self.noText = NSLocalizedString("no", comment: "")
+    }
+    
+    ///
     /// Deletes the subscription.
     ///
     private func deleteSubscription() {
@@ -85,16 +115,16 @@ struct SubscriptionDetailView: View {
                 VStack(spacing: 0) {
                     SubscriptionLogoTitleField(title: subscription.name, category: subscription.category, backgroundColor: self.backgroundColor)
                     VStack(spacing: 8) {
-                        SubscriptionDataField(title: "Price", value: self.price, backgroundColor: self.backgroundColor)
-                        SubscriptionDataField(title: "Cycle", value: self.cycle, backgroundColor: self.backgroundColor)
+                        SubscriptionDataField(title: self.priceText, value: self.price, backgroundColor: self.backgroundColor)
+                        SubscriptionDataField(title: self.cycleText, value: self.cycle, backgroundColor: self.backgroundColor)
                         // Avoids unknown error with dateFormatter when deleting the Subscription.
                         if !self.deleteInProcess {
-                            SubscriptionDataField(title: "Next Payment", value: self.subscription.nextPayment.getYearMonthDay(), backgroundColor: self.backgroundColor)
+                            SubscriptionDataField(title: self.nextPaymentText, value: self.subscription.nextPayment.getYearMonthDay(), backgroundColor: self.backgroundColor)
                         }
-                        SubscriptionDataField(title: "Total", value: "\(subscription.payed) €", backgroundColor: self.backgroundColor)
+                        SubscriptionDataField(title: self.totalText, value: "\(subscription.payed) €", backgroundColor: self.backgroundColor)
                         // Avoids unknown error with dateFormatter when deleting the Subscription.
                         if !self.deleteInProcess {
-                            SubscriptionDataField(title: "Created", value: "\(subscription.created.getYearMonthDay())", backgroundColor: self.backgroundColor)
+                            SubscriptionDataField(title: self.createdText, value: "\(subscription.created.getYearMonthDay())", backgroundColor: self.backgroundColor)
                         }
                     }
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
@@ -109,7 +139,7 @@ struct SubscriptionDetailView: View {
                 Button(action: {
                     self.showingSubscriptionEditView.toggle()
                 }) {
-                    BigButton(style: BigButton.Style.edit, title: "Edit Subscription")
+                    BigButton(style: BigButton.Style.edit, title: self.editSubscriptionText)
                 }.sheet(isPresented: $showingSubscriptionEditView) {
                     SubscriptionEditView(isPresented: self.$showingSubscriptionEditView, subscription: self.subscription)
                         .environmentObject(self.subscriptionsViewModel)
@@ -118,11 +148,15 @@ struct SubscriptionDetailView: View {
                 Button(action: {
                     self.showingAlert = true
                 }) {
-                    BigButton(style: BigButton.Style.delete, title: "Delete Subscription")
+                    BigButton(style: BigButton.Style.delete, title: self.deleteSubscriptionText)
                 }.alert(isPresented: self.$showingAlert, content: {
-                    Alert(title: Text("Delete Subscription"), message: Text("This action can’t be undone. Are you sure?") ,primaryButton: Alert.Button.destructive(Text("Delete"), action: {
-                        self.deleteSubscription()
-                    }), secondaryButton: Alert.Button.cancel(Text("No")))
+                    Alert(title: Text(self.deleteSubscriptionText),
+                          message: Text(self.deleteSubscriptionMessageDescriptionText),
+                          primaryButton: Alert.Button.destructive(Text(self.deleteText),
+                          action: {
+                              self.deleteSubscription()
+                          }),
+                          secondaryButton: Alert.Button.cancel(Text(self.noText)))
                 })
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
             }

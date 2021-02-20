@@ -18,8 +18,16 @@ struct EmptySubscriptionList: View {
     // MARK: - Methods
     
     init() {
-        self.message_title = "No subscription".uppercased()
-        self.message_description = "You can add subscriptions tapping the +"
+        self.localizeText()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // Get strings from localizable.
+        self.message_title = NSLocalizedString("emptySubscriptionListTitle", comment: "").uppercased()
+        self.message_description = NSLocalizedString("emptySubscriptionListMessage", comment: "")
     }
     
     // MARK: - View

@@ -32,7 +32,7 @@ struct CalendarField: View {
     private var textWidth: CGFloat {
         return (UIScreen.main.bounds.size.width - 12 - 88 - 24 - 4 - 12)
     }
-    private var daysNames: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    private var daysNames: [String] = []
     
     // MARK: - Methods
     
@@ -43,7 +43,25 @@ struct CalendarField: View {
         self._selectedMonth = State(wrappedValue: 0)
         self._selectedDay = State(wrappedValue: 0)
         
+        self.localizeText()
+        
         self.setCalendarDate()
+    }
+    
+    ///
+    /// Localize UI text elements.
+    ///
+    private mutating func localizeText() {
+        // FIXME: Use native strings from calendar.
+        self.daysNames = [
+            NSLocalizedString("monday", comment: ""),
+            NSLocalizedString("tuesday", comment: ""),
+            NSLocalizedString("wednesday", comment: ""),
+            NSLocalizedString("thursday", comment: ""),
+            NSLocalizedString("friday", comment: ""),
+            NSLocalizedString("saturday", comment: ""),
+            NSLocalizedString("sunday", comment: "")
+        ]
     }
     
     ///
@@ -283,7 +301,7 @@ struct CalendarField: View {
                         .foregroundColor(Color.customGrayButton)
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 3))
-                Text( self.calendarMonthName + " \(self.calendarYear)")
+                Text(self.calendarMonthName.capitalized + " \(self.calendarYear)")
                     .font(Font.system(size: 16))
                     .fontWeight(Font.Weight.medium)
                     .foregroundColor(Color.black)

@@ -9,3 +9,86 @@
 // Tabs
 "Subscriptions" = "Subscriptions";
 "Statistics" = "Statistics";
+
+// Subscriptions List View
+"emptySubscriptionListTitle" = "No subscriptions";
+"emptySubscriptionListMessage" = "You can add subscriptions tapping the +";
+
+// Subscription Row View
+"today" = "Today";
+"tomorrow" = "Tomorrow";
+"in %d days" = "In %d days";
+"inOneWeek" = "In 1 week";
+
+// Subscription Detail View
+"price" = "Price";
+"cycle" = "Cycle";
+"nextPayment" = "Next Payment";
+"total" = "Total";
+"created" = "Created";
+"editSubscription" = "Edit Subscription";
+"deleteSubscription" = "Delete Subscription";
+"deleteSubscriptionMessageDescription" = "This action can’t be undone. Are you sure?";
+"delete" = "Delete";
+
+// New Subscription View
+"name" = "Name";
+"category" = "Category";
+"color" = "Color";
+"newSubscription" = "New Subscription";
+"add" = "Add";
+"emptyFields" = "Empty fields";
+"emptyFieldsMessageDescription" = "Name and price fields are required and price only allows numbers. Remember to choose a category for your subscription too.";
+
+// Subscription Edit View
+"save" = "save";
+
+// EditableField View
+"enter the %s" = "Enter the %s";
+
+// CycleField View
+"day" = "Day";
+"days" = "Days";
+"week" = "Week";
+"weeks" = "Weeks";
+"month" = "Month";
+"months" = "Months";
+"year" = "Year";
+"years" = "Years";
+"every %@" = "Every %@";
+"every %d %@" = "Every %d %@";
+
+// CalendarField View
+"monday" = "Mon";
+"tuesday" = "Tue";
+"wednesday" = "Wed";
+"thursday" = "Thu";
+"friday" = "Fri";
+"saturday" = "Sat";
+"sunday" = "Sun";
+
+// CategoryField View
+"SelectACategory" = "Select a category";
+
+// CategoriesView
+"categories" = "Categories";
+
+// Statistics View
+"Subscription" = "Subscription";
+"nextPayment" = "Next Payments";
+
+// Settings View
+"Settings" = "Settings";
+"settingsView" = "Settings View";
+"sectionDeleteTitle" = "Delete everything";
+"sectionDeleteDescription1" = "This button let you delete all the data created by this App and stored locally on your phone.";
+"sectionDeleteDescription2" = "- All Subscriptions";
+"sectionDeleteDescription3" = "- All Payments data";
+"sectionDeleteButtonTitle" = "Delete All Subscriptions?";
+"sctionDeleteAlertTitle" = "Delete All Subscriptions";
+"sectionDeleteAlertMessage" = "This action can’t be undone. Are you sure?";
+"sectionDeleteAlertPrimaryButton" = "Delete";
+
+// Buttons
+"no" = "No";
+"ok" = "OK";

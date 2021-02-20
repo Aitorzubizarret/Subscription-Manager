@@ -15,8 +15,17 @@ struct SettingsView: View {
     @EnvironmentObject var subscriptionsViewModel: SubscriptionsViewModel
     @Binding var isPresented: Bool
     @State private var showingAlert: Bool = false
-    private var settingsText: String = ""
+    private var navBarTitle: String = ""
     private var descriptionText: String = ""
+    private var sectionDeleteTitle: String = ""
+    private var sectionDeleteDescription1: String = ""
+    private var sectionDeleteDescription2: String = ""
+    private var sectionDeleteDescription3: String = ""
+    private var sectionDeleteButtonTitle: String = ""
+    private var sectionDeleteAlertTitle: String = ""
+    private var sectionDeleteAlertMessage: String = ""
+    private var sectionDeleteAlertPrimaryButton: String = ""
+    private var sectionDeleteAlertSecondaryButton: String = ""
     
     // MARK: - Methods
     
@@ -29,9 +38,18 @@ struct SettingsView: View {
     /// Localize UI text elements.
     ///
     private mutating func localizeText() {
-        // Get the NavBar title string from localizable.
-        self.settingsText = NSLocalizedString("Settings", comment: "")
+        // Get strings from localizable.
+        self.navBarTitle = NSLocalizedString("Settings", comment: "")
         self.descriptionText = NSLocalizedString("settingsView", comment: "")
+        self.sectionDeleteTitle = NSLocalizedString("sectionDeleteTitle", comment: "")
+        self.sectionDeleteDescription1 = NSLocalizedString("sectionDeleteDescription1", comment: "")
+        self.sectionDeleteDescription2 = NSLocalizedString("sectionDeleteDescription2", comment: "")
+        self.sectionDeleteDescription3 = NSLocalizedString("sectionDeleteDescription3", comment: "")
+        self.sectionDeleteButtonTitle = NSLocalizedString("sectionDeleteButtonTitle", comment: "")
+        self.sectionDeleteAlertTitle = NSLocalizedString("sctionDeleteAlertTitle", comment: "")
+        self.sectionDeleteAlertMessage = NSLocalizedString("sectionDeleteAlertMessage", comment: "")
+        self.sectionDeleteAlertPrimaryButton = NSLocalizedString("sectionDeleteAlertPrimaryButton", comment: "")
+        self.sectionDeleteAlertSecondaryButton = NSLocalizedString("no", comment: "")
     }
     
     ///
@@ -48,23 +66,23 @@ struct SettingsView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 12) {
                 // Delete all data from the App.
-                SectionTitle(title: "Delete everything")
-                SectionDescription(texts: ["This button let you delete all the data created by this App and stored locally on your phone.", "- All Subscriptions", "- All Payments data"])
+                SectionTitle(title: self.sectionDeleteTitle)
+                SectionDescription(texts: [self.sectionDeleteDescription1, self.sectionDeleteDescription2, self.sectionDeleteDescription3])
                 Button(action: {
                     self.showingAlert = true
                 }) {
-                    BigButton(style: .delete, title: "Delete All Subscriptions?")
+                    BigButton(style: .delete, title: self.sectionDeleteButtonTitle)
                 }.alert(isPresented: self.$showingAlert, content: {
-                    Alert(title: Text("Delete All Subscriptions"),
-                          message: Text("This action can’t be undone. Are you sure?"),
-                          primaryButton: Alert.Button.destructive(Text("Delete"),
+                    Alert(title: Text(self.sectionDeleteAlertTitle),
+                          message: Text(self.sectionDeleteAlertMessage),
+                          primaryButton: Alert.Button.destructive(Text(self.sectionDeleteAlertPrimaryButton),
                           action: {
                             self.deleteAllData()
                           }),
-                          secondaryButton: Alert.Button.cancel(Text("No")))
+                          secondaryButton: Alert.Button.cancel(Text(self.sectionDeleteAlertSecondaryButton)))
                 })
                 Spacer()
-                .navigationBarTitle("Settings", displayMode: .inline)
+                .navigationBarTitle(Text(self.navBarTitle), displayMode: .inline)
             }
         }
     }
