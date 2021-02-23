@@ -42,6 +42,11 @@
 
 // Subscription Edit View
 "save" = "save";
+"error" = "Error";
+"pleaseCheck" = "Please check: ";
+"nameIsEmpty" = "Name is empty. ";
+"priceEmptyOrInvalid" = "Price can't be empty and has to be a valid number. ";
+"paymentDateInvalid" = "Next Payment Date must be after today. ";
 
 // EditableField View
 "enter the %s" = "Enter the %s";

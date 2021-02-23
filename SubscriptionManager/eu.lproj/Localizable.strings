@@ -42,6 +42,11 @@
 
 // Subscription Edit View
 "save" = "Gorde";
+"error" = "Akatsa";
+"pleaseCheck" = "Mesedez zuzendu: ";
+"nameIsEmpty" = "Izena beharrezkoa da. ";
+"priceEmptyOrInvalid" = "Prezioa beharrezkoa da eta zenbakiak bakarrik onartzen ditu. ";
+"paymentDateInvalid" = "Hurrengo ordainketaren data biharko egunetik aurrera izan behar da. ";
 
 // EditableField View
 "enter the %s" = "Sartu %s";

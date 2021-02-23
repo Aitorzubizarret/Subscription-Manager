@@ -42,6 +42,11 @@
 
 // Subscription Edit View
 "save" = "Guardar";
+"error" = "Error";
+"pleaseCheck" = "Por favor revisa: ";
+"nameIsEmpty" = "Falta el nombre. ";
+"priceEmptyOrInvalid" = "Falta el precio y/o debe ser numérico. ";
+"paymentDateInvalid" = "La fecha del siguiente pago debe ser posterior a la fecha actual. ";
 
 // EditableField View
 "enter the %s" = "Introduce el %s";

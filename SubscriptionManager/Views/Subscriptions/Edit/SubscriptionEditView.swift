@@ -32,6 +32,12 @@ struct SubscriptionEditView: View {
     private var colorText: String = ""
     private var nextPaymentText: String = ""
     private var saveText: String = ""
+    private var errorAlertTitle: String = ""
+    private var errorAlertMessage: String = ""
+    private var errorAlertMessageName: String = ""
+    private var errorAlertMessagePrice: String = ""
+    private var errorAlertMessageDate: String = ""
+    private var errorAlertOk: String = ""
     
     // MARK: - Methods
     
@@ -58,6 +64,12 @@ struct SubscriptionEditView: View {
         self.colorText = NSLocalizedString("color", comment: "")
         self.nextPaymentText = NSLocalizedString("nextPayment", comment: "")
         self.saveText = NSLocalizedString("save", comment: "")
+        self.errorAlertTitle = NSLocalizedString("error", comment: "")
+        self.errorAlertMessage = NSLocalizedString("pleaseCheck", comment: "")
+        self.errorAlertMessageName = NSLocalizedString("nameIsEmpty", comment: "")
+        self.errorAlertMessagePrice = NSLocalizedString("priceEmptyOrInvalid", comment: "")
+        self.errorAlertMessageDate = NSLocalizedString("paymentDateInvalid", comment: "")
+        self.errorAlertOk = NSLocalizedString("ok", comment: "")
     }
     
     ///
@@ -120,14 +132,14 @@ struct SubscriptionEditView: View {
     ///
     private func saveChanges() -> Bool {
         var saveStatus: Bool = true
-        self.alertTitle = "Error"
-        self.alertMessage = "Please check: "
+        self.alertTitle = self.errorAlertTitle
+        self.alertMessage = self.errorAlertMessage
         
         // Name.
         let subscriptionName: String = self.textFieldSubscriptionName
         if subscriptionName == "" {
             saveStatus = false
-            self.alertMessage = self.alertMessage + "Name is empty. "
+            self.alertMessage = self.alertMessage + self.errorAlertMessageName
         }
         
         // Price formatter.
@@ -140,7 +152,7 @@ struct SubscriptionEditView: View {
             formattedSubscriptionPrice = price.floatValue
         } else {
             saveStatus = false
-            self.alertMessage = self.alertMessage + "Price can't be empty and has to be a valid number. "
+            self.alertMessage = self.alertMessage + self.errorAlertMessagePrice
         }
         
         // Category.
@@ -164,11 +176,11 @@ struct SubscriptionEditView: View {
         if let tomorrow = Calendar.current.date(from: components) {
             if self.nextPayment < tomorrow {
                 saveStatus = false
-                self.alertMessage = self.alertMessage + "Next Payment Date must be after today. "
+                self.alertMessage = self.alertMessage + self.errorAlertMessageDate
             }
         } else {
             saveStatus = false
-            self.alertMessage = self.alertMessage + "Next Payment Date must be after today. "
+            self.alertMessage = self.alertMessage + self.errorAlertMessageDate
         }
         
         let subscriptionNextPayment: Date = self.nextPayment
@@ -211,7 +223,7 @@ struct SubscriptionEditView: View {
                 }) {
                     Text(self.saveText)
                 }.alert(isPresented: self.$showingAlert, content: {
-                    Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: Alert.Button.cancel(Text("OK")))
+                    Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: Alert.Button.cancel(Text(self.errorAlertOk)))
                 })
             )
         }
