@@ -39,6 +39,7 @@
 		1AF5E94D255DEBE000986ECF /* SmallSimpleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */; };
 		420D380125D02BF700AEFF5C /* PendingPaymentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D380025D02BF700AEFF5C /* PendingPaymentRow.swift */; };
 		423265AE2599025D0017FE34 /* FieldTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423265AD2599025D0017FE34 /* FieldTitle.swift */; };
+		42441F6A25E70E2A0018BDB6 /* TotalPayedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42441F6925E70E2A0018BDB6 /* TotalPayedBox.swift */; };
 		4258D8BF25DF25B5007988F0 /* SectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4258D8BE25DF25B5007988F0 /* SectionDescription.swift */; };
 		4265F08125A104B3002797C9 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4265F08025A104B3002797C9 /* CategoriesView.swift */; };
 		4265F08425A107AD002797C9 /* CategoryElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4265F08325A107AD002797C9 /* CategoryElement.swift */; };
@@ -89,6 +90,7 @@
 		1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSimpleBox.swift; sourceTree = "<group>"; };
 		420D380025D02BF700AEFF5C /* PendingPaymentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingPaymentRow.swift; sourceTree = "<group>"; };
 		423265AD2599025D0017FE34 /* FieldTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTitle.swift; sourceTree = "<group>"; };
+		42441F6925E70E2A0018BDB6 /* TotalPayedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPayedBox.swift; sourceTree = "<group>"; };
 		4258D8BE25DF25B5007988F0 /* SectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDescription.swift; sourceTree = "<group>"; };
 		4265F08025A104B3002797C9 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		4265F08325A107AD002797C9 /* CategoryElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryElement.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				1A2CE00C25277A000009C743 /* StatisticsView.swift */,
 				1AF5E94C255DEBE000986ECF /* SmallSimpleBox.swift */,
+				42441F6925E70E2A0018BDB6 /* TotalPayedBox.swift */,
 				420D380025D02BF700AEFF5C /* PendingPaymentRow.swift */,
 			);
 			path = Statistics;
@@ -385,6 +388,7 @@
 				1A021735255B253F001384A9 /* View.swift in Sources */,
 				4265F08125A104B3002797C9 /* CategoriesView.swift in Sources */,
 				1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */,
+				42441F6A25E70E2A0018BDB6 /* TotalPayedBox.swift in Sources */,
 				4258D8BF25DF25B5007988F0 /* SectionDescription.swift in Sources */,
 				42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */,
 				1A8CFC4E254DD72600B8DEB9 /* BigButton.swift in Sources */,
