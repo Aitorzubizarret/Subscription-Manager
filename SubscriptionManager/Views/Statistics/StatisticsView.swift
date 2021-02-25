@@ -47,7 +47,7 @@ struct StatisticsView: View {
                         HStack(alignment: .center, spacing: 12) {
                             // FIXME: There is a problem with Basque language.
                             SmallSimpleBox(value: self.subscriptionsViewModel.subscriptions.count, descriptionText: self.subscriptionsViewModel.subscriptions.count > 1 ? self.subscriptionsText : self.subscriptionText)
-                            TotalPayedBox()
+                            TotalPayedBox(value: "100 €")
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))

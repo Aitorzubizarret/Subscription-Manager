@@ -19,13 +19,18 @@ struct TotalPayedBox: View {
     private var boxHeight: CGFloat {
         return ((UIScreen.main.bounds.size.width / 3) - 8 - 8 - 12 - 12)
     }
+    var value: String
     
     // MARK: - Methods
+    
+    init(value: String) {
+        self.value = value
+    }
     
     // MARK: - View
     
     var body: some View {
-        Text("Total payed : 200 €")
+        Text("Total payed : \(self.value)")
             .font(Font.system(size: 14, weight: Font.Weight.light, design: Font.Design.monospaced))
             .foregroundColor(Color.white)
             .frame(width: self.boxWidth, height: self.boxHeight, alignment: .center)
@@ -37,7 +42,7 @@ struct TotalPayedBox: View {
 
 struct TotalPayedBox_Previews: PreviewProvider {
     static var previews: some View {
-        TotalPayedBox()
+        TotalPayedBox(value: "200 €")
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }
