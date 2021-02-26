@@ -17,6 +17,13 @@ struct StatisticsView: View {
     private var subscriptionsText: String = ""
     private var subscriptionText: String = ""
     private var nextPaymentsText: String = ""
+    private var totalPayed: String {
+        var total: Float = 0.0
+        subscriptionsViewModel.subscriptions.forEach { (subscription) in
+            total += subscription.payed
+        }
+        return "\(total) €"
+    }
     
     // MARK: - Methods
     
@@ -47,7 +54,7 @@ struct StatisticsView: View {
                         HStack(alignment: .center, spacing: 12) {
                             // FIXME: There is a problem with Basque language.
                             SmallSimpleBox(value: self.subscriptionsViewModel.subscriptions.count, descriptionText: self.subscriptionsViewModel.subscriptions.count > 1 ? self.subscriptionsText : self.subscriptionText)
-                            TotalPayedBox(value: "100 €")
+                            TotalPayedBox(value: self.totalPayed)
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
