@@ -52,6 +52,7 @@
 		42D6AB0525D4809800ACCFBC /* EmptySubscriptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */; };
 		42D74F0625D87B0B0070AA60 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D74F0525D87B0B0070AA60 /* SettingsView.swift */; };
 		42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC7ACA25CF1EE800F0B71B /* Payment.swift */; };
+		42F7965025EAE91E0015F647 /* DeleteAllDataSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F7964F25EAE91E0015F647 /* DeleteAllDataSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		42D74F0525D87B0B0070AA60 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		42DC7ACA25CF1EE800F0B71B /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		42F7964A25EAD2A60015F647 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		42F7964F25EAE91E0015F647 /* DeleteAllDataSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				42D74F0525D87B0B0070AA60 /* SettingsView.swift */,
+				42F7964F25EAE91E0015F647 /* DeleteAllDataSection.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				42441F6A25E70E2A0018BDB6 /* TotalPayedBox.swift in Sources */,
 				4258D8BF25DF25B5007988F0 /* SectionDescription.swift in Sources */,
 				42DC7ACB25CF1EE800F0B71B /* Payment.swift in Sources */,
+				42F7965025EAE91E0015F647 /* DeleteAllDataSection.swift in Sources */,
 				1A8CFC4E254DD72600B8DEB9 /* BigButton.swift in Sources */,
 				4265F08425A107AD002797C9 /* CategoryElement.swift in Sources */,
 				1A90E3AF2548670300C95E9A /* EditableField.swift in Sources */,

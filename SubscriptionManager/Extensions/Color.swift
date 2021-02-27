@@ -9,6 +9,7 @@
 import SwiftUI
 
 extension Color {
+    static let customBgLightGray = Color(red: 244.0/255.0, green: 244.0/255.0, blue: 244.0/255.0)
     // Rows.
     static let customRowBlue = Color(red: 39.0/255.0, green: 125.0/255.0, blue: 161.0/255.0, opacity: 1.0)
     static let customRowBlueDark = Color(red: 87.0/255.0, green: 117.0/255.0, blue: 144.0/255.0, opacity: 1.0)

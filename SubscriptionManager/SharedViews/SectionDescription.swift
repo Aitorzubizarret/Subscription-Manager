@@ -28,7 +28,7 @@ struct SectionDescription: View {
                 .font(Font.system(size: 18))
                 .fontWeight(Font.Weight.light)
                 .foregroundColor(Color.customDarkText)
-                .padding(EdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18))
+                .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 18))
         }
     }
 }
