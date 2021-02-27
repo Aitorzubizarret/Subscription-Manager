@@ -105,6 +105,7 @@
 		42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySubscriptionList.swift; sourceTree = "<group>"; };
 		42D74F0525D87B0B0070AA60 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		42DC7ACA25CF1EE800F0B71B /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		42F7964A25EAD2A60015F647 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				1AD398AB251D437E00922ED9 /* README.md */,
+				42F7964A25EAD2A60015F647 /* LICENSE.md */,
 				1AD398A9251D434A00922ED9 /* .gitignore */,
 				1AD39894251D41C700922ED9 /* SubscriptionManager */,
 				1AD39893251D41C700922ED9 /* Products */,
