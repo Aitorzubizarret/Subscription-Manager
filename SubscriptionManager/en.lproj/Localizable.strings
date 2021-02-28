@@ -94,6 +94,10 @@
 "sectionDeleteAlertMessage" = "This action can’t be undone. Are you sure?";
 "sectionDeleteAlertPrimaryButton" = "Delete";
 
+// Settings - Add Demo Data
+"settingsAddDemoTitle" = "Add Demo Data";
+"settingsAddDemoDescription" = "Adds demo subscriptions and payments to see App capabilities.";
+
 // Buttons
 "no" = "No";
 "ok" = "OK";

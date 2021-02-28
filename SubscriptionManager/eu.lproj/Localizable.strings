@@ -94,6 +94,10 @@
 "sectionDeleteAlertMessage" = "Ekintza hau ezin da desegin. Zihur al zaude?";
 "sectionDeleteAlertPrimaryButton" = "Ezabatu";
 
+// Settings - Add Demo Data
+"settingsAddDemoTitle" = "Gehitu Demo Informazioa";
+"settingsAddDemoDescription" = "Harpidetza eta ordainketen informazio-demoa gehitzen ditu aplikazioaren gaitasunak ikusteko.";
+
 // Buttons
 "no" = "Ez";
 "ok" = "Ados";

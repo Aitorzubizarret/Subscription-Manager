@@ -94,6 +94,10 @@
 "sectionDeleteAlertMessage" = "Esta acción no se puede deshacer. ¿Está seguro?";
 "sectionDeleteAlertPrimaryButton" = "Eliminar";
 
+// Settings - Add Demo Data
+"settingsAddDemoTitle" = "Añadir informacion demo";
+"settingsAddDemoDescription" = "Añade información demo de suscripciones y pagos para ver las capacidades de la App.";
+
 // Buttons
 "no" = "No";
 "ok" = "De acuerdo";

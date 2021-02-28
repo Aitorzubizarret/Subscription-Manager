@@ -38,10 +38,10 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 0) {
                     // Delete all data from the App.
                     DeleteAllDataSection().environmentObject(self.subscriptionsViewModel)
-
+                    AddDemoData().environmentObject(self.subscriptionsViewModel)
                     .navigationBarTitle(Text(self.navBarTitle), displayMode: .inline)
                 }
             }
