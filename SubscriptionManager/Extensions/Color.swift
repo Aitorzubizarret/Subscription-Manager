@@ -33,4 +33,6 @@ extension Color {
     static let customBlueButton = Color(red: 237.0/255.0, green: 242.0/255.0, blue: 252.0/255.0, opacity: 1.0)
     static let customGrayButton = Color(red: 241.0/255.0, green: 241.0/255.0, blue: 243.0/255.0, opacity: 1.0)
     static let customGrayBorderButton = Color(red: 222.0/255.0, green: 222.0/255.0, blue: 222.0/255.0, opacity: 1.0)
+    static let customGreenText = Color(red: 75.0/255.0, green: 163.0/255.0, blue: 0.0/255.0, opacity: 1.0)
+    static let customGreenButton = Color(red: 239.0/255.0, green: 252.0/255.0, blue: 238.0/255.0, opacity: 1.0)
 }

@@ -15,6 +15,7 @@ struct BigButton: View {
     enum Style {
         case edit
         case delete
+        case add
     }
     private var imageName: String
     private var title: String
@@ -38,6 +39,12 @@ struct BigButton: View {
             self.backColor = Color.customRedButton
             self.frontColor = Color.customRedText
             self.strokeColor = Color.customRedButton
+        case Style.add:
+            self.imageName = "plus"
+            self.title = title
+            self.backColor = Color.customGreenButton
+            self.frontColor = Color.customGreenText
+            self.strokeColor = Color.customGreenButton
         }
     }
     
@@ -74,9 +81,14 @@ struct BigButton_Previews: PreviewProvider {
                 .previewDisplayName("Edit Style")
             
             BigButton(style: BigButton.Style.delete, title: "Delete Big Button")
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .previewDisplayName("Delete Style")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Delete Style")
+            
+            BigButton(style: BigButton.Style.add, title: "Add Big Button")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Add Style")
         }
     }
 }
