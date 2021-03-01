@@ -30,7 +30,7 @@ struct SettingsView: View {
     ///
     private mutating func localizeText() {
         // Get strings from localizable.
-        self.navBarTitle = NSLocalizedString("Settings", comment: "")
+        self.navBarTitle = NSLocalizedString("settingsNavBarTitle", comment: "")
     }
     
     // MARK: - View

@@ -35,14 +35,14 @@ struct DeleteAllDataSection: View {
     /// Localize UI text elements.
     ///
     private mutating func localizeText() {
-        self.sectionDeleteTitle = NSLocalizedString("sectionDeleteTitle", comment: "")
-        self.sectionDeleteDescription1 = NSLocalizedString("sectionDeleteDescription1", comment: "")
-        self.sectionDeleteDescription2 = NSLocalizedString("sectionDeleteDescription2", comment: "")
-        self.sectionDeleteDescription3 = NSLocalizedString("sectionDeleteDescription3", comment: "")
-        self.sectionDeleteButtonTitle = NSLocalizedString("sectionDeleteButtonTitle", comment: "")
-        self.sectionDeleteAlertTitle = NSLocalizedString("sctionDeleteAlertTitle", comment: "")
-        self.sectionDeleteAlertMessage = NSLocalizedString("sectionDeleteAlertMessage", comment: "")
-        self.sectionDeleteAlertPrimaryButton = NSLocalizedString("sectionDeleteAlertPrimaryButton", comment: "")
+        self.sectionDeleteTitle = NSLocalizedString("settingsDeleteAllTitle", comment: "")
+        self.sectionDeleteDescription1 = NSLocalizedString("settingsDeleteAllDescription1", comment: "")
+        self.sectionDeleteDescription2 = NSLocalizedString("settingsDeleteAllDescription2", comment: "")
+        self.sectionDeleteDescription3 = NSLocalizedString("settingsDeleteAllDescription3", comment: "")
+        self.sectionDeleteButtonTitle = NSLocalizedString("settingsDeleteAllButtonText", comment: "")
+        self.sectionDeleteAlertTitle = NSLocalizedString("settingsDeleteAllAlertTitle", comment: "")
+        self.sectionDeleteAlertMessage = NSLocalizedString("settingsDeleteAllAlertMessage", comment: "")
+        self.sectionDeleteAlertPrimaryButton = NSLocalizedString("settingsDeleteAllPrimaryButton", comment: "")
         self.sectionDeleteAlertSecondaryButton = NSLocalizedString("no", comment: "")
     }
     

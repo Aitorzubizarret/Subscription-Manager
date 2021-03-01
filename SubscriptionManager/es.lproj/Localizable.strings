@@ -83,16 +83,17 @@
 "nextPayment" = "Siguientes pagos";
 
 // Settings View
-"Settings" = "Ajustes";
-"settingsView" = "Pantalla de ajustes";
-"sectionDeleteTitle" = "Eliminar todo";
-"sectionDeleteDescription1" = "Este botón te permite eliminar toda la información creada por esta app y guardada localmente en este dispositivo.";
-"sectionDeleteDescription2" = "- Todas las subscripciones";
-"sectionDeleteDescription3" = "- Toda la información de pagos";
-"sectionDeleteButtonTitle" = "Eliminar todo";
-"sctionDeleteAlertTitle" = "Eliminar todo";
-"sectionDeleteAlertMessage" = "Esta acción no se puede deshacer. ¿Está seguro?";
-"sectionDeleteAlertPrimaryButton" = "Eliminar";
+"settingsNavBarTitle" = "Ajustes";
+
+// Settings - Delete Everything
+"settingsDeleteAllTitle" = "Eliminar todo";
+"settingsDeleteAllDescription1" = "Este botón te permite eliminar toda la información creada por esta app y guardada localmente en este dispositivo.";
+"settingsDeleteAllDescription2" = "- Todas las subscripciones";
+"settingsDeleteAllDescription3" = "- Toda la información de pagos";
+"settingsDeleteAllButtonText" = "Eliminar todo";
+"settingsDeleteAllAlertTitle" = "Eliminar todo";
+"settingsDeleteAllAlertMessage" = "Esta acción no se puede deshacer. ¿Está seguro?";
+"settingsDeleteAllPrimaryButton" = "Eliminar";
 
 // Settings - Add Demo Data
 "settingsAddDemoTitle" = "Añadir informacion demo";

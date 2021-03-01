@@ -83,16 +83,17 @@
 "nextPayment" = "Next Payments";
 
 // Settings View
-"Settings" = "Settings";
-"settingsView" = "Settings View";
-"sectionDeleteTitle" = "Delete everything";
-"sectionDeleteDescription1" = "This button let you delete all the data created by this App and stored locally on your phone.";
-"sectionDeleteDescription2" = "- All Subscriptions";
-"sectionDeleteDescription3" = "- All Payments data";
-"sectionDeleteButtonTitle" = "Delete All Subscriptions?";
-"sctionDeleteAlertTitle" = "Delete All Subscriptions";
-"sectionDeleteAlertMessage" = "This action can’t be undone. Are you sure?";
-"sectionDeleteAlertPrimaryButton" = "Delete";
+"settingsNavBarTitle" = "Settings";
+
+// Settings - Delete Everything
+"settingsDeleteAllTitle" = "Delete everything";
+"settingsDeleteAllDescription1" = "This button let you delete all the data created by this App and stored locally on your phone.";
+"settingsDeleteAllDescription2" = "- All Subscriptions";
+"settingsDeleteAllDescription3" = "- All Payments data";
+"settingsDeleteAllButtonText" = "Delete All Subscriptions?";
+"settingsDeleteAllAlertTitle" = "Delete All Subscriptions";
+"settingsDeleteAllAlertMessage" = "This action can’t be undone. Are you sure?";
+"settingsDeleteAllPrimaryButton" = "Delete";
 
 // Settings - Add Demo Data
 "settingsAddDemoTitle" = "Add Demo Data";

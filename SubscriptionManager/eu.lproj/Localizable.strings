@@ -83,16 +83,17 @@
 "nextPayment" = "Hurrengo ordainketak";
 
 // Settings View
-"Settings" = "Ezarpenak";
-"settingsView" = "Ezarpenen pantaila";
-"sectionDeleteTitle" = "Ezabatu dena";
-"sectionDeleteDescription1" = "Aplikaziorekin sortutako, eta mugikorrean gordetako, informazio guztia ezabatzeko aukera ematen dizu botoi hau.";
-"sectionDeleteDescription2" = "- Harpidetza guztiak";
-"sectionDeleteDescription3" = "- Ordainketa guztien informazioa";
-"sectionDeleteButtonTitle" = "Ezabatu dena";
-"sctionDeleteAlertTitle" = "Ezabatu dena";
-"sectionDeleteAlertMessage" = "Ekintza hau ezin da desegin. Zihur al zaude?";
-"sectionDeleteAlertPrimaryButton" = "Ezabatu";
+"settingsNavBarTitle" = "Ezarpenak";
+
+// Settings - Delete Everything
+"settingsDeleteAllTitle" = "Ezabatu dena";
+"settingsDeleteAllDescription1" = "Aplikaziorekin sortutako, eta mugikorrean gordetako, informazio guztia ezabatzeko aukera ematen dizu botoi hau.";
+"settingsDeleteAllDescription2" = "- Harpidetza guztiak";
+"settingsDeleteAllDescription3" = "- Ordainketa guztien informazioa";
+"settingsDeleteAllButtonText" = "Ezabatu dena";
+"settingsDeleteAllAlertTitle" = "Ezabatu dena";
+"settingsDeleteAllAlertMessage" = "Ekintza hau ezin da desegin. Zihur al zaude?";
+"settingsDeleteAllPrimaryButton" = "Ezabatu";
 
 // Settings - Add Demo Data
 "settingsAddDemoTitle" = "Gehitu Demo Informazioa";
