@@ -80,7 +80,7 @@
 
 // Statistics View
 "Subscription" = "Harpidetza";
-"nextPayment" = "Hurrengo ordainketak";
+"nextPayments" = "Hurrengo ordainketak";
 
 // Settings View
 "settingsNavBarTitle" = "Ezarpenak";

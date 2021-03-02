@@ -39,7 +39,7 @@ struct StatisticsView: View {
         self.navBarTitle = NSLocalizedString("Statistics", comment: "")
         self.subscriptionsText = NSLocalizedString("Subscriptions", comment: "")
         self.subscriptionText = NSLocalizedString("Subscription", comment: "")
-        self.nextPaymentsText = NSLocalizedString("nextPayment", comment: "")
+        self.nextPaymentsText = NSLocalizedString("nextPayments", comment: "")
     }
     
     // MARK: - View
@@ -60,7 +60,7 @@ struct StatisticsView: View {
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                     // Next Payments.
                     if self.subscriptionsViewModel.payments.count > 0 {
-                        SectionTitle(title: "Next Payments")
+                        SectionTitle(title: self.nextPaymentsText)
                         VStack(alignment: .leading, spacing: 12) {
                             ForEach(self.subscriptionsViewModel.payments, id:\Payment.id) { payment in
                                 PendingPaymentRow(payment: payment)

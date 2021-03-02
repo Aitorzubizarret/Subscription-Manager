@@ -80,7 +80,7 @@
 
 // Statistics View
 "Subscription" = "Subscription";
-"nextPayment" = "Next Payments";
+"nextPayments" = "Next Payments";
 
 // Settings View
 "settingsNavBarTitle" = "Settings";
