@@ -438,7 +438,13 @@ class SubscriptionsViewModel: ObservableObject {
         } catch {
             print("Error deleting all data from Core Data. \(error)")
         }
-        
+    }
+    
+    ///
+    /// Adds demo data to the App (Core Data).
+    ///
+    public func addDemoData() {
+        print("SubscriptionViewModel - addDemoData")
     }
     
     ///

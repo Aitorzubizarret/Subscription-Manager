@@ -98,6 +98,9 @@
 // Settings - Add Demo Data
 "settingsAddDemoTitle" = "Add Demo Data";
 "settingsAddDemoDescription" = "Adds demo subscriptions and payments to see App capabilities.";
+"settingsAddDemoAlertTitle" = "Add Demo Data";
+"settingsAddDemoAlertMessage" = "Are you sure you want to add demo data to the App?";
+"settingsAddDemoAlertPrimaryButton" = "Add data";
 
 // Buttons
 "no" = "No";

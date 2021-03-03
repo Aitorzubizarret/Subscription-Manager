@@ -16,6 +16,10 @@ struct AddDemoData: View {
     @State private var showingAlert: Bool = false
     private var sectionTitle: String = ""
     private var sectionDescription: String = ""
+    private var sectionAlertTitle: String = ""
+    private var sectionAlertMessage: String = ""
+    private var sectionAlertPrimaryButton: String = ""
+    private var sectionAlertSecondaryButton: String = ""
     
     // MARK: - Methods
     
@@ -29,13 +33,18 @@ struct AddDemoData: View {
     private mutating func localizeText() {
         self.sectionTitle = NSLocalizedString("settingsAddDemoTitle", comment: "")
         self.sectionDescription = NSLocalizedString("settingsAddDemoDescription", comment: "")
+        self.sectionAlertTitle = NSLocalizedString("settingsAddDemoAlertTitle", comment: "")
+        self.sectionAlertMessage = NSLocalizedString("settingsAddDemoAlertMessage", comment: "")
+        self.sectionAlertPrimaryButton = NSLocalizedString("settingsAddDemoAlertPrimaryButton", comment: "")
+        self.sectionAlertSecondaryButton = NSLocalizedString("no", comment: "")
     }
     
     ///
     /// Adds demo Subscriptions and Payments.
     ///
     private func addDemoData() {
-        
+        // Adds demo Subscriptions and Payments to Core Data.
+        self.subscriptionsViewModel.addDemoData()
     }
     
     // MARK: - View
@@ -48,7 +57,15 @@ struct AddDemoData: View {
                 self.showingAlert = true
             }) {
                 BigButton(style: .add, title: "Add")
-            }
+            }.alert(isPresented: self.$showingAlert, content: {
+                Alert(title: Text(self.sectionAlertTitle),
+                      message: Text(self.sectionAlertMessage),
+                      primaryButton: Alert.Button.default(Text(self.sectionAlertPrimaryButton),
+                      action: {
+                        self.addDemoData()
+                      }),
+                      secondaryButton: Alert.Button.cancel(Text(self.sectionAlertSecondaryButton)))
+            })
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
         .background(Color.white)
