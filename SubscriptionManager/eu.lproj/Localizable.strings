@@ -99,7 +99,7 @@
 "settingsAddDemoTitle" = "Gehitu Demo Informazioa";
 "settingsAddDemoDescription" = "Harpidetza eta ordainketen informazio-demoa gehitzen ditu aplikazioaren gaitasunak ikusteko.";
 "settingsAddDemoAlertTitle" = "Gehitu Demo Informazioa";
-"settingsAddDemoAlertMessage" = "Zihur al zaude harpidetza eta ordainketen informazio-demoa gehitu naiz duzula?";
+"settingsAddDemoAlertMessage" = "Zihur al zaude harpidetza eta ordainketen informazio-demoa gehitu nahi duzula?";
 "settingsAddDemoAlertPrimaryButton" = "Gehitu";
 
 // Buttons
