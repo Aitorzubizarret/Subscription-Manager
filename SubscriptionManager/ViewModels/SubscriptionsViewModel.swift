@@ -444,7 +444,82 @@ class SubscriptionsViewModel: ObservableObject {
     /// Adds demo data to the App (Core Data).
     ///
     public func addDemoData() {
-        print("SubscriptionViewModel - addDemoData")
+        // 1
+        var components1 = DateComponents()
+        components1.second = 0
+        components1.minute = 0
+        components1.hour = 1
+        components1.day = 1
+        components1.month = 1
+        components1.year = 2021
+        var fakeDate = Calendar.current.date(from: components1) ?? Date()
+        self.createNewSubscription(name: "Netflix", price: 4, category: .video, cycle: "1-m", rowColor: .blueDark, nextPayment: fakeDate)
+        
+        // 2
+        var components2 = DateComponents()
+        components2.second = 0
+        components2.minute = 0
+        components2.hour = 1
+        components2.day = 5
+        components2.month = 1
+        components2.year = 2021
+        fakeDate = Calendar.current.date(from: components2) ?? Date()
+        self.createNewSubscription(name: "HBO", price: 4, category: .video, cycle: "3-m", rowColor: .blueDark, nextPayment: fakeDate)
+        
+        // 3
+        var components3 = DateComponents()
+        components3.second = 0
+        components3.minute = 0
+        components3.hour = 1
+        components3.day = 10
+        components3.month = 1
+        components3.year = 2019
+        fakeDate = Calendar.current.date(from: components3) ?? Date()
+        self.createNewSubscription(name: "AppleTV", price: 4, category: .video, cycle: "1-y", rowColor: .blueDark, nextPayment: fakeDate)
+        
+        // 4
+        var components4 = DateComponents()
+        components4.second = 0
+        components4.minute = 0
+        components4.hour = 1
+        components4.day = 14
+        components4.month = 1
+        components4.year = 2021
+        fakeDate = Calendar.current.date(from: components4) ?? Date()
+        self.createNewSubscription(name: "Amazon Prime", price: 4, category: .ecommerce, cycle: "1-m", rowColor: .blueDark, nextPayment: fakeDate)
+        
+        // 5
+        var components5 = DateComponents()
+        components5.second = 0
+        components5.minute = 0
+        components5.hour = 1
+        components5.day = 21
+        components5.month = 1
+        components5.year = 2021
+        fakeDate = Calendar.current.date(from: components5) ?? Date()
+        self.createNewSubscription(name: "AT&T", price: 4, category: .phone, cycle: "1-w", rowColor: .blueDark, nextPayment: fakeDate)
+        
+        // 6
+        var components6 = DateComponents()
+        components6.second = 0
+        components6.minute = 0
+        components6.hour = 1
+        components6.day = 18
+        components6.month = 1
+        components6.year = 2021
+        fakeDate = Calendar.current.date(from: components6) ?? Date()
+        self.createNewSubscription(name: "Dropbox", price: 4, category: .software, cycle: "1-y", rowColor: .blueDark, nextPayment: fakeDate)
+        
+        // 7
+        var components7 = DateComponents()
+        components7.second = 0
+        components7.minute = 0
+        components7.hour = 1
+        components7.day = 4
+        components7.month = 1
+        components7.year = 2021
+        fakeDate = Calendar.current.date(from: components7) ?? Date()
+        self.createNewSubscription(name: "Spotify", price: 4, category: .music, cycle: "1-m", rowColor: .blueDark, nextPayment: fakeDate)
     }
     
     ///
