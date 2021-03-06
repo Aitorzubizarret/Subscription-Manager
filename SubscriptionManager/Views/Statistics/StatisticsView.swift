@@ -62,7 +62,7 @@ struct StatisticsView: View {
                     if self.subscriptionsViewModel.payments.count > 0 {
                         SectionTitle(title: self.nextPaymentsText)
                         VStack(alignment: .leading, spacing: 12) {
-                            ForEach(self.subscriptionsViewModel.payments, id:\Payment.id) { payment in
+                            ForEach(self.subscriptionsViewModel.getPaymentsDueToThisMonth(), id:\Payment.id) { payment in
                                 PendingPaymentRow(payment: payment)
                             }
                         }

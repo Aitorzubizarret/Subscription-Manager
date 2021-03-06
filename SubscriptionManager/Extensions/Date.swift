@@ -127,4 +127,23 @@ extension Date {
         
         return response
     }
+    
+    ///
+    /// Checks if the received date is the same as the current date.
+    /// - Returns: True if the date is the same year and month as the current one and the day is beweetn today and then end of the month,
+    ///
+    func isInRangeBetweenTodayAndEndOfCurrentMonth() -> Bool {
+        var response: Bool = false
+        
+        let receivedDate: Date = self
+        let currentDate: Date = Date()
+        
+        if receivedDate.getYearNumber() == currentDate.getYearNumber(),
+           receivedDate.getMonthNumber() == currentDate.getMonthNumber(),
+           receivedDate.getDayNumber() ?? 1 >= currentDate.getDayNumber() ?? 1 {
+            response = true
+        }
+        
+        return response
+    }
 }

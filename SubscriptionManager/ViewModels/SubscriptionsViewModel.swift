@@ -158,6 +158,20 @@ class SubscriptionsViewModel: ObservableObject {
     }
     
     ///
+    /// Returns a list of payments that are due to the current month, but between the current day until the end of the month.
+    /// - Returns: A Payment list.
+    ///
+    public func getPaymentsDueToThisMonth() -> [Payment] {
+        var result: [Payment] = []
+        
+        result = self.payments.filter { payment in
+            return payment.date.isInRangeBetweenTodayAndEndOfCurrentMonth()
+        }
+        
+        return result
+    }
+    
+    ///
     /// Updates the old payment date from a Subscription.
     /// - Parameter subscription : The subscription that has an old (outdated) nextPaymentDate.
     ///
