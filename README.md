@@ -24,4 +24,10 @@ This is a project (iOS App) to track and manage all subscriptions.
 - [ ] Local Notifications for when payments date are near.
 - [ ] Dark mode.
 - [x] Total payed.
-- [ ] Multilanguage
+- [x] Multilanguage
+
+### Languages
+
+- [x] English
+- [x] Spanish
+- [x] Basque
