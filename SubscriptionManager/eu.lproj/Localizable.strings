@@ -47,6 +47,15 @@
 "nameIsEmpty" = "Izena beharrezkoa da. ";
 "priceEmptyOrInvalid" = "Prezioa beharrezkoa da eta zenbakiak bakarrik onartzen ditu. ";
 "paymentDateInvalid" = "Hurrengo ordainketaren data biharko egunetik aurrera izan behar da. ";
+"subscriptionEditViewEvery" = "";
+"subscriptionEditViewDay" = "Egunero";
+"subscriptionEditViewWeek" = "Astero";
+"subscriptionEditViewMonth" = "Hilabetero";
+"subscriptionEditViewYear" = "Urtero";
+"subscriptionEditViewDays" = "egunero";
+"subscriptionEditViewWeeks" = "astero";
+"subscriptionEditViewMonths" = "hilabetero";
+"subscriptionEditViewYears" = "urtero";
 
 // EditableField View
 "enter the %s" = "Sartu %s";

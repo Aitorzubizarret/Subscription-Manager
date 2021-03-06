@@ -47,6 +47,15 @@
 "nameIsEmpty" = "Falta el nombre. ";
 "priceEmptyOrInvalid" = "Falta el precio y/o debe ser numérico. ";
 "paymentDateInvalid" = "La fecha del siguiente pago debe ser posterior a la fecha actual. ";
+"subscriptionEditViewEvery" = "Cada ";
+"subscriptionEditViewDay" = "día";
+"subscriptionEditViewWeek" = "semana";
+"subscriptionEditViewMonth" = "mes";
+"subscriptionEditViewYear" = "año";
+"subscriptionEditViewDays" = "días";
+"subscriptionEditViewWeeks" = "semanas";
+"subscriptionEditViewMonths" = "meses";
+"subscriptionEditViewYears" = "años";
 
 // EditableField View
 "enter the %s" = "Introduce el %s";

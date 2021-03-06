@@ -47,6 +47,15 @@
 "nameIsEmpty" = "Name is empty. ";
 "priceEmptyOrInvalid" = "Price can't be empty and has to be a valid number. ";
 "paymentDateInvalid" = "Next Payment Date must be after today. ";
+"subscriptionEditViewEvery" = "Every ";
+"subscriptionEditViewDay" = "day";
+"subscriptionEditViewWeek" = "week";
+"subscriptionEditViewMonth" = "month";
+"subscriptionEditViewYear" = "year";
+"subscriptionEditViewDays" = "days";
+"subscriptionEditViewWeeks" = "weeks";
+"subscriptionEditViewMonths" = "months";
+"subscriptionEditViewYears" = "years";
 
 // EditableField View
 "enter the %s" = "Enter the %s";

@@ -19,6 +19,15 @@ struct SubscriptionDetailView: View {
     var subscription: Subscription
     private var price: String = ""
     private var cycle: String = ""
+    private var everyText: String = ""
+    private var dayText: String = ""
+    private var weekText: String = ""
+    private var monthText: String = ""
+    private var yearText: String = ""
+    private var daysText: String = ""
+    private var weeksText: String = ""
+    private var monthsText: String = ""
+    private var yearsText: String = ""
     private var backgroundColor: Color = Color.red
     private var nextPayment: String = ""
     private var priceText: String = ""
@@ -44,32 +53,32 @@ struct SubscriptionDetailView: View {
         self.price = String(format: "%.2f €", subscription.price)
         
         // Cycle.
-        self.cycle = "Every "
+        self.cycle = self.everyText
         let cycleComponents: [String] = subscription.cycle.components(separatedBy: "-")
         if cycleComponents.count == 2 {
             if cycleComponents[0] == "1" {
                 switch cycleComponents[1] {
                 case "d":
-                    self.cycle = self.cycle + "day" // Day.
+                    self.cycle = self.cycle + self.dayText // Day.
                 case "w":
-                    self.cycle = self.cycle + "week" // Week.
+                    self.cycle = self.cycle + self.weekText // Week.
                 case "m":
-                    self.cycle = self.cycle + "month" // Month.
+                    self.cycle = self.cycle + self.monthText // Month.
                 case "y":
-                    self.cycle = self.cycle + "year" // Year.
+                    self.cycle = self.cycle + self.yearText // Year.
                 default:
                     self.cycle = self.cycle + "¿?" // Unknow.
                 }
             } else {
                 switch cycleComponents[1] {
                 case "d":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "days" // Day.
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + self.daysText // Days.
                 case "w":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "weeks" // Week.
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + self.weeksText // Weeks.
                 case "m":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "months" // Month.
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + self.monthsText // Months.
                 case "y":
-                    self.cycle = self.cycle + "\(cycleComponents[0]) " + "years" // Year.
+                    self.cycle = self.cycle + "\(cycleComponents[0]) " + self.yearsText // Years.
                 default:
                     self.cycle = self.cycle + "\(cycleComponents[0]) " + "¿?" // Unknow.
                 }
@@ -89,6 +98,15 @@ struct SubscriptionDetailView: View {
         // Get strings from localizable.
         self.priceText = NSLocalizedString("price", comment: "").uppercased()
         self.cycleText = NSLocalizedString("cycle", comment: "").uppercased()
+        self.everyText = NSLocalizedString("subscriptionEditViewEvery", comment: "").capitalized
+        self.dayText = NSLocalizedString("subscriptionEditViewDay", comment: "")
+        self.weekText = NSLocalizedString("subscriptionEditViewWeek", comment: "")
+        self.monthText = NSLocalizedString("subscriptionEditViewMonth", comment: "")
+        self.yearText = NSLocalizedString("subscriptionEditViewYear", comment: "")
+        self.daysText = NSLocalizedString("subscriptionEditViewDays", comment: "")
+        self.weeksText = NSLocalizedString("subscriptionEditViewWeeks", comment: "")
+        self.monthsText = NSLocalizedString("subscriptionEditViewMonths", comment: "")
+        self.yearsText = NSLocalizedString("subscriptionEditViewYears", comment: "")
         self.nextPaymentText = NSLocalizedString("nextPayment", comment: "").uppercased()
         self.totalText = NSLocalizedString("total", comment: "").uppercased()
         self.createdText = NSLocalizedString("created", comment: "").uppercased()
