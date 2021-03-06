@@ -162,12 +162,19 @@ class SubscriptionsViewModel: ObservableObject {
     /// - Returns: A Payment list.
     ///
     public func getPaymentsDueToThisMonth() -> [Payment] {
+        // Create an empty list.
         var result: [Payment] = []
         
+        // Save in result the payments that their date is in range between today and the end of the month.
         result = self.payments.filter { payment in
             return payment.date.isInRangeBetweenTodayAndEndOfCurrentMonth()
         }
         
+        // Order the "result" Payments list by date ascendent.
+        let resultOrdered: [Payment] = result.sorted { $0.date < $1.date }
+        result = resultOrdered
+        
+        // Return the payments list.
         return result
     }
     
