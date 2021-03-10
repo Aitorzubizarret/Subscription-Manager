@@ -88,7 +88,8 @@
 "categories" = "Kategoriak";
 
 // Statistics View
-"Subscription" = "Harpidetza";
+"statisticsView_subscription" = "Harpidetza";
+"statisticsView_subscriptions" = "Harpidetza";
 "nextPayments" = "Hurrengo ordainketak";
 
 // Settings View

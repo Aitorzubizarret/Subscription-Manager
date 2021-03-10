@@ -37,8 +37,8 @@ struct StatisticsView: View {
     private mutating func localizeText() {
         // Get strings from localizable.
         self.navBarTitle = NSLocalizedString("Statistics", comment: "")
-        self.subscriptionsText = NSLocalizedString("Subscriptions", comment: "")
-        self.subscriptionText = NSLocalizedString("Subscription", comment: "")
+        self.subscriptionsText = NSLocalizedString("statisticsView_subscriptions", comment: "")
+        self.subscriptionText = NSLocalizedString("statisticsView_subscriptions", comment: "")
         self.nextPaymentsText = NSLocalizedString("nextPayments", comment: "")
     }
     
@@ -52,7 +52,6 @@ struct StatisticsView: View {
                     SectionTitle(title: self.navBarTitle)
                     VStack {
                         HStack(alignment: .center, spacing: 12) {
-                            // FIXME: There is a problem with Basque language.
                             SmallSimpleBox(value: self.subscriptionsViewModel.subscriptions.count, descriptionText: self.subscriptionsViewModel.subscriptions.count > 1 ? self.subscriptionsText : self.subscriptionText)
                             TotalPayedBox(value: self.totalPayed)
                         }

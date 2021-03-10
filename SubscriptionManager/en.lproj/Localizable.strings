@@ -88,7 +88,8 @@
 "categories" = "Categories";
 
 // Statistics View
-"Subscription" = "Subscription";
+"statisticsView_subscription" = "Subscription";
+"statisticsView_subscriptions" = "Subscriptions";
 "nextPayments" = "Next Payments";
 
 // Settings View
