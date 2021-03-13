@@ -465,32 +465,42 @@ class SubscriptionsViewModel: ObservableObject {
     /// Adds demo data to the App (Core Data).
     ///
     public func addDemoData() {
-        let fakeDate1: Date = Date().createCustomDate(day: 1, month: 1, year: 2021)
-        self.createNewSubscription(name: "Netflix", price: 4, category: .video, cycle: "1-m", rowColor: .blueDark, nextPayment: fakeDate1)
+        
+        // 1
+        if let customDate: Date = "2021/03/20".convertToDate() {
+            self.createNewSubscription(name: "Netflix", price: 4, category: .video, cycle: "1-m", rowColor: .blueDark, nextPayment: customDate)
+        }
         
         // 2
-        let fakeDate2: Date = Date().createCustomDate(day: 5, month: 1, year: 2021)
-        self.createNewSubscription(name: "HBO", price: 4, category: .video, cycle: "3-m", rowColor: .blueDark, nextPayment: fakeDate2)
+        if let customDate: Date = "2021/01/05".convertToDate() {
+            self.createNewSubscription(name: "HBO", price: 4, category: .video, cycle: "3-m", rowColor: .blueDark, nextPayment: customDate)
+        }
         
         // 3
-        let fakeDate3: Date = Date().createCustomDate(day: 10, month: 1, year: 2019)
-        self.createNewSubscription(name: "AppleTV", price: 4, category: .video, cycle: "1-y", rowColor: .blueDark, nextPayment: fakeDate3)
+        if let customDate: Date = "2019/01/10".convertToDate() {
+            self.createNewSubscription(name: "AppleTV", price: 4, category: .video, cycle: "1-y", rowColor: .blueDark, nextPayment: customDate)
+        }
         
         // 4
-        let fakeDate4: Date = Date().createCustomDate(day: 14, month: 1, year: 2021)
-        self.createNewSubscription(name: "Amazon Prime", price: 4, category: .ecommerce, cycle: "1-m", rowColor: .blueDark, nextPayment: fakeDate4)
+        if let customDate: Date = "2021/01/14".convertToDate() {
+            self.createNewSubscription(name: "Amazon Prime", price: 4, category: .ecommerce, cycle: "1-m", rowColor: .blueDark, nextPayment: customDate)
+        }
         
         // 5
-        let fakeDate5: Date = Date().createCustomDate(day: 21, month: 1, year: 2021)
-        self.createNewSubscription(name: "AT&T", price: 4, category: .phone, cycle: "1-w", rowColor: .blueDark, nextPayment: fakeDate5)
+        if let customDate: Date = "2021/01/21".convertToDate() {
+            self.createNewSubscription(name: "AT&T", price: 4, category: .phone, cycle: "1-w", rowColor: .blueDark, nextPayment: customDate)
+        }
         
         // 6
-        let fakeDate6: Date = Date().createCustomDate(day: 18, month: 1, year: 2021)
-        self.createNewSubscription(name: "Dropbox", price: 4, category: .software, cycle: "1-y", rowColor: .blueDark, nextPayment: fakeDate6)
+        if let customDate: Date = "2021/01/18".convertToDate() {
+            self.createNewSubscription(name: "Dropbox", price: 4, category: .software, cycle: "1-y", rowColor: .blueDark, nextPayment: customDate)
+        }
         
         // 7
-        let fakeDate7: Date = Date().createCustomDate(day: 4, month: 1, year: 2021)
-        self.createNewSubscription(name: "Spotify", price: 4, category: .music, cycle: "1-m", rowColor: .blueDark, nextPayment: fakeDate7)
+        if let customDate: Date = "2021/01/04".convertToDate() {
+            self.createNewSubscription(name: "Spotify", price: 4, category: .music, cycle: "1-m", rowColor: .blueDark, nextPayment: customDate)
+        }
+        
     }
     
     ///

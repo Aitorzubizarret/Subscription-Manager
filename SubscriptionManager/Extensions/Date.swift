@@ -147,22 +147,4 @@ extension Date {
         return response
     }
     
-    ///
-    /// Creates a custom date.
-    /// - Parameter day : A day number.
-    /// - Parameter month : A  month number.
-    /// - Parameter year : A year number.
-    /// - Returns : A custom Date created with the received values.
-    ///
-    func createCustomDate(day: Int, month: Int, year: Int) -> Date {
-        var components = DateComponents()
-        components.second = 0
-        components.minute = 0
-        components.hour = 1
-        components.day = day
-        components.month = month
-        components.year = year
-        let customDate: Date = Calendar.current.date(from: components) ?? Date()
-        return customDate
-    }
 }

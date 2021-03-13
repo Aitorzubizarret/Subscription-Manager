@@ -49,6 +49,7 @@
 		42A51007259E668B00EB3544 /* CategoryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A51006259E668B00EB3544 /* CategoryField.swift */; };
 		42A7153825950FE80028A4F7 /* ColorElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153725950FE80028A4F7 /* ColorElement.swift */; };
 		42A7153B2595125A0028A4F7 /* ColorsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7153A2595125A0028A4F7 /* ColorsField.swift */; };
+		42BA288025FD721500566048 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BA287F25FD721500566048 /* String.swift */; };
 		42CEB2E925D73B6300D222BA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42CEB2EB25D73B6300D222BA /* Localizable.strings */; };
 		42D6AB0525D4809800ACCFBC /* EmptySubscriptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D6AB0425D4809800ACCFBC /* EmptySubscriptionList.swift */; };
 		42D74F0625D87B0B0070AA60 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D74F0525D87B0B0070AA60 /* SettingsView.swift */; };
@@ -102,6 +103,7 @@
 		42A51006259E668B00EB3544 /* CategoryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryField.swift; sourceTree = "<group>"; };
 		42A7153725950FE80028A4F7 /* ColorElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorElement.swift; sourceTree = "<group>"; };
 		42A7153A2595125A0028A4F7 /* ColorsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsField.swift; sourceTree = "<group>"; };
+		42BA287F25FD721500566048 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		42CEB2EA25D73B6300D222BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42CEB2ED25D73CB200D222BA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42CEB2EF25D73CDD00D222BA /* eu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eu; path = eu.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				1A021734255B253F001384A9 /* View.swift */,
 				1A021736255B29AB001384A9 /* Color.swift */,
 				1A02173A255B3278001384A9 /* Date.swift */,
+				42BA287F25FD721500566048 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				42A7153B2595125A0028A4F7 /* ColorsField.swift in Sources */,
 				1A8CFC4C254D90AA00B8DEB9 /* RoundCorners.swift in Sources */,
 				1A021735255B253F001384A9 /* View.swift in Sources */,
+				42BA288025FD721500566048 /* String.swift in Sources */,
 				4265F08125A104B3002797C9 /* CategoriesView.swift in Sources */,
 				1A2CE00D25277A000009C743 /* StatisticsView.swift in Sources */,
 				42441F6A25E70E2A0018BDB6 /* TotalPayedBox.swift in Sources */,
