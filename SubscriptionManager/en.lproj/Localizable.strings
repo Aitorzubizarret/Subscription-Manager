@@ -61,16 +61,15 @@
 "enter the %s" = "Enter the %s";
 
 // CycleField View
-"day" = "Day";
-"days" = "Days";
-"week" = "Week";
-"weeks" = "Weeks";
-"month" = "Month";
-"months" = "Months";
-"year" = "Year";
-"years" = "Years";
-"every %@" = "Every %@";
-"every %d %@" = "Every %d %@";
+"cycleFieldEvery" = "Every ";
+"cycleFieldDay" = "day";
+"cycleFieldDays" = "days";
+"cycleFieldWeek" = "week";
+"cycleFieldWeeks" = "weeks";
+"cycleFieldMonth" = "month";
+"cycleFieldMonths" = "months";
+"cycleFieldYear" = "year";
+"cycleFieldYears" = "years";
 
 // CalendarField View
 "monday" = "Mon";

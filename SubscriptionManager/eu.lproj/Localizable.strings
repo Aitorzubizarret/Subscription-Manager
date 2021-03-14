@@ -61,16 +61,15 @@
 "enter the %s" = "Sartu %s";
 
 // CycleField View
-"day" = "Egun";
-"days" = "Egun";
-"week" = "Aste";
-"weeks" = "Aste";
-"month" = "Hilabete";
-"months" = "Hilabete";
-"year" = "Urte";
-"years" = "Urte";
-"every %@" = "%@(e)ro";
-"every %d %@" = "%d %@(e)ro";
+"cycleFieldEvery" = "";
+"cycleFieldDay" = "egunero";
+"cycleFieldDays" = "egunero";
+"cycleFieldWeek" = "astero";
+"cycleFieldWeeks" = "astero";
+"cycleFieldMonth" = "hilabetero";
+"cycleFieldMonths" = "hilabetero";
+"cycleFieldYear" = "urtero";
+"cycleFieldYears" = "urtero";
 
 // CalendarField View
 "monday" = "Al";

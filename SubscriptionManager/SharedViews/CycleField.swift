@@ -31,10 +31,15 @@ struct CycleField: View {
     private var buttonWitdh: CGFloat {
         return (UIScreen.main.bounds.size.width / 4) - 14
     }
+    private var everyText: String = ""
     private var dayText: String = ""
     private var weekText: String = ""
     private var monthText: String = ""
     private var yearText: String = ""
+    private var daysText: String = ""
+    private var weeksText: String = ""
+    private var monthsText: String = ""
+    private var yearsText: String = ""
     
     // MARK: - Methods
     
@@ -59,9 +64,23 @@ struct CycleField: View {
             // CycleText.
             let str: String = checkUnit()
             if self.value == "1" {
-                self._cycleText = State(wrappedValue: String(format: NSLocalizedString("every %@", comment: ""), str))
+                let cycleText: String = self.everyText + " \(str)"
+                self._cycleText = State(wrappedValue: String(format: cycleText))
             } else {
-                self._cycleText = State(wrappedValue: String(format: NSLocalizedString("every %@ %@", comment: ""), self.value, str))
+                var cycleText: String = self.everyText + "\(self.value) "
+                switch str {
+                case self.dayText:
+                    cycleText = self.cycleText + "\(self.daysText)"
+                case self.weekText:
+                    cycleText = self.cycleText + "\(self.weeksText)"
+                case self.monthText:
+                    cycleText = self.cycleText + "\(self.monthsText)"
+                case self.yearText:
+                    cycleText = self.cycleText + "\(self.yearsText)"
+                default:
+                    cycleText = self.cycleText + "¿?"
+                }
+                self._cycleText = State(wrappedValue: String(format: cycleText))
             }
         }
     }
@@ -71,10 +90,15 @@ struct CycleField: View {
     ///
     private mutating func localizeText() {
         // Get strings from localizable.
-        self.dayText = NSLocalizedString("day", comment: "")
-        self.weekText = NSLocalizedString("week", comment: "")
-        self.monthText = NSLocalizedString("month", comment: "")
-        self.yearText = NSLocalizedString("year", comment: "")
+        self.everyText = NSLocalizedString("cycleFieldEvery", comment: "")
+        self.dayText = NSLocalizedString("cycleFieldDay", comment: "")
+        self.weekText = NSLocalizedString("cycleFieldWeek", comment: "")
+        self.monthText = NSLocalizedString("cycleFieldMonth", comment: "")
+        self.yearText = NSLocalizedString("cycleFieldYear", comment: "")
+        self.daysText = NSLocalizedString("cycleFieldDays", comment: "")
+        self.weeksText = NSLocalizedString("cycleFieldWeeks", comment: "")
+        self.monthsText = NSLocalizedString("cycleFieldMonths", comment: "")
+        self.yearsText = NSLocalizedString("cycleFieldYears", comment: "")
     }
     
     ///
@@ -84,16 +108,28 @@ struct CycleField: View {
         let str: String = checkUnit()
         
         if self.value == "1" {
-            self.cycleText = String(format: NSLocalizedString("every %@", comment: ""), str)
+            self.cycleText = self.everyText + " \(str)"
         } else {
-            self.cycleText = String(format: NSLocalizedString("every %@ %@", comment: ""), self.value, str)
+            self.cycleText = self.everyText + "\(self.value) "
+            switch str.lowercased() {
+            case self.dayText:
+                self.cycleText = self.cycleText + "\(self.daysText)"
+            case self.weekText:
+                self.cycleText = self.cycleText + "\(self.weeksText)"
+            case self.monthText:
+                self.cycleText = self.cycleText + "\(self.monthsText)"
+            case self.yearText:
+                self.cycleText = self.cycleText + "\(self.yearsText)"
+            default:
+                self.cycleText = self.cycleText + "¿?"
+            }
         }
         
         self.textfieldValue = "\(self.value)-\(self.unit)"
     }
     
     ///
-    /// Compares the unit and sends back a string.
+    /// Compares the unit and sends back a Localized string.
     /// - Returns : Returns the unit as a string. Ex. d = day, w = week. m = month, ...
     ///
     private func checkUnit() -> String {
@@ -101,13 +137,13 @@ struct CycleField: View {
         
         switch self.unit {
         case "d":
-            str = self.dayText.lowercased()
+            str = self.dayText
         case "w":
-            str = self.weekText.lowercased()
+            str = self.weekText
         case "m":
-            str = self.monthText.lowercased()
+            str = self.monthText
         case "y":
-            str = self.yearText.lowercased()
+            str = self.yearText
         default:
             str = "¿?"
         }
@@ -183,7 +219,7 @@ struct CycleField: View {
                     self.unit = "d"
                 }) {
                     if self.unit == "d" {
-                        Text(self.dayText)
+                        Text(self.dayText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -196,7 +232,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text(self.dayText)
+                        Text(self.dayText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -208,7 +244,7 @@ struct CycleField: View {
                     self.unit = "w"
                 }) {
                     if self.unit == "w" {
-                        Text(self.weekText)
+                        Text(self.weekText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -221,7 +257,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text(self.weekText)
+                        Text(self.weekText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -233,7 +269,7 @@ struct CycleField: View {
                     self.unit = "m"
                 }) {
                     if self.unit == "m" {
-                        Text(self.monthText)
+                        Text(self.monthText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -246,7 +282,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text(self.monthText)
+                        Text(self.monthText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -258,7 +294,7 @@ struct CycleField: View {
                     self.unit = "y"
                 }) {
                     if self.unit == "y" {
-                        Text(self.yearText)
+                        Text(self.yearText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
@@ -271,7 +307,7 @@ struct CycleField: View {
                         )
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                     } else {
-                        Text(self.yearText)
+                        Text(self.yearText.capitalized)
                         .font(Font.system(size: 16))
                         .fontWeight(Font.Weight.bold)
                         .foregroundColor(Color.customDarkText)
