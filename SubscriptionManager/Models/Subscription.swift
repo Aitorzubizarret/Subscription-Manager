@@ -18,4 +18,5 @@ class Subscription: NSManagedObject {
     @NSManaged var created: Date
     @NSManaged var rowColor: String
     @NSManaged var category: String
+    @NSManaged var email: String
 }
