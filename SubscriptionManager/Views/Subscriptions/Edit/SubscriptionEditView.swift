@@ -201,8 +201,8 @@ struct SubscriptionEditView: View {
                 EditableField(title: self.nameText, value: self.$textFieldSubscriptionName, keyboardType: UIKeyboardType.alphabet)
                 EditableField(title: self.priceText, value: self.$textFieldSubscriptionPrice, keyboardType: UIKeyboardType.decimalPad)
                 CategoryField(title: self.categoryText, value: self.$selectedCategory)
-                CycleField(title: self.cycleText, value: self.$textCycle)
                 ColorsField(title: self.colorText, value: self.$selectedColor)
+                CycleField(title: self.cycleText, value: self.$textCycle)
                 CalendarField(title: self.nextPaymentText, value: self.$nextPayment)
             }
             .gesture(
